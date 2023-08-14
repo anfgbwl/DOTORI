@@ -2,7 +2,7 @@
 //  Logger.swift
 //  DOTORI
 //
-//  Created by 박유경 on 2023/08/14.
+//  Created by 도토리묵 on 2023/08/14.
 //
 
 import Foundation

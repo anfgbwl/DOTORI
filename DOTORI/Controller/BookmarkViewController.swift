@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  BookmarkViewController.swift
 //  DOTORI
 //
 //  Created by 도토리묵 on 2023/08/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class BookmarkViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
