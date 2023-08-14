@@ -12,6 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -52,9 +53,16 @@
                         <outlet property="tabBar" destination="bkX-H8-xzD" id="ZLo-6l-Id8"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="-2"/>
+        </scene>
+        <!--DetailViewController-->
+        <scene sceneID="ZUK-JN-Z8V">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="DetailViewController" id="yyc-QS-yRa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNw-jg-qJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498" y="-139"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="3bq-Lc-tMV">
@@ -63,6 +71,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCS-p1-7Wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="595" y="419"/>
+        </scene>
+        <!--CreateViewController-->
+        <scene sceneID="FRa-UJ-TEk">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="CreateViewController" id="QDU-bL-F5z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AlS-I3-zK1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2q-Jw-zcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876" y="418"/>
+        </scene>
+        <!--BookmarkViewController-->
+        <scene sceneID="LkO-WY-7Z2">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="BookmarkViewController" id="7HI-0S-RkO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Xk-UW-1uJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A2X-Hr-zWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190" y="418"/>
+        </scene>
+        <!--MyPageViewController-->
+        <scene sceneID="TLQ-7T-BXp">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="MyPageViewController" id="j2t-eq-gJs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3h-3R-NMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="417"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Re7-os-ycx">
