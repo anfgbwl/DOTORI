@@ -12,49 +12,19 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkX-H8-xzD">
-                                <rect key="frame" x="0.0" y="769" width="393" height="83"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem image="house" catalog="system" id="Htz-4k-Qzt"/>
-                                    <tabBarItem image="magnifyingglass" catalog="system" id="LvV-HX-7bX"/>
-                                    <tabBarItem image="square.and.pencil" catalog="system" id="ciL-mp-OWc"/>
-                                    <tabBarItem title="" image="bookmark" catalog="system" id="ZJZ-Lo-9pE"/>
-                                    <tabBarItem title="" image="person" catalog="system" id="BQR-Yh-fw5"/>
-                                </items>
-                            </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzX-jN-M3b">
-                                <rect key="frame" x="122" y="505" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z9B-8u-C0J"/>
-                                    <segue destination="for-zV-g1i" kind="presentation" identifier="mainToSearch" id="KCe-V2-Abr"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bkX-H8-xzD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7FL-uq-Ole"/>
-                            <constraint firstAttribute="bottom" secondItem="bkX-H8-xzD" secondAttribute="bottom" id="Wsa-cz-yKu"/>
-                            <constraint firstItem="bkX-H8-xzD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eQz-q1-qlu"/>
-                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="r5W-bG-TNb"/>
                     <navigationItem key="navigationItem" id="gvq-K5-aY8"/>
-                    <connections>
-                        <outlet property="tabBar" destination="bkX-H8-xzD" id="ZLo-6l-Id8"/>
-                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-2"/>
+            <point key="canvasLocation" x="1889.3129770992366" y="-2.1126760563380285"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="ZUK-JN-Z8V">
@@ -62,12 +32,14 @@
                 <viewControllerPlaceholder referencedIdentifier="DetailViewController" id="yyc-QS-yRa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNw-jg-qJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498" y="-139"/>
+            <point key="canvasLocation" x="2424.4274809160306" y="-139.43661971830986"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="3bq-Lc-tMV">
             <objects>
-                <viewControllerPlaceholder storyboardName="SearchViewController" referencedIdentifier="SearchViewController" id="for-zV-g1i" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SearchViewController" referencedIdentifier="SearchViewController" id="for-zV-g1i" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jWy-5A-sVh"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCS-p1-7Wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="595" y="419"/>
@@ -75,7 +47,8 @@
         <!--CreateViewController-->
         <scene sceneID="FRa-UJ-TEk">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="CreateViewController" id="QDU-bL-F5z" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CreateViewController" referencedIdentifier="CreateViewController" id="QDU-bL-F5z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wIo-Q9-Ons"/>
                     <navigationItem key="navigationItem" id="AlS-I3-zK1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2q-Jw-zcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -85,7 +58,8 @@
         <!--BookmarkViewController-->
         <scene sceneID="LkO-WY-7Z2">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="BookmarkViewController" id="7HI-0S-RkO" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="BookmarkViewController" referencedIdentifier="BookmarkViewController" id="7HI-0S-RkO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="xjp-Ea-xkf"/>
                     <navigationItem key="navigationItem" id="0Xk-UW-1uJ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2X-Hr-zWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,7 +69,9 @@
         <!--MyPageViewController-->
         <scene sceneID="TLQ-7T-BXp">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="MyPageViewController" id="j2t-eq-gJs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MyPageViewController" referencedIdentifier="MyPageViewController" id="j2t-eq-gJs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3zR-ud-uUp"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3h-3R-NMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1490" y="417"/>
@@ -111,20 +87,38 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="v4T-at-0Dw"/>
+                        <segue destination="oyT-Sc-W0g" kind="relationship" relationship="rootViewController" id="v4T-at-0Dw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nae-eS-a6Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.458015267175568" y="-2.1126760563380285"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qVg-sS-n8N">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oyT-Sc-W0g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="oJx-zB-0vw"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BJk-G5-p3V">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="AWs-xi-oJl"/>
+                        <segue destination="for-zV-g1i" kind="relationship" relationship="viewControllers" id="fvW-3R-LpR"/>
+                        <segue destination="QDU-bL-F5z" kind="relationship" relationship="viewControllers" id="VD7-PT-gu6"/>
+                        <segue destination="7HI-0S-RkO" kind="relationship" relationship="viewControllers" id="E8V-EY-GQs"/>
+                        <segue destination="j2t-eq-gJs" kind="relationship" relationship="viewControllers" id="atD-Sx-BYW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PcH-og-5g0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962.59541984732823" y="-2.1126760563380285"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="person" catalog="system" width="128" height="121"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
