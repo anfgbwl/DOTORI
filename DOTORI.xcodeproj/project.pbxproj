@@ -19,6 +19,8 @@
 		5F2E84182A8A0466001702F9 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84172A8A0466001702F9 /* UIAlertController.swift */; };
 		5F2E841A2A8A0491001702F9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84192A8A0491001702F9 /* Date.swift */; };
 		5F2E841E2A8A052B001702F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E841D2A8A052B001702F9 /* Logger.swift */; };
+		DE1C83192A8A0A9F003D99E9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */; };
+		DED80C072A8A098600D5D125 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DED80C052A8A098600D5D125 /* SearchViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		5F2E84172A8A0466001702F9 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		5F2E84192A8A0491001702F9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		5F2E841D2A8A052B001702F9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DED80C062A8A098600D5D125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DOTORI/View/Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,12 @@
 		3FA689ED2A89EC5600E1EEC0 /* DOTORI */ = {
 			isa = PBXGroup;
 			children = (
+				DE1C831A2A8A0AA4003D99E9 /* Controller */,
+				DED80C042A8A097100D5D125 /* View */,
 				5F2E84162A8A043E001702F9 /* Extension */,
 				5F2E840F2A89FC3F001702F9 /* Model */,
 				3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */,
 				3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */,
-				3FA689F22A89EC5600E1EEC0 /* ViewController.swift */,
-				3FA689F42A89EC5600E1EEC0 /* Main.storyboard */,
 				3FA689F72A89EC5700E1EEC0 /* Assets.xcassets */,
 				3FA689F92A89EC5700E1EEC0 /* LaunchScreen.storyboard */,
 				3FA689FC2A89EC5700E1EEC0 /* Info.plist */,
@@ -99,6 +103,24 @@
 				5F2E841D2A8A052B001702F9 /* Logger.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DE1C831A2A8A0AA4003D99E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */,
+				3FA689F22A89EC5600E1EEC0 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DED80C042A8A097100D5D125 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DED80C052A8A098600D5D125 /* SearchViewController.storyboard */,
+				3FA689F42A89EC5600E1EEC0 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +183,7 @@
 			files = (
 				3FA689FB2A89EC5700E1EEC0 /* LaunchScreen.storyboard in Resources */,
 				3FA689F82A89EC5700E1EEC0 /* Assets.xcassets in Resources */,
+				DED80C072A8A098600D5D125 /* SearchViewController.storyboard in Resources */,
 				3FA689F62A89EC5600E1EEC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1C83192A8A0A9F003D99E9 /* SearchViewController.swift in Sources */,
 				5F2E84112A89FC5B001702F9 /* UserInfo.swift in Sources */,
 				5F2E84132A89FC68001702F9 /* PostingInfo.swift in Sources */,
 				3FA689F32A89EC5600E1EEC0 /* ViewController.swift in Sources */,
@@ -201,6 +225,14 @@
 				3FA689FA2A89EC5700E1EEC0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DED80C052A8A098600D5D125 /* SearchViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DED80C062A8A098600D5D125 /* Base */,
+			);
+			name = SearchViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

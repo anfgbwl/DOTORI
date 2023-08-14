@@ -28,6 +28,16 @@
                                     <tabBarItem title="" image="person" catalog="system" id="BQR-Yh-fw5"/>
                                 </items>
                             </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzX-jN-M3b">
+                                <rect key="frame" x="122" y="505" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z9B-8u-C0J"/>
+                                    <segue destination="for-zV-g1i" kind="presentation" identifier="mainToSearch" id="KCe-V2-Abr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,10 +48,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gvq-K5-aY8"/>
+                    <connections>
+                        <outlet property="tabBar" destination="bkX-H8-xzD" id="ZLo-6l-Id8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967.17557251908397" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="964" y="-2"/>
+        </scene>
+        <!--SearchViewController-->
+        <scene sceneID="3bq-Lc-tMV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchViewController" referencedIdentifier="SearchViewController" id="for-zV-g1i" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jCS-p1-7Wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="595" y="419"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Re7-os-ycx">
