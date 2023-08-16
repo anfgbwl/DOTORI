@@ -11,7 +11,6 @@ import PhotosUI
 
 class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelegate {
     
-    @IBOutlet weak var updateLabel: UILabel!
     @IBOutlet weak var updateCancelButton: UIButton!
     @IBOutlet weak var updateCompleteButton: UIButton!
     @IBOutlet weak var updateImageView: UIImageView!

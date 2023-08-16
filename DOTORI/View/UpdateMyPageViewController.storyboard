@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-R1-nRL">
-                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                                <rect key="frame" x="0.0" y="69" width="393" height="749"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="qUO-56-jOK">
                                         <rect key="frame" x="21.666666666666657" y="0.0" width="350" height="40"/>
@@ -44,6 +44,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="완료" cornerStyle="capsule">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="completeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sqK-bg-fu2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -88,7 +91,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LQ-MW-vqN">
-                                        <rect key="frame" x="10" y="510" width="373" height="199"/>
+                                        <rect key="frame" x="10" y="510" width="373" height="239"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -100,23 +103,11 @@
                                     <constraint firstItem="9LQ-MW-vqN" firstAttribute="leading" secondItem="xVS-R1-nRL" secondAttribute="leading" constant="10" id="guD-eN-Cdh"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도토리묵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-Is-Aw4">
-                                <rect key="frame" x="0.0" y="59" width="393" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="DvB-pw-txy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zDe-Is-Aw4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3oz-5n-Hz6"/>
-                            <constraint firstItem="zDe-Is-Aw4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="LTw-9d-GI0"/>
-                            <constraint firstItem="xVS-R1-nRL" firstAttribute="top" secondItem="zDe-Is-Aw4" secondAttribute="bottom" constant="10" id="QaT-w6-qHE"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zDe-Is-Aw4" secondAttribute="trailing" id="nDE-W0-jSg"/>
+                            <constraint firstItem="xVS-R1-nRL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="7bg-dJ-zHT"/>
                             <constraint firstItem="xVS-R1-nRL" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nyg-uT-OMS"/>
                             <constraint firstAttribute="trailing" secondItem="xVS-R1-nRL" secondAttribute="trailing" id="uY8-T4-sMD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xVS-R1-nRL" secondAttribute="bottom" id="wPs-fr-I4k"/>
@@ -127,7 +118,6 @@
                         <outlet property="updateCompleteButton" destination="xQ3-Vb-afd" id="hzm-F8-5da"/>
                         <outlet property="updateImageButton" destination="IDT-2b-jaX" id="FrM-uQ-m7R"/>
                         <outlet property="updateImageView" destination="Hzq-xt-ZJH" id="DoD-ie-Mnz"/>
-                        <outlet property="updateLabel" destination="zDe-Is-Aw4" id="gka-df-Tzc"/>
                         <outlet property="updateNameTextField" destination="Wqi-f6-hkR" id="gMj-3G-ANw"/>
                         <outlet property="updateTextView" destination="9LQ-MW-vqN" id="H0T-yf-gog"/>
                         <outlet property="updateUrlTextField" destination="xAf-p1-rJQ" id="bH8-6Z-ZCq"/>
