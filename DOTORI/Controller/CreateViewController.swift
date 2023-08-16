@@ -11,6 +11,12 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBAction func deleteImageButtonTapped(_ sender: UIButton) {
+        if let cell = sender.superview?.superview as? CreateCollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
+                selectedImages.remove(at: indexPath.item)
+                collectionView.deleteItems(at: [indexPath])
+            }
+    }
     
     var selectedImages: [UIImage] = []
 
@@ -39,17 +45,19 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
             if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
                 result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
                     if let image = image as? UIImage {
+                        // 이미지 크기를 조절하여 새로운 크기로 변환
+                        let scaledImage = self?.scaleImage(image, toSize: CGSize(width: 200, height: 200)) ?? image
+                        
                         DispatchQueue.main.async {
-                            self?.selectedImages.append(image)
+                            self?.selectedImages.append(scaledImage)
                             self?.collectionView.reloadData()
-                            print(self?.selectedImages) // test
                         }
                     }
                 }
             }
         }
     }
-    
+
     // UICollectionViewDataSource 및 UICollectionViewDelegate 메서드 구현
     // 콜렉션뷰의 셀 개수 반환
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,5 +79,13 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
     // 이미지를 표시할 콜렉션뷰 셀의 클래스
     class ImageCell: UICollectionViewCell {
         @IBOutlet weak var imageView: UIImageView!
+    }
+    
+    func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage ?? image
     }
 }
