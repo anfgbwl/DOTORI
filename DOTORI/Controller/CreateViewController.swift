@@ -7,7 +7,7 @@
 import UIKit
 import PhotosUI
 
-class CreateViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, PHPickerViewControllerDelegate {
+class CreateViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,9 +23,12 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        textView.delegate = self
+        textView.text = "여기를 탭하여 입력을 시작하세요."
+        textView.textColor = UIColor.lightGray
     }
     
     // 이미지 선택 버튼을 눌렀을 때 호출되는 액션
@@ -71,11 +74,6 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
-    // UITextViewDelegate 메서드 구현
-    func textViewDidChange(_ textView: UITextView) {
-        // 텍스트뷰 내용이 변경될 때 호출되는 메서드
-    }
-    
     // 이미지를 표시할 콜렉션뷰 셀의 클래스
     class ImageCell: UICollectionViewCell {
         @IBOutlet weak var imageView: UIImageView!
@@ -87,5 +85,21 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return scaledImage ?? image
+    }
+}
+
+extension CreateViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "여기를 탭하여 입력을 시작하세요."
+            textView.textColor = UIColor.lightGray
+        }
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
 }
