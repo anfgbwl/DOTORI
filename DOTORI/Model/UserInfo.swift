@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 class UserInfo {
-    var profileImage : NSObject?
+    var profileImage : UIImage? //
     var name : String = ""
     var nickname : String =  ""
     var githubUrl : String = ""
