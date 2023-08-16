@@ -4,148 +4,72 @@
 //
 //  Created by 도토리묵 on 2023/08/14.
 //
-
 import UIKit
-import Photos
 import PhotosUI
 
-//class PostingInfo {
-//    var category : String = ""
-//    var content : String =  ""
-//    var createTime : Date = Date()
-//    var updateTime : Date = Date()
-//    var contentImage : String = ""
-//    var bookmark : Bool = false
-//    var bookmarkCount : Int = 0
-//    var reply : [ReplyInfo] = []
-//    var tilUrl : String = ""
-//}
+class CreateViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, PHPickerViewControllerDelegate {
 
-class cell: UICollectionViewCell {
-    let imageView = UIImageView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(imageView)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.frame = bounds
-    }
-}
-
-class CreateViewController: UIViewController, PHPickerViewControllerDelegate, UICollectionViewDataSource {
-
-    @IBOutlet weak var selectedImagesView: UIView!
-    @IBAction func createButton(_ sender: Any) {}
     @IBOutlet weak var textView: UITextView!
-    @IBAction func addImages(_ sender: UIButton) {
-        var config = PHPickerConfiguration(photoLibrary: .shared())
-        config.selectionLimit = 3
-        config.filter = .images
-        
-        let vc = PHPickerViewController(configuration: config)
-        vc.delegate = self
-        present(vc, animated: true)
-        print("click")
-    }
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        //layout.itemSize = CGSize(width: 150, height: 150)
-        let c = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        c.register(cell.self, forCellWithReuseIdentifier: "cell")
-        return c
-    }()
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var selectedImages: [UIImage] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
-        
-        selectedImagesView.addSubview(collectionView)
-        collectionView.dataSource = self
-        collectionView.frame = view.bounds
-        
-        // title = "이미지 추가"
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
         
         textView.delegate = self
-        //처음 화면이 로드되었을 때 플레이스 홀더처럼 보이게끔 만들어주기
-        textView.text = "여기를 탭하여 입력을 시작하세요."
-        textView.textColor = UIColor.lightGray
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.textView.resignFirstResponder()
+    // 이미지 선택 버튼을 눌렀을 때 호출되는 액션
+    @IBAction func addImagesButtonTapped(_ sender: UIButton) {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0 // 0은 제한 없음을 의미
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
     }
-//
-//    @objc private func didTapAdd() {
-//        var config = PHPickerConfiguration(photoLibrary: .shared())
-//        config.selectionLimit = 3
-//        config.filter = .images
-//
-//        let vc = PHPickerViewController(configuration: config)
-//        vc.delegate = self
-//        present(vc, animated: true)
-//    }
     
+    // 이미지 선택 완료 후 호출되는 delegate 메서드
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil)
-        let group = DispatchGroup()
         
-        results.forEach { result in
-            group.enter()
-            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
-                defer {
-                    group.leave()
-                }
-                guard let image = reading as? UIImage, error == nil else {
-                    return
-                }
-                group.notify(queue: .main) {
-                    print("test: \(image)")
-                    self?.collectionView.reloadData()
+        for result in results {
+            if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+                result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                    if let image = image as? UIImage {
+                        DispatchQueue.main.async {
+                            self?.selectedImages.append(image)
+                            self?.collectionView.reloadData()
+                            print(self?.selectedImages) // test
+                        }
+                    }
                 }
             }
         }
-        
-        collectionView.reloadData()
     }
     
-    private var images = [UIImage]()
-    
+    // UICollectionViewDataSource 및 UICollectionViewDelegate 메서드 구현
+    // 콜렉션뷰의 셀 개수 반환
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return selectedImages.count
     }
     
+    // 콜렉션뷰의 셀 내용 설정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? cell else { fatalError() }
-        
-        cell.imageView.image = images[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateCollectionViewCell", for: indexPath) as! CreateCollectionViewCell
+        cell.selectedImg.image = selectedImages[indexPath.item]
         return cell
     }
-}
-
-extension CreateViewController: UITextViewDelegate {
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text =  "여기를 탭하여 입력을 시작하세요."
-            textView.textColor = UIColor.lightGray
-        }
-
+    
+    // UITextViewDelegate 메서드 구현
+    func textViewDidChange(_ textView: UITextView) {
+        // 텍스트뷰 내용이 변경될 때 호출되는 메서드
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
+    // 이미지를 표시할 콜렉션뷰 셀의 클래스
+    class ImageCell: UICollectionViewCell {
+        @IBOutlet weak var imageView: UIImageView!
     }
-
-
 }
