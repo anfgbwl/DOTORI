@@ -18,6 +18,14 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
     }
     
+    // 상단 등 특정 위치에서 클릭 안되는 문제 있음
+    @IBAction func backHomeButtonTapped(_ sender: UIButton) {
+        print("제발 클릭!!!!")
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 0
+        }
+    }
+    
     var selectedImages: [UIImage] = []
 
     override func viewDidLoad() {
