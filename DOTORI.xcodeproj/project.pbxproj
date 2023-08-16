@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153B13012A8C620300A998DF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B13002A8C620300A998DF /* CustomTableViewCell.swift */; };
+		153B13032A8C627C00A998DF /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B13022A8C627C00A998DF /* Dummy.swift */; };
+		153B13072A8C633E00A998DF /* lion.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 153B13052A8C633E00A998DF /* lion.jpeg */; };
+		153B13082A8C633E00A998DF /* pigeon.png in Resources */ = {isa = PBXBuildFile; fileRef = 153B13062A8C633E00A998DF /* pigeon.png */; };
+		153B130C2A8C719200A998DF /* dotori.png in Resources */ = {isa = PBXBuildFile; fileRef = 153B130B2A8C719200A998DF /* dotori.png */; };
 		3FA689EF2A89EC5600E1EEC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */; };
 		3FA689F12A89EC5600E1EEC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */; };
 		3FA689F32A89EC5600E1EEC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689F22A89EC5600E1EEC0 /* ViewController.swift */; };
@@ -34,6 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153B13002A8C620300A998DF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		153B13022A8C627C00A998DF /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		153B13052A8C633E00A998DF /* lion.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lion.jpeg; sourceTree = "<group>"; };
+		153B13062A8C633E00A998DF /* pigeon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pigeon.png; sourceTree = "<group>"; };
+		153B130B2A8C719200A998DF /* dotori.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dotori.png; sourceTree = "<group>"; };
 		3FA689EB2A89EC5600E1EEC0 /* DOTORI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOTORI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153B13042A8C632C00A998DF /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				153B13022A8C627C00A998DF /* Dummy.swift */,
+				153B130B2A8C719200A998DF /* dotori.png */,
+				153B13052A8C633E00A998DF /* lion.jpeg */,
+				153B13062A8C633E00A998DF /* pigeon.png */,
+			);
+			path = Dummy;
+			sourceTree = "<group>";
+		};
 		3FA689E22A89EC5600E1EEC0 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +119,8 @@
 				5F2E840F2A89FC3F001702F9 /* Model */,
 				3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */,
 				3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */,
+				153B13002A8C620300A998DF /* CustomTableViewCell.swift */,
+				153B13042A8C632C00A998DF /* Dummy */,
 				3FA689F72A89EC5700E1EEC0 /* Assets.xcassets */,
 				3FA689F92A89EC5700E1EEC0 /* LaunchScreen.storyboard */,
 				3FA689FC2A89EC5700E1EEC0 /* Info.plist */,
@@ -211,7 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153B13082A8C633E00A998DF /* pigeon.png in Resources */,
 				3FA68A0F2A8A10D600E1EEC0 /* DetailViewController.storyboard in Resources */,
+				153B13072A8C633E00A998DF /* lion.jpeg in Resources */,
 				3FA689FB2A89EC5700E1EEC0 /* LaunchScreen.storyboard in Resources */,
 				3FA689F82A89EC5700E1EEC0 /* Assets.xcassets in Resources */,
 				3FA68A132A8A116D00E1EEC0 /* UpdateMyPageViewController.storyboard in Resources */,
@@ -219,6 +244,7 @@
 				DED80C072A8A098600D5D125 /* SearchViewController.storyboard in Resources */,
 				3FA689F62A89EC5600E1EEC0 /* Main.storyboard in Resources */,
 				3FA68A072A8A0FEE00E1EEC0 /* BookmarkViewController.storyboard in Resources */,
+				153B130C2A8C719200A998DF /* dotori.png in Resources */,
 				3FA68A0B2A8A101500E1EEC0 /* MyPageViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +257,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FA68A052A8A0FD200E1EEC0 /* CreateViewController.swift in Sources */,
+				153B13032A8C627C00A998DF /* Dummy.swift in Sources */,
 				DE1C83192A8A0A9F003D99E9 /* SearchViewController.swift in Sources */,
+				153B13012A8C620300A998DF /* CustomTableViewCell.swift in Sources */,
 				5F2E84112A89FC5B001702F9 /* UserInfo.swift in Sources */,
 				5F2E84132A89FC68001702F9 /* PostingInfo.swift in Sources */,
 				3FA68A092A8A0FFE00E1EEC0 /* BookmarkViewController.swift in Sources */,
