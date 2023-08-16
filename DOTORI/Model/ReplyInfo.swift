@@ -6,10 +6,19 @@
 //
 
 import Foundation
+import UIKit
 
-class ReplyInfo : UserInfo {
+class ReplyInfo {
+    var user : UserInfo
     var content : String =  ""
     var createTime : Date = Date()
     var updateTime : Date = Date()
+    
+    init(user : UserInfo, content: String, createTime: Date, updateTime: Date) {
+        self.user = user
+        self.content = content
+        self.createTime = createTime
+        self.updateTime = updateTime
+    }
 }
 

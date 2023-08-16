@@ -13,7 +13,9 @@
         <!--UpdateMyPageViewController-->
         <scene sceneID="Icr-6m-dbQ">
             <objects>
-                <viewControllerPlaceholder referencedIdentifier="UpdateMyPageViewController" id="dQk-ft-okL" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="UpdateMyPageViewController" storyboardName="UpdateMyPageViewController" referencedIdentifier="UpdateMyPageViewController" id="dQk-ft-okL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qug-zn-Tsl"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHw-Wu-1sO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="662" y="-311"/>
@@ -123,7 +125,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostingCell" rowHeight="307" id="Alr-K8-xxS" customClass="PostingTableViewCell" customModule="DOTORI" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostingCell" rowHeight="307" id="Alr-K8-xxS" customClass="MyPostingTableViewCell" customModule="DOTORI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="307"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Alr-K8-xxS" id="dZE-kE-yma">
@@ -170,7 +172,7 @@
                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="7xH-RH-Mhd"/>
                                                                                 <constraint firstAttribute="width" constant="283" id="Kqe-mf-xgt"/>
                                                                             </constraints>
-                                                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </mutableString>
+                                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
                                                                             <color key="textColor" systemColor="labelColor"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -248,6 +250,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="">
                                     <imageReference key="image" image="pencil" catalog="system" symbolScale="small"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="dQk-ft-okL" kind="modal" id="Z8I-lB-5uC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5eY-PS-qxd"/>
