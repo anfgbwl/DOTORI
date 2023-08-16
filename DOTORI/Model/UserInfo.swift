@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class UserInfo {
-    var profileImage : UIImage?
+    var profileImage : UIImage? //
     var name : String = ""
     var nickname : String =  ""
     var githubUrl : String = ""

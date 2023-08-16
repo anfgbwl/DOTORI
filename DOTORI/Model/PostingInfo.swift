@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-class PostingInfo {
+class PostingInfo : UserInfo {
     var category : String = ""
     var content : String =  ""
     var createTime : Date = Date()
     var updateTime : Date = Date()
-    var contentImage : UIImage?
+    var contentImage : UIImage? //
     var bookmark : Bool = false
     var bookmarkCount : Int = 0
     var reply : [ReplyInfo] = []
-    var user : UserInfo = UserInfo()
 }
