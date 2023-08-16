@@ -112,7 +112,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-class MyPostingTableViewCell: UITableViewCell {
+class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var nickname: UILabel!
@@ -145,6 +145,9 @@ class MyPostingTableViewCell: UITableViewCell {
             UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: seletedpostingSetting)])
         postingSetting.showsMenuAsPrimaryAction = true
         postingSetting.changesSelectionAsPrimaryAction = false
+        content.delegate = self
+        content.isScrollEnabled = false
+        content.sizeToFit()
     }
     
 }
