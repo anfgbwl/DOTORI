@@ -16,4 +16,5 @@ class PostingInfo {
     var bookmark : Bool = false
     var bookmarkCount : Int = 0
     var reply : [ReplyInfo] = []
+    var tilUrl : String = ""
 }

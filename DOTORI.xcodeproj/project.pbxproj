@@ -30,6 +30,7 @@
 		5F2E841A2A8A0491001702F9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84192A8A0491001702F9 /* Date.swift */; };
 		5F2E841E2A8A052B001702F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E841D2A8A052B001702F9 /* Logger.swift */; };
 		DE1C83192A8A0A9F003D99E9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */; };
+		DEC0F8A82A8C620500B38986 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0F8A72A8C620500B38986 /* UIView.swift */; };
 		DED80C072A8A098600D5D125 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DED80C052A8A098600D5D125 /* SearchViewController.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		5F2E84192A8A0491001702F9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		5F2E841D2A8A052B001702F9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DEC0F8A72A8C620500B38986 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		DED80C062A8A098600D5D125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DOTORI/View/Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				5F2E84172A8A0466001702F9 /* UIAlertController.swift */,
 				5F2E84192A8A0491001702F9 /* Date.swift */,
 				5F2E841D2A8A052B001702F9 /* Logger.swift */,
+				DEC0F8A72A8C620500B38986 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC0F8A82A8C620500B38986 /* UIView.swift in Sources */,
 				3FA68A052A8A0FD200E1EEC0 /* CreateViewController.swift in Sources */,
 				DE1C83192A8A0A9F003D99E9 /* SearchViewController.swift in Sources */,
 				5F2E84112A89FC5B001702F9 /* UserInfo.swift in Sources */,
@@ -406,7 +410,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,7 +441,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
