@@ -2,7 +2,7 @@
 //  CustomTableViewCell.swift
 //  DOTORI
 //
-//  Created by t2023-m079 on 2023/08/16.
+//  Created by 도토리묵 on 2023/08/16.
 //
 
 import UIKit

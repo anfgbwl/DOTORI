@@ -32,18 +32,19 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     }
     
     @IBAction func blogUrl(_ sender: UIButton) {
-        if let blogUrlText = blogUrl.titleLabel?.text {
-            let blogWebVC = storyboard?.instantiateViewController(withIdentifier: "blogWebViewController") as! blogWebViewController
-            blogWebVC.blogUrlText = blogUrlText
-            present(blogWebVC, animated: true, completion: nil)
+        if let urlText = blogUrl.titleLabel?.text {
+            let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+            WebVC.urlText = urlText
+            present(WebVC, animated: true, completion: nil)
         }
+        
     }
     
     @IBAction func githubUrl(_ sender: UIButton) {
-        if let githubUrlText = githubUrl.titleLabel?.text {
-            let githubWebVC = storyboard?.instantiateViewController(withIdentifier: "githubWebViewController") as! githubWebViewController
-            githubWebVC.githubUrlText = githubUrlText
-            present(githubWebVC, animated: true, completion: nil)
+        if let urlText = githubUrl.titleLabel?.text {
+            let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+            WebVC.urlText = urlText
+            present(WebVC, animated: true, completion: nil)
         }
     }
     
@@ -82,6 +83,19 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
 
 }
 
+extension MyPageViewController : UITextViewDelegate {
+            
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: view.frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        textView.constraints.forEach{ (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+    }
+}
+
 extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,20 +105,12 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostingCell", for: indexPath) as! MyPostingTableViewCell
         let posting = myPostings[indexPath.row]
-        cell.profileImage.image = posting.user.profileImage ?? UIImage(named: "defaultProfileImage")
-        cell.name.text = posting.user.name
-        cell.nickname.text = posting.user.nickname
-        cell.createTime.text = posting.createTime.GetCurrentTime()
-        cell.content.text = posting.content
-        cell.contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
-        
-        // (오류) 풀 다운 버튼 해결해야 함
-        cell.postingSetting.addTarget(cell, action: #selector(cell.selectedPostingSetting(_:)), for: .touchUpInside)
+        cell.setupUI(posting: posting)
 
         return cell
     }
-    
 }
+
 
 class MyPostingTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
@@ -115,57 +121,51 @@ class MyPostingTableViewCell: UITableViewCell {
     @IBOutlet weak var contentImage: UIImageView!
     @IBOutlet weak var postingSetting: UIButton!
     
-    // (오류) 풀 다운 버튼 해결해야 함
-    @objc func selectedPostingSetting(_ sender: UIButton) {
+    func setupUI(posting: PostingInfo) {
+        profileImage.image = posting.user.profileImage ?? UIImage(named: "defaultProfileImage")
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+        profileImage.clipsToBounds = true
+        name.text = posting.user.name
+        nickname.text = posting.user.nickname
+        createTime.text = posting.createTime.GetCurrentTime()
+        content.text = posting.content
+        contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
+        contentImage.layer.cornerRadius = 10
+        contentImage.clipsToBounds = true
+
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+            
         print("버튼 클릭: postingSetting")
-        let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), handler: { _ in print("게시물 삭제") })
-        postingSetting.menu = UIMenu(title: "",
-                                     image: UIImage(systemName: "trash.fill"),
-                                     identifier: nil,
-                                     options: .displayInline,
-                                     children: [delete])
+        let seletedpostingSetting = {(action: UIAction) in
+            }
+        postingSetting.menu = UIMenu(children: [
+            UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: seletedpostingSetting)])
         postingSetting.showsMenuAsPrimaryAction = true
-        postingSetting.changesSelectionAsPrimaryAction = true
+        postingSetting.changesSelectionAsPrimaryAction = false
     }
     
 }
 
-class blogWebViewController: UIViewController {
+class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
-    var blogUrlText: String?
+    var urlText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadBlogURL(blogUrlText ?? "www.google.com")
-    }
-    
-    func loadBlogURL(_ url: String) {
-        guard let blogUrlText = URL(string: url) else {
-            return
-        }
-        let request = URLRequest(url: blogUrlText)
-        webView.load(request)
-    }
-}
+        loadURL(urlText ?? "www.google.com")
 
-class githubWebViewController: UIViewController {
-    @IBOutlet weak var webView: WKWebView!
-    
-    var githubUrlText: String?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loadGithubURL(githubUrlText ?? "www.google.com")
     }
     
-    func loadGithubURL(_ url: String) {
-        guard let githubUrlText = URL(string: url) else {
+    func loadURL(_ url: String) {
+        guard let urlText = URL(string: url) else {
             return
         }
-        let request = URLRequest(url: githubUrlText)
+        let request = URLRequest(url: urlText)
         webView.load(request)
     }
 }
