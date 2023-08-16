@@ -12,6 +12,7 @@
 		153B13072A8C633E00A998DF /* lion.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 153B13052A8C633E00A998DF /* lion.jpeg */; };
 		153B13082A8C633E00A998DF /* pigeon.png in Resources */ = {isa = PBXBuildFile; fileRef = 153B13062A8C633E00A998DF /* pigeon.png */; };
 		153B130C2A8C719200A998DF /* dotori.png in Resources */ = {isa = PBXBuildFile; fileRef = 153B130B2A8C719200A998DF /* dotori.png */; };
+		3F00E3AA2A8CECDE00472E25 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F00E3A92A8CECDE00472E25 /* WebKit.framework */; };
 		3FA689EF2A89EC5600E1EEC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */; };
 		3FA689F12A89EC5600E1EEC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */; };
 		3FA689F32A89EC5600E1EEC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA689F22A89EC5600E1EEC0 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		153B13052A8C633E00A998DF /* lion.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lion.jpeg; sourceTree = "<group>"; };
 		153B13062A8C633E00A998DF /* pigeon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pigeon.png; sourceTree = "<group>"; };
 		153B130B2A8C719200A998DF /* dotori.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dotori.png; sourceTree = "<group>"; };
+		3F00E3A92A8CECDE00472E25 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3FA689EB2A89EC5600E1EEC0 /* DOTORI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOTORI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA689EE2A89EC5600E1EEC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FA689F02A89EC5600E1EEC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F00E3AA2A8CECDE00472E25 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,11 +99,20 @@
 			path = Dummy;
 			sourceTree = "<group>";
 		};
+		3F00E3A82A8CECDE00472E25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F00E3A92A8CECDE00472E25 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3FA689E22A89EC5600E1EEC0 = {
 			isa = PBXGroup;
 			children = (
 				3FA689ED2A89EC5600E1EEC0 /* DOTORI */,
 				3FA689EC2A89EC5600E1EEC0 /* Products */,
+				3F00E3A82A8CECDE00472E25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
