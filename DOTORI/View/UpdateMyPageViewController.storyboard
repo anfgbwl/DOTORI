@@ -45,7 +45,7 @@
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="completeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sqK-bg-fu2"/>
+                                                    <action selector="completeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ftt-A6-nqb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -72,7 +72,7 @@
                                             <action selector="imageButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sc9-37-oId"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="블로그주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-p1-rJQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="블로그 주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-p1-rJQ">
                                         <rect key="frame" x="96.666666666666686" y="370" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="HVz-v7-10e"/>
@@ -81,8 +81,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="깃허브 주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kka-en-eNZ">
+                                        <rect key="frame" x="96.666666666666686" y="440" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mcX-g7-2DS"/>
+                                            <constraint firstAttribute="width" constant="200" id="ncI-Xw-msh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqi-f6-hkR">
-                                        <rect key="frame" x="126.66666666666669" y="440" width="140" height="40"/>
+                                        <rect key="frame" x="126.66666666666669" y="510" width="140" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="S68-sY-E5q"/>
                                             <constraint firstAttribute="width" constant="140" id="zJw-sl-dCw"/>
@@ -91,7 +100,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LQ-MW-vqN">
-                                        <rect key="frame" x="10" y="510" width="373" height="239"/>
+                                        <rect key="frame" x="10" y="580" width="373" height="169"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -116,6 +125,7 @@
                     <connections>
                         <outlet property="updateCancelButton" destination="Kn4-1h-e8u" id="Qi7-dt-KSY"/>
                         <outlet property="updateCompleteButton" destination="xQ3-Vb-afd" id="hzm-F8-5da"/>
+                        <outlet property="updateGitHubUrlTextField" destination="kka-en-eNZ" id="9ab-5G-Tn4"/>
                         <outlet property="updateImageButton" destination="IDT-2b-jaX" id="FrM-uQ-m7R"/>
                         <outlet property="updateImageView" destination="Hzq-xt-ZJH" id="DoD-ie-Mnz"/>
                         <outlet property="updateNameTextField" destination="Wqi-f6-hkR" id="gMj-3G-ANw"/>

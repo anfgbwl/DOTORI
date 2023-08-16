@@ -18,8 +18,10 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     @IBOutlet weak var updateNameTextField: UITextField!
     @IBOutlet weak var updateTextView: UITextView!
     @IBOutlet weak var updateImageButton: UIButton!
+    @IBOutlet weak var updateGitHubUrlTextField: UITextField!
     
     var placeholderLabel: UILabel!
+//    weak var delegate: UpdateMyPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,18 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
         dismiss(animated: true)
     }
     
+//    @IBAction func completeButtonTapped(_ sender: UIButton) {
+//        if let image = updateImageView.image {
+//            delegate?.didUpdateProfileImage(image)
+//        }
+//        if let updatedUserIntro = updateTextView.text {
+//            delegate?.didUpdateUserIntro(updatedUserIntro)
+//        }
+//        if let updatedNickname = updateNameTextField.text {
+//            delegate?.didUpdateNickname(updatedNickname)
+//        }
+//        dismiss(animated: true)
+//    }
     
     @IBAction func imageButtonTapped(_ sender: UIButton) {
         print("눌림")
@@ -95,3 +109,29 @@ extension UpdateMyPageViewController: UITextViewDelegate {
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
 }
+
+
+//protocol UpdateMyPageDelegate: AnyObject {
+//    func didUpdateProfileImage(_ image: UIImage)
+//    func didUpdateUserIntro(_ userIntro: String)
+//    func didUpdateNickname(_ nickname: String)
+//}
+//
+//class MyPageViewController: UIViewController, WKNavigationDelegate, UpdateMyPageDelegate {
+//    func didUpdateNickname(_ nickname: String) {
+//        self.nickname.text = nickname
+//    }
+//
+//    func didUpdateUserIntro(_ userIntro: String) {
+//        self.userIntro.text = userIntro
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let updateVC = segue.destination as? UpdateMyPageViewController {
+//            updateVC.delegate = self
+//        }
+//    }
+//
+//    func didUpdateProfileImage(_ image: UIImage) {
+//        profileImage.image = image
+//    }
