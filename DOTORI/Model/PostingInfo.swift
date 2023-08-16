@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PostingInfo {
+class PostingInfo : UserInfo {
     var category : String = ""
     var content : String =  ""
     var createTime : Date = Date()
