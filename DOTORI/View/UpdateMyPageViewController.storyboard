@@ -9,34 +9,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Update My Page View Controller-->
+        <!--UpdateMyPageViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="UpdateMyPageViewController" id="Y6W-OH-hqX" customClass="UpdateMyPageViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateMyPageViewController" title="UpdateMyPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="UpdateMyPageViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-R1-nRL">
-                                <rect key="frame" x="0.0" y="109" width="393" height="559"/>
+                                <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="250" translatesAutoresizingMaskIntoConstraints="NO" id="qUO-56-jOK">
                                         <rect key="frame" x="21.666666666666657" y="0.0" width="350" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kn4-1h-e8u">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="취소"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="취소">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7GO-Zd-0Nq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQ3-Vb-afd">
                                                 <rect key="frame" x="300" y="0.0" width="50" height="40"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="완료"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="완료">
+                                                <buttonConfiguration key="configuration" style="plain" title="완료" cornerStyle="capsule">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                                 </buttonConfiguration>
                                             </button>
@@ -47,29 +52,43 @@
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hzq-xt-ZJH">
                                         <rect key="frame" x="96.666666666666686" y="70" width="200" height="200"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="NeJ-gO-WRX"/>
                                             <constraint firstAttribute="height" constant="200" id="PqR-rJ-I7b"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="블로그주소를 적어주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-p1-rJQ">
-                                        <rect key="frame" x="96.666666666666686" y="300" width="200" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-2b-jaX">
+                                        <rect key="frame" x="153" y="300" width="87.333333333333314" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qU8-Jk-kQn"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="사진 등록"/>
+                                        <connections>
+                                            <action selector="imageButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sc9-37-oId"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="블로그주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-p1-rJQ">
+                                        <rect key="frame" x="96.666666666666686" y="370" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="HVz-v7-10e"/>
+                                            <constraint firstAttribute="height" constant="40" id="lN8-BZ-NhA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 적어주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqi-f6-hkR">
-                                        <rect key="frame" x="126.66666666666669" y="367" width="140" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqi-f6-hkR">
+                                        <rect key="frame" x="126.66666666666669" y="440" width="140" height="40"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="S68-sY-E5q"/>
                                             <constraint firstAttribute="width" constant="140" id="zJw-sl-dCw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="이곳은 자기소개를 적는 공간입니다." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9LQ-MW-vqN">
-                                        <rect key="frame" x="10" y="431" width="373" height="128"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LQ-MW-vqN">
+                                        <rect key="frame" x="10" y="510" width="373" height="199"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -100,17 +119,18 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zDe-Is-Aw4" secondAttribute="trailing" id="nDE-W0-jSg"/>
                             <constraint firstItem="xVS-R1-nRL" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nyg-uT-OMS"/>
                             <constraint firstAttribute="trailing" secondItem="xVS-R1-nRL" secondAttribute="trailing" id="uY8-T4-sMD"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xVS-R1-nRL" secondAttribute="bottom" constant="150" id="wPs-fr-I4k"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xVS-R1-nRL" secondAttribute="bottom" id="wPs-fr-I4k"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="nameTextField" destination="Wqi-f6-hkR" id="zTS-Uo-jaH"/>
-                        <outlet property="updatePageCancelButton" destination="Kn4-1h-e8u" id="Afy-4r-kho"/>
-                        <outlet property="updatePageCompleteButton" destination="xQ3-Vb-afd" id="poV-Ab-K7r"/>
-                        <outlet property="updatePageImageView" destination="Hzq-xt-ZJH" id="jWG-7L-Gkq"/>
-                        <outlet property="updatePageLabel" destination="zDe-Is-Aw4" id="8FW-8X-LFi"/>
-                        <outlet property="updateTextView" destination="9LQ-MW-vqN" id="0yc-Gd-Sbl"/>
-                        <outlet property="urlTextField" destination="xAf-p1-rJQ" id="Jtf-DT-kEJ"/>
+                        <outlet property="updateCancelButton" destination="Kn4-1h-e8u" id="Qi7-dt-KSY"/>
+                        <outlet property="updateCompleteButton" destination="xQ3-Vb-afd" id="hzm-F8-5da"/>
+                        <outlet property="updateImageButton" destination="IDT-2b-jaX" id="FrM-uQ-m7R"/>
+                        <outlet property="updateImageView" destination="Hzq-xt-ZJH" id="DoD-ie-Mnz"/>
+                        <outlet property="updateLabel" destination="zDe-Is-Aw4" id="gka-df-Tzc"/>
+                        <outlet property="updateNameTextField" destination="Wqi-f6-hkR" id="gMj-3G-ANw"/>
+                        <outlet property="updateTextView" destination="9LQ-MW-vqN" id="H0T-yf-gog"/>
+                        <outlet property="updateUrlTextField" destination="xAf-p1-rJQ" id="bH8-6Z-ZCq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
