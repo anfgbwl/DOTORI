@@ -2,7 +2,7 @@
 //  UIView.swift
 //  DOTORI
 //
-//  Created by daelee on 2023/08/16.
+//  Created by 도토리묵 on 2023/08/16.
 //
 
 import UIKit
