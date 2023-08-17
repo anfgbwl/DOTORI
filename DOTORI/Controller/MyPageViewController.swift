@@ -13,12 +13,11 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var myPostings: [PostingInfo] = []
     let webView = WKWebView()
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
+    var selectedIndex : Int? // 마이페이지에서 클릭한 게시물
     
-    @IBOutlet weak var titleButton: UIBarButtonItem!
     @IBOutlet weak var mySetting: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var userIntro: UILabel!
     @IBOutlet weak var posting: UILabel!
     @IBOutlet weak var postingCount: UILabel!
@@ -28,10 +27,10 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var githubUrl: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func mySetting(_ sender: UIBarButtonItem) {
-        print("클릭")
-    }
     
+    @IBAction func mySetting(_ sender: UIBarButtonItem) {
+        print("버튼 클릭: mySetting")
+    }
     
     @IBAction func blogUrl(_ sender: UIButton) {
         if let urlText = blogUrl.titleLabel?.text {
@@ -53,8 +52,8 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if let text = selectedUserName { name.text = text }
+        loadTitleAccount()
         loadAccount()
         tableView.dataSource = self
         tableView.delegate = self
@@ -62,6 +61,14 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         
     }
     
+    // Navigation Item 설정
+    func loadTitleAccount() {
+        let titleLabel = UILabel()
+        titleLabel.textColor = UIColor.black
+        titleLabel.text = user1.nickname
+        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
+    }
     
     // 계정 정보 불러오기
     func loadAccount() {
@@ -72,7 +79,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         profileImage.clipsToBounds = true
         
         name.text = user1.name
-        nickname.text = user1.nickname
         userIntro.text = user1.userIntro
         
         for posting in data {
@@ -83,14 +89,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         postingCount.text = String(myPostings.count)
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UpdateMyPageSegue" {
-            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
-                updateMyPageVC.delegate = self
-            }
-        }
     }
 
 }
@@ -121,23 +119,24 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
-}
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //셀 선택시 함수
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "MyPageToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+        if segue.identifier == "MyPageToDetail" {
+            if let destinationVC = segue.destination as? MyPageViewController {
+                destinationVC.selectedIndex = selectedIndex!
 
-extension MyPageViewController: UpdateMyPageDelegate {
-    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String, githubUrl: String, blogUrl: String, userIntro: String) {
-        
-        
-        user1.profileImage = profileImage
-        user1.name = name
-        user1.nickname = nickname
-        user1.githubUrl = githubUrl
-        user1.blogUrl = blogUrl
-        user1.userIntro = userIntro
-//        loadAccount()
-        tableView.reloadData()
-        print(user1.blogUrl)
+            }
+        }
     }
 }
+
 
 class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
