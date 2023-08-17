@@ -70,7 +70,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     // 계정 정보 불러오기
     func loadAccount() {
         // 이미지 설정
-        profileImage.image = UIImage(named: "defaultProfileImage")
+        profileImage.image = user1.profileImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
         name.text = user1.name
@@ -98,7 +98,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
             }
         }
     }
-    
 
 extension MyPageViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
