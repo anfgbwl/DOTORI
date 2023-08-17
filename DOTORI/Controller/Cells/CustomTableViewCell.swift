@@ -14,6 +14,7 @@ class CustomTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var posting_time: UILabel!
     @IBOutlet weak var posting_contentimage: UIImageView!
     @IBOutlet weak var posting_content: UITextView!
+    @IBOutlet weak var bookmarkButton: UIButton!
     func setupUI(posting: PostingInfo) {
         profile_image.image = posting.user.profileImage ?? UIImage(named: "defaultProfileImage")
         profile_image.layer.cornerRadius = profile_image.frame.size.width / 2
@@ -25,6 +26,11 @@ class CustomTableViewCell: UITableViewCell, UITextViewDelegate {
         posting_contentimage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
         posting_contentimage.layer.cornerRadius = 10
         posting_contentimage.clipsToBounds = true
+        if posting.bookmark == true {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        else{
+            bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)        }
 
     }
     override func awakeFromNib() {
