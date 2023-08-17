@@ -7,23 +7,20 @@
 
 import UIKit
 
+// class SearchTableViewCell:
+
 class SearchViewController: UIViewController {
+    
+    @IBOutlet weak var profile_name: UILabel!
+    @IBOutlet weak var profile_image: UIImageView!
+    @IBOutlet weak var profile_nickname: UILabel!
+    @IBOutlet weak var posting_time: UILabel!
+    @IBOutlet weak var posting_content: UILabel!
+    @IBOutlet weak var posting_contentimage: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
