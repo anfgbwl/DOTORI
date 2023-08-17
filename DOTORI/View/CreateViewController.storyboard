@@ -37,16 +37,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-52-Wrh">
-                                <rect key="frame" x="55" y="186" width="300" height="188"/>
+                                <rect key="frame" x="55" y="183" width="300" height="188"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="188" id="3vj-FJ-htO"/>
+                                    <constraint firstAttribute="width" constant="300" id="HmR-2f-K4L"/>
+                                    <constraint firstAttribute="height" constant="188" id="wUf-XD-9Kt"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-dl-Fnd">
+                                <rect key="frame" x="55" y="140" width="79" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <menu key="menu" id="Odf-lq-Yzf">
+                                    <children>
+                                        <command title="Item 1" menuElementState="on" id="iay-SI-JJg"/>
+                                        <command title="Item 2" id="L94-dl-Le1"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="ㅊㅋㅊㅌㅊ">
+                                    <color key="titleColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-SN-SJS">
-                                <rect key="frame" x="55" y="382" width="300" height="128"/>
+                                <rect key="frame" x="55" y="379" width="300" height="126"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oS6-4m-J6o">
                                     <size key="itemSize" width="128" height="128"/>
@@ -56,7 +82,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreateCollectionViewCell" id="Wgv-8X-WlQ" customClass="CreateCollectionViewCell" customModule="DOTORI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="-1" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2ga-ZF-hd7">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -105,44 +131,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-dl-Fnd">
-                                <rect key="frame" x="55" y="143" width="79" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="79" id="YSy-9Q-QXA"/>
-                                    <constraint firstAttribute="height" constant="30" id="kIV-XX-IJZ"/>
-                                </constraints>
-                                <menu key="menu" id="Odf-lq-Yzf">
-                                    <children>
-                                        <command title="Item 1" menuElementState="on" id="iay-SI-JJg"/>
-                                        <command title="Item 2" id="L94-dl-Le1"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Button"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2xK-52-Wrh" firstAttribute="leading" secondItem="M1R-dl-Fnd" secondAttribute="leading" id="2Jl-7w-M83"/>
-                            <constraint firstItem="2xK-52-Wrh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="C43-WP-dzm"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OfV-SN-SJS" secondAttribute="trailing" constant="38" id="Mjh-o8-VVL"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2xK-52-Wrh" secondAttribute="trailing" constant="38" id="SmD-s7-KUD"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="2xK-52-Wrh" secondAttribute="bottom" constant="395" id="UvW-9i-XoD"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OfV-SN-SJS" secondAttribute="bottom" constant="259" id="Xys-zc-xik"/>
-                            <constraint firstItem="2xK-52-Wrh" firstAttribute="top" secondItem="M1R-dl-Fnd" secondAttribute="bottom" constant="13" id="Yas-Nj-oDe"/>
-                            <constraint firstItem="OfV-SN-SJS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="ZyY-xV-WMI"/>
-                            <constraint firstItem="OfV-SN-SJS" firstAttribute="top" secondItem="2xK-52-Wrh" secondAttribute="bottom" constant="8" id="o37-IB-CEo"/>
+                            <constraint firstItem="2xK-52-Wrh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="AK2-Gc-INW"/>
+                            <constraint firstItem="M1R-dl-Fnd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="FlV-Uv-rzF"/>
+                            <constraint firstItem="OfV-SN-SJS" firstAttribute="top" secondItem="2xK-52-Wrh" secondAttribute="bottom" constant="8" id="PaR-C8-ONs"/>
+                            <constraint firstItem="OfV-SN-SJS" firstAttribute="leading" secondItem="2xK-52-Wrh" secondAttribute="leading" id="Uc8-Le-Ldr"/>
+                            <constraint firstItem="OfV-SN-SJS" firstAttribute="trailing" secondItem="2xK-52-Wrh" secondAttribute="trailing" id="Z1D-2G-ytE"/>
+                            <constraint firstItem="2xK-52-Wrh" firstAttribute="top" secondItem="M1R-dl-Fnd" secondAttribute="bottom" constant="11" id="bkQ-Tp-cqA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OfV-SN-SJS" secondAttribute="bottom" constant="264" id="hI4-rf-UEP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2xK-52-Wrh" secondAttribute="trailing" constant="38" id="qhk-v4-Cy4"/>
+                            <constraint firstItem="M1R-dl-Fnd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="37" id="rtU-wB-PTy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M1R-dl-Fnd" secondAttribute="trailing" constant="259" id="x1X-g1-1hS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="NrL-bj-kql"/>
