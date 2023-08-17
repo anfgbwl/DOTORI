@@ -30,20 +30,18 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
-            print(Logger.Write(LogLevel.Info)("DetailViewController")(35)("더미 데이터를 UserDefault로 처리하는 기능 필요"))
             if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
                 let cell = filter[selectedIndex].reply[indexPath.row]
                 dequeuedCell.nameLabel.text = cell.user.name
                 dequeuedCell.nicknameLabel.text = cell.user.nickname
                 if cell.createTime == cell.updateTime
                 {
-                    dequeuedCell.createdLabel.text = cell.createTime.GetCurrentTime(format : "yyyy-MM-dd")
+                    dequeuedCell.createdLabel.text = cell.createTime.GetCurrentTime(format : "yyyy-MM-dd HH:mm:ss")
                 }else{
                     dequeuedCell.createdLabel.text = cell.updateTime.GetCurrentTime(format :  "yyyy-MM-dd HH:mm:ss")
                 }
                 dequeuedCell.profileImageView.image = cell.user.profileImage
                 dequeuedCell.contentTextView.text = cell.content
-                dequeuedCell.modifyOrDelteButton.setTitle("...", for: .normal)
             }
             
             dequeuedCell.modifyButtonAction = { [weak self] in
@@ -58,10 +56,14 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                         .medium(),
                     ]
                     presentationController.prefersGrabberVisible = true
+                    presentationController.delegate = self
                 }
+                
                 modifyReplyController.content = dequeuedCell.contentTextView.text
                 modifyReplyController.selectedModifyCellIndex = indexPath.row
+                modifyReplyController.largetitle = "수정"
                 modifyReplyController.modifyTextDelegate = self
+                replyTableView.resignFirstResponder()
                 self.present(modifyReplyController, animated: true)
             }
             
@@ -75,7 +77,6 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                     let index = indexPath.row
                     filter[self.selectedIndex].reply.remove(at: index)
                     self.replyTableView.reloadData()
-                    print(Logger.Write(LogLevel.Info)("DetailViewController")(80)("더미 데이터를 UserDefault로 삭제하는 기능 필요"))
                 }
                 alertController.addAction(confirmAction)
                 
@@ -89,12 +90,12 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                     return
                 }
                 let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
-                let modifyReplyController = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+                let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
                 
                 if let text = dequeuedCell.nameLabel.text {
-                    modifyReplyController.selectedUserName = text
+                    myPageVC.selectedUserName = text
                 }
-                self.present(modifyReplyController, animated: true)
+                self.present(myPageVC, animated: true)
             }
             return dequeuedCell
             
@@ -109,20 +110,24 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
 extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
 {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
-        textField.textColor = .black
+        let storyboard = UIStoryboard(name: "DetailViewController", bundle: nil)
+        let modifyReplyController = storyboard.instantiateViewController(withIdentifier: "modifyReplyController") as! ModifyReplyController
+        
+        if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [
+                .large(),
+            ]
+            presentationController.prefersGrabberVisible = true
+            presentationController.delegate = self
+        }
+        
+        modifyReplyController.content = ""
+        modifyReplyController.largetitle = "댓글 추가"
+        modifyReplyController.modifyTextDelegate = self
+        replyInputTextField.resignFirstResponder()
+        self.present(modifyReplyController, animated: true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        let replyComment = textField.text
-        if let text = replyComment
-        {
-            let additionalReplyInfo = ReplyInfo(user: user5, content:text, createTime: Date(), updateTime: Date())
-            filter[selectedIndex].reply.append(additionalReplyInfo)
-        }
-        replyInputTextField.resignFirstResponder()
-        replyTableView.reloadData()
-        
         return true
     }
 }
@@ -177,21 +182,28 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         createdLabel.text = posting.createTime.GetCurrentTime(format: "yyyy-MM-dd HH:mm:ss")
         textView.text = posting.content
         
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+        profileImageView.clipsToBounds = true
         //처음 보여지는 부분..
-         isBookFilled = filter[selectedIndex].bookmark
+        isBookFilled = filter[selectedIndex].bookmark
         if !isBookFilled
         {
             bookmarkImageView.image = UIImage(systemName: "book")
         }else{
             bookmarkImageView.image = UIImage(systemName: "book.fill")
         }
-        
     }
     
-    func didTextChanged(updateTime: Date, content: String, index: Int) {
+    func didTextUpdated(updateTime: Date, content: String, index: Int) {
         filter[self.selectedIndex].reply[index].content = content
         filter[self.selectedIndex].reply[index].updateTime = updateTime
         self.replyTableView.reloadData()
+    }
+    func didTextCreated(createTime: Date, content: String) {
+        let additionalReplyInfo = ReplyInfo(user: user5, content:content, createTime: createTime, updateTime: Date())
+        filter[selectedIndex].reply.append(additionalReplyInfo)
+        replyInputTextField.resignFirstResponder()
+        replyTableView.reloadData()
     }
     
     func addTapGestureToImageView(_ imageView: UIImageView) {
@@ -217,7 +229,20 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
                     bookmarkImageView.image = UIImage(systemName: "book.fill")
                 }
             }else{
-                replyInputTextField.becomeFirstResponder()
+                let storyboard = UIStoryboard(name: "DetailViewController", bundle: nil)
+                let modifyReplyController = storyboard.instantiateViewController(withIdentifier: "modifyReplyController") as! ModifyReplyController
+                if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
+                    presentationController.detents = [
+                        .large(),
+                    ]
+                    presentationController.prefersGrabberVisible = true
+                    presentationController.delegate = self
+                }
+                
+                modifyReplyController.content = ""
+                modifyReplyController.largetitle = "댓글 추가"
+                modifyReplyController.modifyTextDelegate = self
+                present(modifyReplyController, animated: true, completion: nil)
             }
         }
     }
@@ -253,6 +278,9 @@ class PostingTableViewCell : UITableViewCell
     var profileButtonAction : (() ->Void)?
     
     override func awakeFromNib() {
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+        profileImageView.clipsToBounds = true
+        
         super.awakeFromNib()
         let menu = UIMenu(title: "", children: [
             UIAction(title: "수정", handler: { _ in
@@ -269,10 +297,10 @@ class PostingTableViewCell : UITableViewCell
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
         profileImageView.isUserInteractionEnabled = true
     }
+    
     @objc func profileImageTapped() {
         self.profileButtonAction?()
     }
-    
 }
 extension UIImage {
     func resized(toWidth width: CGFloat, toHeight height : CGFloat, isOpaque: Bool = true) -> UIImage? {
@@ -286,24 +314,38 @@ extension UIImage {
 }
 
 protocol ModifyTextDelegate : AnyObject{
-    func didTextChanged( updateTime : Date,  content : String,  index : Int)
+    func didTextUpdated( updateTime : Date,  content : String,  index : Int)
+    func didTextCreated( createTime : Date,  content : String)
 }
+
+
 
 class ModifyReplyController : UIViewController, UITextViewDelegate{
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    var  largetitle : String?
     var  content : String?
     var  selectedModifyCellIndex : Int?
     weak var modifyTextDelegate : ModifyTextDelegate?
     @IBAction func oncompletePressed(_ sender: Any) {
         let contentText = contentTextView.text
-        if let text = contentText, let index = selectedModifyCellIndex
+        if largetitle!.contains("수정")
         {
-            modifyTextDelegate?.didTextChanged(updateTime: Date(), content: text, index: index)
+            if let text = contentText, let index = selectedModifyCellIndex
+            {
+                modifyTextDelegate?.didTextUpdated(updateTime: Date(), content: text, index: index)
+            }
+        }else{
+            if let text = contentText{
+                modifyTextDelegate?.didTextCreated(createTime: Date(), content: text)
+            }
         }
+        contentTextView.resignFirstResponder()
         self.dismiss(animated: true)
     }
     @IBAction func onbackPressed(_ sender: Any) {
+        contentTextView.resignFirstResponder()
         self.dismiss(animated: true)
     }
     override func viewDidLoad() {
@@ -315,5 +357,48 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
         {
             selectedModifyCellIndex = index
         }
+        if let title = largetitle{
+            titleLabel.text = title
+            if title.contains("댓글 추가"){
+                contentTextView.becomeFirstResponder()
+            }
+        }
+        if let presentationController = self.presentationController as? UISheetPresentationController {
+            presentationController.delegate = self
+        }
+        contentTextView.delegate = self
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let newSheetHeight = view.frame.height - keyboardFrame.height
+            preferredContentSize = CGSize(width: preferredContentSize.width, height: newSheetHeight)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        preferredContentSize = CGSize(width: preferredContentSize.width, height: 700) // 여기에 적절한 높이 값 넣기
+    }
+}
+extension ModifyReplyController: UISheetPresentationControllerDelegate {
+    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
+        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
+    }
+}
+
+extension DetailViewController: UISheetPresentationControllerDelegate {
+    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
+        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
     }
 }

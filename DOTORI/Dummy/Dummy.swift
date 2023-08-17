@@ -31,3 +31,4 @@ var reply6 = ReplyInfo(user: user1, content: "꺄아아아아아ㅏㅇ 오늘 �
 
 var data = [posting1, posting2, posting3, posting4, posting5, posting6, posting7]
 var filter : [PostingInfo] = []
+var indexlist : [Int] = []

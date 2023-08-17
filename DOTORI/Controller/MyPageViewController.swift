@@ -83,6 +83,20 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         postingCount.text = String(myPostings.count)
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UpdateMyPageSegue" {
+            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
+                updateMyPageVC.delegate = self
+            }
+        } else if segue.identifier == "MyPageToDetail" {
+                if let destinationVC = segue.destination as? MyPageViewController {
+                    destinationVC.selectedIndex = selectedIndex!
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,7 +165,6 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "MyPageToDetail", sender: self)
     }
-    
 }
 
 extension MyPageViewController: UpdateMyPageDelegate {

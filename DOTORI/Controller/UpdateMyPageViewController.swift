@@ -62,14 +62,6 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
         updateTextView.layer.borderWidth = 2.0
         updateTextView.layer.borderColor = UIColor.gray.cgColor
         updateTextView.layer.cornerRadius = 8.0
-        
-        placeholderLabel = UILabel()
-        placeholderLabel.text = "이곳은 자기소개를 적는 공간입니다."
-        placeholderLabel.textColor = UIColor.lightGray
-        placeholderLabel.sizeToFit()
-        
-        updateTextView.addSubview(placeholderLabel)
-        placeholderLabel.frame.origin = CGPoint(x: 5, y: updateTextView.font!.pointSize / 2)
     }
     
     func defaultUserInfo() {
@@ -146,7 +138,5 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
 
 extension UpdateMyPageViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 }
-

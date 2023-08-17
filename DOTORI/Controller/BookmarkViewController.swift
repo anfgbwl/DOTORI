@@ -8,18 +8,65 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var bookmarkView: UITableView!
-    override func viewWillAppear(_ animated: Bool) {
+    func MakeFilterBookmark () {
         filter = []
         for i in 0..<data.count {
             if data[i].bookmark == true {
                 filter.append(data[i])
             }
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        MakeFilterBookmark()
         bookmarkView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let all = UIAction(title: "전체", handler: { [self] _ in
+            MakeFilterBookmark()
+            bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let smalltalk = UIAction(title: "잡담", handler: { [self] _ in
+            filter = []
+            for i in 0..<data.count {
+                if data[i].bookmark == true && data[i].category == "잡담" {
+                    filter.append(data[i])
+                }
+            }
+            bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let til = UIAction(title: "TIL", handler: { [self] _ in
+            filter = []
+            for i in 0..<data.count {
+                if data[i].bookmark == true && data[i].category == "TIL" {
+                    filter.append(data[i])
+                }
+            }
+            bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let cat = UIAction(title: "고양이방", handler: { [self] _ in
+            filter = []
+            for i in 0..<data.count {
+                if data[i].bookmark == true && data[i].category == "고양이방" {
+                    filter.append(data[i])
+                }
+            }
+            bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let qna = UIAction(title: "질문", handler: { [self] _ in
+            filter = []
+            for i in 0..<data.count {
+                if data[i].bookmark == true && data[i].category == "질문" {
+                    filter.append(data[i])
+                }
+            }
+            bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
+        menuButton.menu = menu
     }
     override func viewWillDisappear(_ animated: Bool) {
         filter = data
