@@ -99,18 +99,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UpdateMyPageSegue" {
-            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
-                updateMyPageVC.delegate = self
-            }
-        } else if segue.identifier == "MyPageToDetail" {
-                if let destinationVC = segue.destination as? MyPageViewController {
-                    destinationVC.selectedIndex = selectedIndex!
-                }
-            }
-        }
-    }
 
 extension MyPageViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
