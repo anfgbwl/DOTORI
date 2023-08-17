@@ -29,4 +29,5 @@ var reply4 = ReplyInfo(user: user2, content: "xcxz", createTime: Date(), updateT
 var reply5 = ReplyInfo(user: user3, content: "ㅋㅋsad", createTime: Date(), updateTime: Date())
 var reply6 = ReplyInfo(user: user1, content: "rwqrqwr", createTime: Date(), updateTime: Date())
 
-var data = [posting1, posting2, posting3, posting4, posting5]
+var data = [posting1, posting2, posting3, posting4, posting5, posting6, posting7]
+var filter : [PostingInfo] = []
