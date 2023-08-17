@@ -10,11 +10,15 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    override func viewWillAppear(_ animated: Bool) {
+        filter = data
+        mainTableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        filter = data
         // Do any additional setup after loading the view.
         //더미데이터들
-        filter = data
         let all = UIAction(title: "전체", handler: { _ in
             filter = data
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
@@ -68,15 +72,20 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath)
                 as? CustomTableViewCell else { return UITableViewCell() }
-        cell.profile_name.text = filter[indexPath.row].user.name
-        cell.posting_content.text = filter[indexPath.row].content
-        cell.posting_contentimage.image = filter[indexPath.row].contentImage
-        cell.posting_time.text = filter[indexPath.row].createTime.GetCurrentTime(format: "yyyy-MM-dd")
-        cell.profile_image.image = filter[indexPath.row].user.profileImage
-        cell.profile_nickname.text = filter[indexPath.row].user.nickname
-        cell.profile_image.layer.cornerRadius = cell.profile_image.frame.size.width / 2
-        cell.profile_image.clipsToBounds = true
+        let posting = filter[indexPath.row]
+        cell.setupUI(posting: posting)
+        cell.bookmarkButton.tag = indexPath.row
+        cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
         return cell
+    }
+    @objc func bookmarkChange (_ sender : UIButton){
+        self.mainTableView.reloadData()
+        if filter[sender.tag].bookmark == true {
+            filter[sender.tag].bookmark = false
+        }
+        else {
+            filter[sender.tag].bookmark = true
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀 선택시 함수
