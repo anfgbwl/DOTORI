@@ -84,6 +84,14 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UpdateMyPageSegue" {
+            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
+                updateMyPageVC.delegate = self
+            }
+        }
+    }
 
 }
 
@@ -115,6 +123,22 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+extension MyPageViewController: UpdateMyPageDelegate {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String, githubUrl: String, blogUrl: String, userIntro: String) {
+        
+        
+        user1.profileImage = profileImage
+        user1.name = name
+        user1.nickname = nickname
+        user1.githubUrl = githubUrl
+        user1.blogUrl = blogUrl
+        user1.userIntro = userIntro
+//        loadAccount()
+        tableView.reloadData()
+        print(user1.blogUrl)
+    }
+}
+
 
 class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var profileImage: UIImageView!
@@ -131,7 +155,7 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
         profileImage.clipsToBounds = true
         name.text = posting.user.name
         nickname.text = posting.user.nickname
-        createTime.text = posting.createTime.GetCurrentTime()
+        createTime.text = posting.createTime.GetCurrentTime(format: "YYYY-MM-dd")
         content.text = posting.content
         contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
         contentImage.layer.cornerRadius = 10
