@@ -7,7 +7,7 @@
 import UIKit
 import PhotosUI
 
-class CreateViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
+class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,26 +17,48 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
                 collectionView.deleteItems(at: [indexPath])
             }
     }
-    
-    // 상단 등 특정 위치에서 클릭 안되는 문제 있음
     @IBAction func backHomeButtonTapped(_ sender: UIButton) {
+        // 상단 등 특정 위치에서 클릭 안되는 문제 있음
         print("제발 클릭!!!!")
+        
         if let tabBarController = self.tabBarController {
             tabBarController.selectedIndex = 0
         }
     }
-    
+    @IBOutlet weak var popUpButton: UIButton!
     var selectedImages: [UIImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configCollectionView()
+        configTextView()
+        configPopUpButton()
+    }
+    
+    private func configCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+    }
+    
+    private func configTextView() {
         textView.delegate = self
         textView.text = "여기를 탭하여 입력을 시작하세요."
         textView.textColor = UIColor.lightGray
+    }
+    
+    private func configPopUpButton() {
+        let popUpButtonClosure = { (action: UIAction) in
+            print("Selected menu: \(action.title)")
+        }
+        
+        popUpButton.menu = UIMenu(children: [
+            UIAction(title: "TIL", handler: popUpButtonClosure),
+            UIAction(title: "잡담", handler: popUpButtonClosure),
+            UIAction(title: "질문", handler: popUpButtonClosure),
+            UIAction(title: "고양이방", handler: popUpButtonClosure),
+        ])
+        popUpButton.showsMenuAsPrimaryAction = true
     }
     
     // 이미지 선택 버튼을 눌렀을 때 호출되는 액션
@@ -68,8 +90,18 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
         }
     }
+    
+    // 이미지 리사이즈 함수
+    func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage ?? image
+    }
+}
 
-    // UICollectionViewDataSource 및 UICollectionViewDelegate 메서드 구현
+extension CreateViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     // 콜렉션뷰의 셀 개수 반환
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedImages.count
@@ -80,19 +112,6 @@ class CreateViewController: UIViewController, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateCollectionViewCell", for: indexPath) as! CreateCollectionViewCell
         cell.selectedImg.image = selectedImages[indexPath.item]
         return cell
-    }
-    
-    // 이미지를 표시할 콜렉션뷰 셀의 클래스
-    class ImageCell: UICollectionViewCell {
-        @IBOutlet weak var imageView: UIImageView!
-    }
-    
-    func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return scaledImage ?? image
     }
 }
 

@@ -7,6 +7,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,21 +21,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-52-Wrh">
-                                <rect key="frame" x="55" y="184" width="300" height="190"/>
+                                <rect key="frame" x="55" y="186" width="300" height="188"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YeD-ro-p3m">
-                                <rect key="frame" x="307" y="141" width="48" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tQ3-ym-Q3w">
+                                <rect key="frame" x="16" y="59" width="54" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title="" cornerStyle="medium">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="medium"/>
+                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addImagesButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2ac-d5-vTv"/>
+                                    <action selector="backHomeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OnZ-1h-zmj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Dkj-JU-HTw">
@@ -113,15 +113,38 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tQ3-ym-Q3w">
-                                <rect key="frame" x="16" y="59" width="54" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-dl-Fnd">
+                                <rect key="frame" x="55" y="143" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="Odf-lq-Yzf">
+                                    <children>
+                                        <command title="Item 1" menuElementState="on" id="iay-SI-JJg"/>
+                                        <command title="Item 2" id="L94-dl-Le1"/>
+                                    </children>
+                                </menu>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YeD-ro-p3m">
+                                <rect key="frame" x="307" y="143" width="48" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title="" cornerStyle="large">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="medium"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="backHomeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OnZ-1h-zmj"/>
+                                    <action selector="addImagesButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2ac-d5-vTv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,6 +165,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="OfV-SN-SJS" id="b2I-2g-dXH"/>
+                        <outlet property="popUpButton" destination="M1R-dl-Fnd" id="Jrt-hm-VPj"/>
                         <outlet property="textView" destination="2xK-52-Wrh" id="fhI-EX-qIf"/>
                     </connections>
                 </viewController>
