@@ -68,14 +68,8 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath)
                 as? CustomTableViewCell else { return UITableViewCell() }
-        cell.profile_name.text = filter[indexPath.row].user.name
-        cell.posting_content.text = filter[indexPath.row].content
-        cell.posting_contentimage.image = filter[indexPath.row].contentImage
-        cell.posting_time.text = filter[indexPath.row].createTime.GetCurrentTime(format: "yyyy-MM-dd")
-        cell.profile_image.image = filter[indexPath.row].user.profileImage
-        cell.profile_nickname.text = filter[indexPath.row].user.nickname
-        cell.profile_image.layer.cornerRadius = cell.profile_image.frame.size.width / 2
-        cell.profile_image.clipsToBounds = true
+        let posting = filter[indexPath.row]
+        cell.setupUI(posting: posting)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
