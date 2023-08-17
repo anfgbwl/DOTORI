@@ -329,7 +329,7 @@
                                     <imageReference key="image" image="pencil" catalog="system" symbolScale="small"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="dQk-ft-okL" kind="modal" id="H97-P3-5oR"/>
+                                    <segue destination="dQk-ft-okL" kind="modal" identifier="UpdateMyPageSegue" id="H97-P3-5oR"/>
                                 </connections>
                             </button>
                         </subviews>
