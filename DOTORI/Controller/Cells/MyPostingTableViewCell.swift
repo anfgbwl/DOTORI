@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
+    var shareButtonTapped: (() -> Void)?
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var nickname: UILabel!
@@ -16,6 +18,12 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var contentImage: UIImageView!
     @IBOutlet weak var postingSetting: UIButton!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    
+    @IBAction func shareButton(_ sender: Any) {
+        shareButtonTapped?()
+    }
     
     func setupUI(posting: PostingInfo) {
         profileImage.image = posting.user.profileImage ?? UIImage(named: "defaultProfileImage")
@@ -28,7 +36,11 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
         contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
         contentImage.layer.cornerRadius = 10
         contentImage.clipsToBounds = true
-
+        if posting.bookmark == true {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        } else {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
     }
     
     override func awakeFromNib() {
