@@ -11,7 +11,6 @@ import PhotosUI
 
 class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelegate {
     
-    @IBOutlet weak var updateLabel: UILabel!
     @IBOutlet weak var updateCancelButton: UIButton!
     @IBOutlet weak var updateCompleteButton: UIButton!
     @IBOutlet weak var updateImageView: UIImageView!
@@ -19,8 +18,11 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     @IBOutlet weak var updateNameTextField: UITextField!
     @IBOutlet weak var updateTextView: UITextView!
     @IBOutlet weak var updateImageButton: UIButton!
+    @IBOutlet weak var updateGitHubUrlTextField: UITextField!
+    @IBOutlet weak var updateNicknameTextField: UITextField!
     
     var placeholderLabel: UILabel!
+//    weak var delegate: UpdateMyPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,29 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     func configureUI() {
         updateImageView.layer.cornerRadius = updateImageView.frame.size.width / 2
         updateImageView.clipsToBounds = true
-//        updateImageView.isUserInteractionEnabled = true
+        
+        updateUrlTextField.layer.borderWidth = 2.0
+        updateUrlTextField.layer.borderColor = UIColor.gray.cgColor
+        updateUrlTextField.layer.cornerRadius = 8.0
+        
+        updateGitHubUrlTextField.layer.borderWidth = 2.0
+        updateGitHubUrlTextField.layer.borderColor = UIColor.gray.cgColor
+        updateGitHubUrlTextField.layer.cornerRadius = 8.0
+        
+        updateNameTextField.layer.borderWidth = 2.0
+        updateNameTextField.layer.borderColor = UIColor.gray.cgColor
+        updateNameTextField.layer.cornerRadius = 8.0
+        
+        updateNicknameTextField.layer.borderWidth = 2.0
+        updateNicknameTextField.layer.borderColor = UIColor.gray.cgColor
+        updateNicknameTextField.layer.cornerRadius = 8.0
+        
+        updateImageButton.layer.borderWidth = 2.0
+        updateImageButton.layer.borderColor = UIColor.gray.cgColor
+        updateImageButton.layer.cornerRadius = 8.0
         
         updateTextView.layer.borderWidth = 2.0
-        updateTextView.layer.borderColor = UIColor.black.cgColor
+        updateTextView.layer.borderColor = UIColor.gray.cgColor
         updateTextView.layer.cornerRadius = 8.0
         
         placeholderLabel = UILabel()
@@ -51,9 +72,20 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
         dismiss(animated: true)
     }
     
+//    @IBAction func completeButtonTapped(_ sender: UIButton) {
+//        if let image = updateImageView.image {
+//            delegate?.didUpdateProfileImage(image)
+//        }
+//        if let updatedUserIntro = updateTextView.text {
+//            delegate?.didUpdateUserIntro(updatedUserIntro)
+//        }
+//        if let updatedNickname = updateNameTextField.text {
+//            delegate?.didUpdateNickname(updatedNickname)
+//        }
+//        dismiss(animated: true)
+//    }
     
     @IBAction func imageButtonTapped(_ sender: UIButton) {
-        print("눌림")
         
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 1
@@ -96,3 +128,29 @@ extension UpdateMyPageViewController: UITextViewDelegate {
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
 }
+
+
+//protocol UpdateMyPageDelegate: AnyObject {
+//    func didUpdateProfileImage(_ image: UIImage)
+//    func didUpdateUserIntro(_ userIntro: String)
+//    func didUpdateNickname(_ nickname: String)
+//}
+//
+//class MyPageViewController: UIViewController, WKNavigationDelegate, UpdateMyPageDelegate {
+//    func didUpdateNickname(_ nickname: String) {
+//        self.nickname.text = nickname
+//    }
+//
+//    func didUpdateUserIntro(_ userIntro: String) {
+//        self.userIntro.text = userIntro
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let updateVC = segue.destination as? UpdateMyPageViewController {
+//            updateVC.delegate = self
+//        }
+//    }
+//
+//    func didUpdateProfileImage(_ image: UIImage) {
+//        profileImage.image = image
+//    }

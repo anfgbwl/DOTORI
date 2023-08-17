@@ -12,7 +12,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     
     var myPostings: [PostingInfo] = []
     let webView = WKWebView()
-
+    var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
     @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var mySetting: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -50,6 +50,10 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let text = selectedUserName
+        {
+            name.text = text
+        }
         
         loadAccount()
         tableView.dataSource = self
