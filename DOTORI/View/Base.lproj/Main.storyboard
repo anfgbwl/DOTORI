@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="1941" y="-2"/>
         </scene>
-        <!--Title-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,25 +195,25 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="r5W-bG-TNb"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="eJl-QM-b02">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="LpE-IA-21M">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="4t8-40-HSU">
-                                <rect key="frame" x="16" y="112" width="123" height="44"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="eJl-QM-b02">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nva-S4-UfE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
+                                <rect key="frame" x="16" y="10.666666666666664" width="67.666666666666671" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="Rqw-Vq-FyV">
+                                <menu key="menu" id="Vqp-GT-Iv3">
                                     <children>
-                                        <command title="Item 1" id="zHi-dy-rRN"/>
-                                        <command title="Item 2" id="twh-th-nBV"/>
+                                        <command title="Item 1" id="FIK-NT-oO2"/>
+                                        <command title="Item 2" id="tEQ-f0-OZa"/>
                                     </children>
                                 </menu>
-                                <state key="normal" image="dotori.png"/>
+                                <state key="normal" title="button" image="dotoriResize"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mainTableView" destination="whu-ov-fji" id="F9r-ZZ-XyW"/>
-                        <outlet property="menuButton" destination="4t8-40-HSU" id="3vf-1G-D4d"/>
+                        <outlet property="menuButton" destination="bif-F3-oW1" id="qGs-ZF-3nE"/>
                         <segue destination="yyc-QS-yRa" kind="show" identifier="HomeToDetail" id="qwV-4f-xgI"/>
                     </connections>
                 </viewController>
@@ -300,7 +300,7 @@
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
-        <image name="dotori.png" width="734" height="127"/>
+        <image name="dotoriResize" width="153" height="26"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
