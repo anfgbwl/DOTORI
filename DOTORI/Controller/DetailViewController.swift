@@ -15,7 +15,7 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             let posting = filter[selectedIndex]
-            dequeuedCell.collectionImageView.image = posting.contentImage?.resized(toWidth: 290, toHeight: 140)
+            dequeuedCell.collectionImageView.image = posting.contentImage
             return dequeuedCell
         }
         else{
@@ -29,6 +29,7 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
         return filter[selectedIndex].reply.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("daadasdas")
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
             if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
                 let cell = filter[selectedIndex].reply[indexPath.row]
