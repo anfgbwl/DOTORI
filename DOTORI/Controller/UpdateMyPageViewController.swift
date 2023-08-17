@@ -19,6 +19,7 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     @IBOutlet weak var updateTextView: UITextView!
     @IBOutlet weak var updateImageButton: UIButton!
     @IBOutlet weak var updateGitHubUrlTextField: UITextField!
+    @IBOutlet weak var updateNicknameTextField: UITextField!
     
     var placeholderLabel: UILabel!
 //    weak var delegate: UpdateMyPageDelegate?
@@ -32,10 +33,29 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     func configureUI() {
         updateImageView.layer.cornerRadius = updateImageView.frame.size.width / 2
         updateImageView.clipsToBounds = true
-//        updateImageView.isUserInteractionEnabled = true
+        
+        updateUrlTextField.layer.borderWidth = 2.0
+        updateUrlTextField.layer.borderColor = UIColor.gray.cgColor
+        updateUrlTextField.layer.cornerRadius = 8.0
+        
+        updateGitHubUrlTextField.layer.borderWidth = 2.0
+        updateGitHubUrlTextField.layer.borderColor = UIColor.gray.cgColor
+        updateGitHubUrlTextField.layer.cornerRadius = 8.0
+        
+        updateNameTextField.layer.borderWidth = 2.0
+        updateNameTextField.layer.borderColor = UIColor.gray.cgColor
+        updateNameTextField.layer.cornerRadius = 8.0
+        
+        updateNicknameTextField.layer.borderWidth = 2.0
+        updateNicknameTextField.layer.borderColor = UIColor.gray.cgColor
+        updateNicknameTextField.layer.cornerRadius = 8.0
+        
+        updateImageButton.layer.borderWidth = 2.0
+        updateImageButton.layer.borderColor = UIColor.gray.cgColor
+        updateImageButton.layer.cornerRadius = 8.0
         
         updateTextView.layer.borderWidth = 2.0
-        updateTextView.layer.borderColor = UIColor.black.cgColor
+        updateTextView.layer.borderColor = UIColor.gray.cgColor
         updateTextView.layer.cornerRadius = 8.0
         
         placeholderLabel = UILabel()
@@ -66,7 +86,6 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
 //    }
     
     @IBAction func imageButtonTapped(_ sender: UIButton) {
-        print("눌림")
         
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 1
