@@ -70,7 +70,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     // 계정 정보 불러오기
     func loadAccount() {
         // 이미지 설정
-        profileImage.image = UIImage(named: "defaultProfileImage")
+        profileImage.image = user1.profileImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
         name.text = user1.name
@@ -84,19 +84,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UpdateMyPageSegue" {
-            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
-                updateMyPageVC.delegate = self
-            }
-        } else if segue.identifier == "MyPageToDetail" {
-                if let destinationVC = segue.destination as? MyPageViewController {
-                    destinationVC.selectedIndex = selectedIndex!
-                }
-            }
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
