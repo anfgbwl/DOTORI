@@ -8,15 +8,21 @@ import UIKit
 import PhotosUI
 
 class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
+    
+    var selectedImages: [UIImage] = []
+    var selectedCategory: String = ""
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var popUpButton: UIButton!
+    
     @IBAction func deleteImageButtonTapped(_ sender: UIButton) {
         if let cell = sender.superview?.superview as? CreateCollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
                 selectedImages.remove(at: indexPath.item)
                 collectionView.deleteItems(at: [indexPath])
             }
     }
+    
     @IBAction func backHomeButtonTapped(_ sender: UIButton) {
         // 상단 등 특정 위치에서 클릭 안되는 문제 있음
         print("제발 클릭!!!!")
@@ -25,8 +31,38 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
             tabBarController.selectedIndex = 0
         }
     }
-    @IBOutlet weak var popUpButton: UIButton!
-    var selectedImages: [UIImage] = []
+    
+    @IBAction func postButtonTapped(_ sender: UIButton) {
+        let newPosting = PostingInfo(
+            user: user5, // user5로 초기화
+            category: selectedCategory,
+            content: textView.text,
+            createTime: Date(),
+            updateTime: Date(),
+            contentImage: selectedImages.first,
+            bookmark: false,
+            bookmarkCount: 0,
+            reply: [],
+            tilUrl: ""
+        )
+        
+        // 생성한 PostingInfo 객체 데이터에 추가
+        data.append(newPosting)
+        
+        // 포스트 완료 alert
+        let alertController = UIAlertController(title: "게시 완료", message: "게시글이 성공적으로 작성되었습니다.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+        
+        // 초기화
+        textView.text = "여기를 탭하여 입력을 시작하세요."
+        textView.textColor = UIColor.lightGray
+        selectedImages.removeAll()
+        collectionView.reloadData()
+        
+        print("새 글 테스트: \(newPosting.category), \(newPosting.content), \(newPosting.contentImage)")
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +85,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     private func configPopUpButton() {
         let popUpButtonClosure = { (action: UIAction) in
+            self.selectedCategory = action.title // 선택된 카테고리 저장
             print("Selected menu: \(action.title)")
         }
         

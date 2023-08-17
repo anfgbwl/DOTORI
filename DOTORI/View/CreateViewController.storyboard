@@ -38,33 +38,13 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-52-Wrh">
                                 <rect key="frame" x="55" y="186" width="300" height="188"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="188" id="3vj-FJ-htO"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YeD-ro-p3m">
-                                <rect key="frame" x="307" y="143" width="48" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title="" cornerStyle="large">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="addImagesButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2ac-d5-vTv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tQ3-ym-Q3w">
-                                <rect key="frame" x="156" y="138" width="54" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="backHomeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OnZ-1h-zmj"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-SN-SJS">
                                 <rect key="frame" x="55" y="382" width="300" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,9 +105,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-dl-Fnd">
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-dl-Fnd">
                                 <rect key="frame" x="55" y="143" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="YSy-9Q-QXA"/>
+                                    <constraint firstAttribute="height" constant="30" id="kIV-XX-IJZ"/>
+                                </constraints>
                                 <menu key="menu" id="Odf-lq-Yzf">
                                     <children>
                                         <command title="Item 1" menuElementState="on" id="iay-SI-JJg"/>
@@ -147,39 +130,75 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Dkj-JU-HTw">
-                                <rect key="frame" x="216" y="138" width="83" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="게시하기"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2xK-52-Wrh" firstAttribute="leading" secondItem="M1R-dl-Fnd" secondAttribute="leading" id="2Jl-7w-M83"/>
                             <constraint firstItem="2xK-52-Wrh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="C43-WP-dzm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OfV-SN-SJS" secondAttribute="trailing" constant="38" id="Mjh-o8-VVL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2xK-52-Wrh" secondAttribute="trailing" constant="38" id="SmD-s7-KUD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="2xK-52-Wrh" secondAttribute="bottom" constant="395" id="UvW-9i-XoD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OfV-SN-SJS" secondAttribute="bottom" constant="259" id="Xys-zc-xik"/>
+                            <constraint firstItem="2xK-52-Wrh" firstAttribute="top" secondItem="M1R-dl-Fnd" secondAttribute="bottom" constant="13" id="Yas-Nj-oDe"/>
                             <constraint firstItem="OfV-SN-SJS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="ZyY-xV-WMI"/>
                             <constraint firstItem="OfV-SN-SJS" firstAttribute="top" secondItem="2xK-52-Wrh" secondAttribute="bottom" constant="8" id="o37-IB-CEo"/>
-                            <constraint firstItem="2xK-52-Wrh" firstAttribute="top" secondItem="YeD-ro-p3m" secondAttribute="bottom" constant="8" symbolic="YES" id="rRn-fx-Z23"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="NrL-bj-kql"/>
-                    <navigationItem key="navigationItem" id="eM6-Nz-0rx"/>
+                    <navigationItem key="navigationItem" id="eM6-Nz-0rx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Yac-w8-qDH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tQ3-ym-Q3w">
+                                <rect key="frame" x="16" y="4.6666666666666679" width="54" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="취소">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backHomeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OnZ-1h-zmj"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="r1C-JT-9HH">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Dkj-JU-HTw">
+                                    <rect key="frame" x="294" y="4.6666666666666679" width="83" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="게시하기"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="15"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="postButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nyn-Fp-GI7"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="0gE-bO-zNm">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YeD-ro-p3m">
+                                    <rect key="frame" x="238" y="4.6666666666666679" width="48" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.2901961207" green="0.60000002379999995" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title="" cornerStyle="large">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="medium" weight="medium"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="addImagesButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2ac-d5-vTv"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="OfV-SN-SJS" id="b2I-2g-dXH"/>
-                        <outlet property="popUpButton" destination="M1R-dl-Fnd" id="Jrt-hm-VPj"/>
+                        <outlet property="popUpButton" destination="M1R-dl-Fnd" id="CYB-Rq-89Q"/>
                         <outlet property="textView" destination="2xK-52-Wrh" id="fhI-EX-qIf"/>
                     </connections>
                 </viewController>
