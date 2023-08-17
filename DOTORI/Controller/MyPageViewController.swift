@@ -10,14 +10,10 @@ import WebKit
 
 class MyPageViewController: UIViewController, WKNavigationDelegate {
     var myPostings: [PostingInfo] = []
-    func resetindex () {
-        for i in 0..<data.count {
-            indexlist.append(i)
-        }
-    }
+    var indexlist:[Int] = []
     var urlText: String?
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
-    var selectedIndex : Int? // 마이페이지에서 클릭한 게시물
+    var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
     
     @IBOutlet weak var mySetting: UIBarButtonItem!
@@ -52,7 +48,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        resetindex()
         tableView.reloadData()
     }
     
@@ -60,6 +55,12 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         if let text = selectedUserName { name.text = text }
+        for i in 0..<data.count {
+            if data[i].user.name == user1.name {
+                indexlist.append(i)
+                myPostings.append(data[i])
+            }
+        }
         loadTitleAccount()
         loadAccount()
         tableView.dataSource = self
@@ -85,12 +86,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         profileImage.clipsToBounds = true
         name.text = user1.name
         userIntro.text = user1.userIntro
-        for i in 0..<data.count {
-            if data[i].user.name == user1.name {
-                indexlist.append(i)
-                myPostings.append(data[i])
-            }
-        }
         postingCount.text = String(myPostings.count)
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
@@ -104,13 +99,12 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
             }
             print("페이지 이동 : 마이페이지 ➡️ 마이페이지 수정")
         } else if segue.identifier == "MyPageToDetail" {
-                if let destinationVC = segue.destination as? MyPageViewController {
-                    destinationVC.selectedIndex = selectedIndex!
-                }
-            print("페이지 이동 : 마이페이지 ➡️ 디테일페이지")
+            if let destinationVC = segue.destination as? DetailViewController {
+                destinationVC.selectedIndex = selectedIndex!
             }
         }
     }
+}
 
 extension MyPageViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
@@ -139,9 +133,9 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
             self?.handleShareButtonTap()
         }
         let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: { _ in
-            data.remove(at: indexlist[indexPath.row])
+            data.remove(at: self.indexlist[indexPath.row])
             self.myPostings.remove(at: indexPath.row)
-            indexlist.remove(at: indexPath.row)
+            self.indexlist.remove(at: indexPath.row)
             self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             self.postingCount.text = String(self.myPostings.count)
         })
@@ -152,12 +146,12 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func bookmarkChange (_ sender : UIButton){
         self.tableView.reloadData()
-        if filter[sender.tag].bookmark == true {
-            filter[sender.tag].bookmark = false
+        if myPostings[sender.tag].bookmark == true {
+            myPostings[sender.tag].bookmark = false
             print("북마크 취소")
         }
         else {
-            filter[sender.tag].bookmark = true
+            myPostings[sender.tag].bookmark = true
             print("북마크 저장")
         }
     }
@@ -174,7 +168,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀 선택시 함수
-        selectedIndex = indexPath.row
+        selectedIndex = indexlist[indexPath.row]
         performSegue(withIdentifier: "MyPageToDetail", sender: self)
         print("페이지 이동 : 마이페이지 ➡️ 디테일페이지")
     }
@@ -189,6 +183,8 @@ extension MyPageViewController: UpdateMyPageDelegate {
         user1.blogUrl = blogUrl
         user1.userIntro = userIntro
         tableView.reloadData()
+        loadTitleAccount()
+        loadAccount()
         print("📣 계정 정보 업데이트")
     }
 }
