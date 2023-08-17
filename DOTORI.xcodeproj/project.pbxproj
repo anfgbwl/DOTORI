@@ -94,6 +94,14 @@
 			path = Dummy;
 			sourceTree = "<group>";
 		};
+		15AD068E2A8DAA5C005D3FC8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				153B13002A8C620300A998DF /* CustomTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		3F00E3A82A8CECDE00472E25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +178,7 @@
 		DE1C831A2A8A0AA4003D99E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				15AD068E2A8DAA5C005D3FC8 /* Cells */,
 				3FA689F22A89EC5600E1EEC0 /* ViewController.swift */,
 				3FA68A102A8A110B00E1EEC0 /* DetailViewController.swift */,
 				DE1C83182A8A0A9F003D99E9 /* SearchViewController.swift */,

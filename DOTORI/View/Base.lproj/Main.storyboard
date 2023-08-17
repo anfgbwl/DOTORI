@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,13 +30,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="DOTORI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="365" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="whu-ov-fji">
-                                <rect key="frame" x="0.0" y="169" width="393" height="538"/>
+                                <rect key="frame" x="0.0" y="184" width="393" height="523"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -47,14 +48,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bny-NZ-IkO">
-                                                    <rect key="frame" x="74" y="9" width="140" height="31"/>
+                                                    <rect key="frame" x="136" y="7" width="73" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZe-60-7QB">
-                                                    <rect key="frame" x="20" y="48" width="353" height="127"/>
+                                                    <rect key="frame" x="20" y="48" width="353" height="134"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -77,16 +78,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag4-VF-oud">
-                                                    <rect key="frame" x="222" y="11" width="112" height="26"/>
+                                                    <rect key="frame" x="305" y="9" width="59" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIP-yZ-pW7">
-                                                    <rect key="frame" x="20" y="183" width="353" height="140"/>
+                                                    <rect key="frame" x="20" y="190" width="353" height="133"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIN-fd-Opi">
+                                                    <rect key="frame" x="74" y="7" width="54" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -94,6 +102,7 @@
                                             <outlet property="posting_contentimage" destination="BIP-yZ-pW7" id="Aez-eA-GCI"/>
                                             <outlet property="posting_time" destination="Ag4-VF-oud" id="U2J-rd-q7b"/>
                                             <outlet property="profile_image" destination="Cmu-L4-RxP" id="06d-Lk-42M"/>
+                                            <outlet property="profile_name" destination="cIN-fd-Opi" id="sRm-RQ-eWq"/>
                                             <outlet property="profile_nickname" destination="bny-NZ-IkO" id="maq-cL-fUP"/>
                                         </connections>
                                     </tableViewCell>
@@ -103,13 +112,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="r2v-g1-MOU"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4t8-40-HSU">
+                                <rect key="frame" x="30" y="132" width="116" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="Rqw-Vq-FyV">
+                                    <children>
+                                        <command title="Item 1" id="zHi-dy-rRN"/>
+                                        <command title="Item 2" id="twh-th-nBV"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" image="dotori.png"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="r5W-bG-TNb"/>
-                    <navigationItem key="navigationItem" id="KwL-no-aqs"/>
                     <connections>
+                        <outlet property="mainTableView" destination="whu-ov-fji" id="F9r-ZZ-XyW"/>
+                        <outlet property="menuButton" destination="4t8-40-HSU" id="3vf-1G-D4d"/>
                         <segue destination="yyc-QS-yRa" kind="show" identifier="HomeToDetail" id="qwV-4f-xgI"/>
                     </connections>
                 </viewController>
@@ -174,7 +195,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oyT-Sc-W0g" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="oJx-zB-0vw"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="oJx-zB-0vw"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BJk-G5-p3V">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -195,11 +216,15 @@
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
+        <image name="dotori.png" width="734" height="127"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="message" catalog="system" width="128" height="116"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

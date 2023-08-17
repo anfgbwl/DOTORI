@@ -115,7 +115,6 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-
 class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
