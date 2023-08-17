@@ -124,6 +124,7 @@
                                             <constraint firstAttribute="height" constant="40" id="mcX-g7-2DS"/>
                                             <constraint firstAttribute="width" constant="200" id="ncI-Xw-msh"/>
                                         </constraints>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

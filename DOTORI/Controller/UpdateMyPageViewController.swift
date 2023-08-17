@@ -9,6 +9,10 @@ import UIKit
 import Photos
 import PhotosUI
 
+protocol UpdateMyPageDelegate: AnyObject {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String, githubUrl: String, blogUrl: String, userIntro: String)
+}
+
 class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelegate {
     
     @IBOutlet weak var updateCancelButton: UIButton!
@@ -22,11 +26,12 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     @IBOutlet weak var updateNicknameTextField: UITextField!
     
     var placeholderLabel: UILabel!
-//    weak var delegate: UpdateMyPageDelegate?
+    weak var delegate: UpdateMyPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        defaultUserInfo()
         updateTextView.delegate = self
     }
     
@@ -67,23 +72,39 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
         placeholderLabel.frame.origin = CGPoint(x: 5, y: updateTextView.font!.pointSize / 2)
     }
     
+    func defaultUserInfo() {
+        updateNicknameTextField.text = user1.nickname
+        updateNameTextField.text = user1.name
+        updateGitHubUrlTextField.text = user1.githubUrl
+        updateUrlTextField.text = user1.blogUrl
+        updateTextView.text = user1.userIntro
+        updateImageView.image = user1.profileImage
+    }
+    
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         dismiss(animated: true)
     }
     
-//    @IBAction func completeButtonTapped(_ sender: UIButton) {
-//        if let image = updateImageView.image {
-//            delegate?.didUpdateProfileImage(image)
-//        }
-//        if let updatedUserIntro = updateTextView.text {
-//            delegate?.didUpdateUserIntro(updatedUserIntro)
-//        }
-//        if let updatedNickname = updateNameTextField.text {
-//            delegate?.didUpdateNickname(updatedNickname)
-//        }
-//        dismiss(animated: true)
-//    }
+    @IBAction func completeButtonTapped(_ sender: UIButton) {
+        
+        let updatedProfileImage = updateImageView.image
+        let updatedName = updateNameTextField.text ?? ""
+        let updatedNickname = updateNicknameTextField.text ?? ""
+        let updatedGitHubUrl = updateGitHubUrlTextField.text ?? ""
+        let updatedBlogUrl = updateUrlTextField.text ?? ""
+        let updatedUserIntro = updateTextView.text ?? ""
+        dismiss(animated: true) { [weak self] in
+            self?.delegate?.updateUserInformation(
+                profileImage: updatedProfileImage,
+                name: updatedName,
+                nickname: updatedNickname,
+                githubUrl: updatedGitHubUrl,
+                blogUrl: updatedBlogUrl,
+                userIntro: updatedUserIntro
+            )
+        }
+    }
     
     @IBAction func imageButtonTapped(_ sender: UIButton) {
         
@@ -129,28 +150,3 @@ extension UpdateMyPageViewController: UITextViewDelegate {
     }
 }
 
-
-//protocol UpdateMyPageDelegate: AnyObject {
-//    func didUpdateProfileImage(_ image: UIImage)
-//    func didUpdateUserIntro(_ userIntro: String)
-//    func didUpdateNickname(_ nickname: String)
-//}
-//
-//class MyPageViewController: UIViewController, WKNavigationDelegate, UpdateMyPageDelegate {
-//    func didUpdateNickname(_ nickname: String) {
-//        self.nickname.text = nickname
-//    }
-//
-//    func didUpdateUserIntro(_ userIntro: String) {
-//        self.userIntro.text = userIntro
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let updateVC = segue.destination as? UpdateMyPageViewController {
-//            updateVC.delegate = self
-//        }
-//    }
-//
-//    func didUpdateProfileImage(_ image: UIImage) {
-//        profileImage.image = image
-//    }
