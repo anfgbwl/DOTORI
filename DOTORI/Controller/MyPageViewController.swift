@@ -89,9 +89,21 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         postingCount.text = String(myPostings.count)
         blogUrl.titleLabel?.text = user1.blogUrl
         githubUrl.titleLabel?.text = user1.githubUrl
+        
     }
-
-}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UpdateMyPageSegue" {
+            if let updateMyPageVC = segue.destination as? UpdateMyPageViewController {
+                updateMyPageVC.delegate = self
+            }
+        } else if segue.identifier == "MyPageToDetail" {
+                if let destinationVC = segue.destination as? MyPageViewController {
+                    destinationVC.selectedIndex = selectedIndex!
+                }
+            }
+        }
+    }
 
 extension MyPageViewController : UITextViewDelegate {
             
@@ -126,14 +138,22 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         performSegue(withIdentifier: "MyPageToDetail", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-        if segue.identifier == "MyPageToDetail" {
-            if let destinationVC = segue.destination as? MyPageViewController {
-                destinationVC.selectedIndex = selectedIndex!
+    
+}
 
-            }
-        }
+extension MyPageViewController: UpdateMyPageDelegate {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String, githubUrl: String, blogUrl: String, userIntro: String) {
+        
+        
+        user1.profileImage = profileImage
+        user1.name = name
+        user1.nickname = nickname
+        user1.githubUrl = githubUrl
+        user1.blogUrl = blogUrl
+        user1.userIntro = userIntro
+//        loadAccount()
+        tableView.reloadData()
+        print(user1.blogUrl)
     }
 }
 
