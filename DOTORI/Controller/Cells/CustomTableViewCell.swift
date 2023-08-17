@@ -8,6 +8,7 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
+    @IBOutlet weak var profile_name: UILabel!
     @IBOutlet weak var profile_image: UIImageView!
     @IBOutlet weak var profile_nickname: UILabel!
     @IBOutlet weak var posting_time: UILabel!
