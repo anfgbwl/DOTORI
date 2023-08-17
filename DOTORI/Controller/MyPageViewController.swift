@@ -131,7 +131,7 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
         profileImage.clipsToBounds = true
         name.text = posting.user.name
         nickname.text = posting.user.nickname
-        createTime.text = posting.createTime.GetCurrentTime()
+        createTime.text = posting.createTime.GetCurrentTime(format: "yyyy-mm-dd")
         content.text = posting.content
         contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
         contentImage.layer.cornerRadius = 10

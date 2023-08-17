@@ -14,7 +14,7 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
-            let posting = data[selectedIndex]
+            let posting = filter[selectedIndex]
             dequeuedCell.collectionImageView.image = posting.contentImage?.resized(toWidth: 290, toHeight: 140)
             return dequeuedCell
         }
@@ -26,13 +26,13 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
 
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[selectedIndex].reply.count
+        return filter[selectedIndex].reply.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
             print(Logger.Write(LogLevel.Info)("DetailViewController")(35)("더미 데이터를 UserDefault로 처리하는 기능 필요"))
-            if selectedIndex < data.count && indexPath.row < data[selectedIndex].reply.count {
-                let cell = data[selectedIndex].reply[indexPath.row]
+            if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
+                let cell = filter[selectedIndex].reply[indexPath.row]
                 dequeuedCell.nameLabel.text = cell.user.name
                 dequeuedCell.nicknameLabel.text = cell.user.nickname
                 if cell.createTime == cell.updateTime
@@ -73,7 +73,7 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                 
                 let confirmAction = UIAlertAction(title: "확인", style: .destructive) {  _ in
                     let index = indexPath.row
-                    data[self.selectedIndex].reply.remove(at: index)
+                    filter[self.selectedIndex].reply.remove(at: index)
                     self.replyTableView.reloadData()
                     print(Logger.Write(LogLevel.Info)("DetailViewController")(80)("더미 데이터를 UserDefault로 삭제하는 기능 필요"))
                 }
@@ -118,7 +118,7 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
         if let text = replyComment
         {
             let additionalReplyInfo = ReplyInfo(user: user5, content:text, createTime: Date(), updateTime: Date())
-            data[selectedIndex].reply.append(additionalReplyInfo)
+            filter[selectedIndex].reply.append(additionalReplyInfo)
         }
         replyInputTextField.resignFirstResponder()
         replyTableView.reloadData()
@@ -169,8 +169,8 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         
         
         //처음 프로필 설정하는부분..
-        let user = data[selectedIndex].user
-        let posting = data[selectedIndex]
+        let user = filter[selectedIndex].user
+        let posting = filter[selectedIndex]
         profileImageView.image = user.profileImage
         nameLabel.text = user.name
         nicknameLabel.text = user.nickname
@@ -178,7 +178,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         textView.text = posting.content
         
         //처음 보여지는 부분..
-         isBookFilled = data[selectedIndex].bookmark
+         isBookFilled = filter[selectedIndex].bookmark
         if !isBookFilled
         {
             bookmarkImageView.image = UIImage(systemName: "book")
@@ -189,8 +189,8 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
     
     func didTextChanged(updateTime: Date, content: String, index: Int) {
-        data[self.selectedIndex].reply[index].content = content
-        data[self.selectedIndex].reply[index].updateTime = updateTime
+        filter[self.selectedIndex].reply[index].content = content
+        filter[self.selectedIndex].reply[index].updateTime = updateTime
         self.replyTableView.reloadData()
     }
     
@@ -209,7 +209,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
                 present(activityViewController, animated: true, completion: nil)
             } else if imageView == bookmarkImageView {
                 isBookFilled = !isBookFilled
-                data[selectedIndex].bookmark = isBookFilled
+                filter[selectedIndex].bookmark = isBookFilled
                 if !isBookFilled
                 {
                     bookmarkImageView.image = UIImage(systemName: "book")
