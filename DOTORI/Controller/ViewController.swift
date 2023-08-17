@@ -10,23 +10,33 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    func resetindex () {
+        for i in 0..<data.count {
+            indexlist.append(i)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         filter = data
+        resetindex()
         mainTableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         filter = data
+        resetindex()
         // Do any additional setup after loading the view.
         //더미데이터들
         let all = UIAction(title: "전체", handler: { _ in
             filter = data
+            self.resetindex()
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { _ in
             filter = []
+            indexlist.removeAll()
             for i in 0..<data.count{
                 if data[i].category == "잡담"{
+                    indexlist.append(i)
                     filter.append(data[i])
                 }
             }
@@ -34,8 +44,10 @@ class ViewController: UIViewController {
         })
         let til = UIAction(title: "TIL", handler: { _ in
             filter = []
+            indexlist.removeAll()
             for i in 0..<data.count{
                 if data[i].category == "TIL"{
+                    indexlist.append(i)
                     filter.append(data[i])
                 }
             }
@@ -43,8 +55,10 @@ class ViewController: UIViewController {
         })
         let cat = UIAction(title: "고양이방", handler: { _ in
             filter = []
+            indexlist.removeAll()
             for i in 0..<data.count{
                 if data[i].category == "고양이방"{
+                    indexlist.append(i)
                     filter.append(data[i])
                 }
             }
@@ -52,8 +66,10 @@ class ViewController: UIViewController {
         })
         let qna = UIAction(title: "질문", handler: { _ in
             filter = []
+            indexlist.removeAll()
             for i in 0..<data.count{
                 if data[i].category == "질문"{
+                    indexlist.append(i)
                     filter.append(data[i])
                 }
             }
@@ -76,6 +92,14 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.setupUI(posting: posting)
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
+        let delete = UIAction(title: "게시물 삭제", handler: { _ in
+            data.remove(at: indexlist[indexPath.row])
+            filter.remove(at: indexPath.row)
+            indexlist.remove(at: indexPath.row)
+            self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
+        })
+        let menu = UIMenu(title: "", children: [delete])
+        cell.cellSettingButton.menu = menu
         return cell
     }
     @objc func bookmarkChange (_ sender : UIButton){

@@ -30,7 +30,6 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
-            print(Logger.Write(LogLevel.Info)("DetailViewController")(35)("더미 데이터를 UserDefault로 처리하는 기능 필요"))
             if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
                 let cell = filter[selectedIndex].reply[indexPath.row]
                 dequeuedCell.nameLabel.text = cell.user.name
