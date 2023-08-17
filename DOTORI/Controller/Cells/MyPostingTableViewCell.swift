@@ -46,13 +46,12 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
             
-        print("버튼 클릭: postingSetting")
-        let seletedpostingSetting = {(action: UIAction) in
-            }
-        postingSetting.menu = UIMenu(children: [
-            UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: seletedpostingSetting)])
-        postingSetting.showsMenuAsPrimaryAction = true
-        postingSetting.changesSelectionAsPrimaryAction = false
+//        print("버튼 클릭: postingSetting")
+//        let seletedpostingSetting = { (action: UIAction) in }
+//        postingSetting.menu = UIMenu(children: [
+//            UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: seletedpostingSetting)])
+//        postingSetting.showsMenuAsPrimaryAction = true
+//        postingSetting.changesSelectionAsPrimaryAction = false
         content.delegate = self
         content.isScrollEnabled = false
         content.sizeToFit()
