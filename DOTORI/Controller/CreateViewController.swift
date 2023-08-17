@@ -10,7 +10,7 @@ import PhotosUI
 class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
     
     var selectedImages: [UIImage] = []
-    var selectedCategory: String = ""
+    var selectedCategory: String = "TIL" // default selection
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
