@@ -106,6 +106,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     }
 }
 
+
 extension MyPageViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: view.frame.width, height: .infinity)

@@ -15,7 +15,7 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             let posting = filter[selectedIndex]
-            dequeuedCell.collectionImageView.image = posting.contentImage?.resized(toWidth: 290, toHeight: 140)
+            dequeuedCell.collectionImageView.image = posting.contentImage?.resized(toWidth: 240, toHeight: 140)
             return dequeuedCell
         }
         else{
@@ -172,6 +172,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         replyInputTextField.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = true
         
+        imageCollectionView.backgroundColor = .white
         
         //처음 프로필 설정하는부분..
         let user = filter[selectedIndex].user
@@ -303,7 +304,7 @@ class PostingTableViewCell : UITableViewCell
     }
 }
 extension UIImage {
-    func resized(toWidth width: CGFloat, toHeight height : CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(toWidth width: CGFloat, toHeight height : CGFloat, isOpaque: Bool = false) -> UIImage? {
         let canvas = CGSize(width: width, height: height)
         let format = imageRendererFormat
         format.opaque = isOpaque
