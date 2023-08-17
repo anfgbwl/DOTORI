@@ -12,6 +12,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Create Navigation Controller-->
+        <scene sceneID="Ndz-DM-w69">
+            <objects>
+                <navigationController storyboardIdentifier="CreateNavigationController" id="BBx-y4-3Ao" customClass="CreateNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zdy-ad-gFH">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="DP5-yB-v4g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7O-U6-RuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="-2"/>
+        </scene>
         <!--Create View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -159,6 +175,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="NrL-bj-kql"/>
+                    <navigationItem key="navigationItem" id="eM6-Nz-0rx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="OfV-SN-SJS" id="b2I-2g-dXH"/>
