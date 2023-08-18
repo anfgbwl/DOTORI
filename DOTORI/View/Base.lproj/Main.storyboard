@@ -59,7 +59,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-2n-MRV">
-                                                            <rect key="frame" x="70" y="0.0" width="283" height="327"/>
+                                                            <rect key="frame" x="70" y="0.0" width="283" height="313.66666666666669"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UMq-ku-ZZj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="282.66666666666669" height="22"/>
@@ -107,72 +107,88 @@
                                                                         </button>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Wqn-TY-qBI">
-                                                                    <rect key="frame" x="0.0" y="27" width="283" height="270"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IC4-Y3-PZg">
+                                                                    <rect key="frame" x="0.0" y="27" width="283" height="286.66666666666669"/>
                                                                     <subviews>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-jI-RNw">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="134"/>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <attributedString key="attributedText">
-                                                                                <fragment>
-                                                                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
-                                                                                    <attributes>
-                                                                                        <color key="NSColor" systemColor="labelColor"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
-                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                    </attributes>
-                                                                                </fragment>
-                                                                            </attributedString>
-                                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                        </textView>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WE8-T5-dtQ">
-                                                                            <rect key="frame" x="0.0" y="145" width="283" height="125"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="283" id="WvK-93-DPy"/>
-                                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="283" id="yUH-Zj-FNx"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="208" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-M0-Stp">
-                                                                    <rect key="frame" x="0.0" y="302" width="278" height="25"/>
-                                                                    <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKd-2v-zYv">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="25" id="WPB-8d-rbT"/>
-                                                                                <constraint firstAttribute="width" constant="25" id="cf8-Zh-Hjh"/>
-                                                                            </constraints>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain">
-                                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
-                                                                            </buttonConfiguration>
-                                                                        </button>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-ZJ-wce">
-                                                                            <rect key="frame" x="233" y="0.0" width="45" height="25"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Wqn-TY-qBI">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="283" height="251.66666666666666"/>
                                                                             <subviews>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ze-Hu-xup">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-jI-RNw">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="115.66666666666667"/>
+                                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                    <attributedString key="attributedText">
+                                                                                        <fragment>
+                                                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
+                                                                                            <attributes>
+                                                                                                <color key="NSColor" systemColor="labelColor"/>
+                                                                                                <font key="NSFont" metaFont="system" size="16"/>
+                                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                            </attributes>
+                                                                                        </fragment>
+                                                                                    </attributedString>
+                                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                </textView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WE8-T5-dtQ">
+                                                                                    <rect key="frame" x="0.0" y="126.66666666666666" width="283" height="125"/>
                                                                                     <constraints>
-                                                                                        <constraint firstAttribute="width" constant="25" id="9Pb-6G-IDi"/>
-                                                                                        <constraint firstAttribute="height" constant="25" id="DCv-vC-MVM"/>
+                                                                                        <constraint firstAttribute="width" constant="283" id="WvK-93-DPy"/>
+                                                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="283" id="yUH-Zj-FNx"/>
                                                                                     </constraints>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain" buttonSize="small">
-                                                                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="medium"/>
-                                                                                    </buttonConfiguration>
-                                                                                </button>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1I-hh-6Hy">
-                                                                                    <rect key="frame" x="25" y="0.0" width="20" height="25"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="height" constant="20" id="QJM-rW-iRF"/>
-                                                                                        <constraint firstAttribute="width" constant="20" id="tDO-Ai-4Ao"/>
-                                                                                    </constraints>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain">
-                                                                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="medium"/>
-                                                                                    </buttonConfiguration>
-                                                                                </button>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="202" translatesAutoresizingMaskIntoConstraints="NO" id="CCM-bz-ngD">
+                                                                            <rect key="frame" x="0.0" y="261.66666666666669" width="283" height="25"/>
+                                                                            <subviews>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LNb-2N-sLG">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="25"/>
+                                                                                    <subviews>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKd-2v-zYv">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="25" id="WPB-8d-rbT"/>
+                                                                                                <constraint firstAttribute="width" constant="25" id="cf8-Zh-Hjh"/>
+                                                                                            </constraints>
+                                                                                            <state key="normal" title="Button"/>
+                                                                                            <buttonConfiguration key="configuration" style="plain">
+                                                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
+                                                                                            </buttonConfiguration>
+                                                                                        </button>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfT-0W-Lh3">
+                                                                                            <rect key="frame" x="26" y="0.0" width="10" height="25"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <color key="textColor" systemColor="tintColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                </stackView>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5D-9Z-fRH">
+                                                                                    <rect key="frame" x="238" y="0.0" width="45" height="25"/>
+                                                                                    <subviews>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ze-Hu-xup">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="width" constant="25" id="9Pb-6G-IDi"/>
+                                                                                                <constraint firstAttribute="height" constant="25" id="DCv-vC-MVM"/>
+                                                                                            </constraints>
+                                                                                            <state key="normal" title="Button"/>
+                                                                                            <buttonConfiguration key="configuration" style="plain" buttonSize="small">
+                                                                                                <imageReference key="image" image="bookmark" catalog="system" symbolScale="medium"/>
+                                                                                            </buttonConfiguration>
+                                                                                        </button>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1I-hh-6Hy">
+                                                                                            <rect key="frame" x="25" y="0.0" width="20" height="25"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="20" id="QJM-rW-iRF"/>
+                                                                                                <constraint firstAttribute="width" constant="20" id="tDO-Ai-4Ao"/>
+                                                                                            </constraints>
+                                                                                            <state key="normal" title="Button"/>
+                                                                                            <buttonConfiguration key="configuration" style="plain">
+                                                                                                <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="medium"/>
+                                                                                            </buttonConfiguration>
+                                                                                        </button>
+                                                                                    </subviews>
+                                                                                </stackView>
                                                                             </subviews>
                                                                         </stackView>
                                                                     </subviews>
@@ -197,8 +213,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Wqn-TY-qBI" secondAttribute="trailing" constant="20" id="5dZ-j6-e8o"/>
-                                            <constraint firstAttribute="trailing" secondItem="v1I-hh-6Hy" secondAttribute="trailing" constant="21" id="6tL-0T-xPd"/>
                                             <constraint firstItem="DgW-en-CcO" firstAttribute="leading" secondItem="wYW-uS-dBE" secondAttribute="leading" constant="20" id="NaS-1u-b5L"/>
                                             <constraint firstAttribute="trailing" secondItem="DgW-en-CcO" secondAttribute="trailing" constant="20" id="eco-Qp-322"/>
                                         </constraints>
@@ -212,6 +226,7 @@
                                             <outlet property="profile_image" destination="avf-Z9-ND5" id="rWT-pW-cfN"/>
                                             <outlet property="profile_name" destination="nJg-jl-zrF" id="r3O-8d-qS4"/>
                                             <outlet property="profile_nickname" destination="SCd-4l-1TR" id="DEI-Dv-iu7"/>
+                                            <outlet property="replyCount" destination="QfT-0W-Lh3" id="BlH-Se-gVX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -228,8 +243,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="eJl-QM-b02">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nva-S4-UfE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
-                                <rect key="frame" x="16" y="9" width="201" height="26"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
+                                <rect key="frame" x="16" y="3" width="201" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <menu key="menu" id="Vqp-GT-Iv3">
                                     <children>
@@ -343,6 +358,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

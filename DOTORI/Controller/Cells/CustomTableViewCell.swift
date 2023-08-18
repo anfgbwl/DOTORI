@@ -16,7 +16,10 @@ class CustomTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var posting_contentimage: UIImageView!
     @IBOutlet weak var posting_content: UITextView!
     @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var replyCount: UILabel!
+    
     func setupUI(posting: PostingInfo) {
+        replyCount.text = String(posting.reply.count)
         profile_image.image = posting.user.profileImage
         profile_image.layer.cornerRadius = profile_image.frame.size.width / 2
         profile_image.clipsToBounds = true
