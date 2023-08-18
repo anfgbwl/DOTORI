@@ -85,7 +85,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.setupUI(posting: posting)
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
-        let delete = UIAction(title: "게시물 삭제", handler: { _ in
+        let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
             data.remove(at: filterindex[indexPath.row])
             filter.remove(at: indexPath.row)
             filterindex.remove(at: indexPath.row)
