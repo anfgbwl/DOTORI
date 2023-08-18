@@ -33,11 +33,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var githubUrl: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func mySetting(_ sender: UIButton) {
-        print("버튼 클릭: mySetting")
-        
-    }
-    
     @IBAction func blogUrl(_ sender: UIButton) {
         let urlText = user1.blogUrl
         let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
@@ -202,7 +197,6 @@ extension MyPageViewController: UpdateMyPageDelegate {
     }
 }
 
-
 class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
@@ -210,17 +204,13 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadURL(urlText ?? "www.google.com")
         print("📺 웹뷰 띄우기")
-
     }
     
     func loadURL(_ url: String) {
         let urlString = "http://" + url
-        guard let url = URL(string: urlString) else {
-            return
-        }
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }
