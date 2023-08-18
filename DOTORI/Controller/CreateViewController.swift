@@ -9,7 +9,8 @@ import PhotosUI
 
 class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout, PHPickerViewControllerDelegate {
     
-    var selectedImages: [UIImage] = []
+    var selectedImages: [UIImage] = []   // data에 insert할 원본 이미지
+    var resizedImaged: [UIImage] = []    // 해당 VC 내에서 보여줄 리사이즈된 이미지
     var selectedCategory: String = "TIL" // default selection
     
     @IBOutlet weak var textView: UITextView!
@@ -18,17 +19,17 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     @IBAction func deleteImageButtonTapped(_ sender: UIButton) {
         if let cell = sender.superview?.superview as? CreateCollectionViewCell, let indexPath = collectionView.indexPath(for: cell) {
-            selectedImages.remove(at: indexPath.item)
+            resizedImaged.remove(at: indexPath.item)
             collectionView.deleteItems(at: [indexPath])
         }
     }
     
     @IBAction func backHomeButtonTapped(_ sender: UIButton) {
         // 글 작성 취소 alert
-        let alertController = UIAlertController(title: "글 작성 취소", message: "게시글 작성을 취소하시겠습니까?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: "작성을 취소하시겠습니까?", preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-            
+        alertController.addAction(UIAlertAction(title: "유지", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "작성 취소", style: .destructive, handler: { _ in
             // 메인화면으로 이동
             if let tabBarController = self.tabBarController {
                 tabBarController.selectedIndex = 0
@@ -56,17 +57,18 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
         data.insert(newPosting, at: 0)
         
         // 포스트 완료 alert
-        let alertController = UIAlertController(title: "글 작성 완료", message: "새 게시글이 작성되었습니다.", preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-            if let tabBarController = self.tabBarController {
-                tabBarController.selectedIndex = 0
-            }
-        }))
-        
+        let alertController = UIAlertController(title: "", message: "게시글을 작성했습니다.", preferredStyle: .alert)
+                
         present(alertController, animated: true, completion: nil)
+
+        // 1초 후에 홈화면으로 이동
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.tabBarController?.selectedIndex = 0
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
         initAll()
-        print("새 글 테스트: \(newPosting.category), \(newPosting.content), \(newPosting.contentImage)")
+        // print("새 글 테스트: \(newPosting.category), \(newPosting.content), \(newPosting.contentImage)")
     }
     
     override func viewDidLoad() {
@@ -127,10 +129,11 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
                 result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
                     if let image = image as? UIImage {
                         // 이미지 크기를 조절하여 새로운 크기로 변환
-                        let scaledImage = self?.scaleImage(image, toSize: CGSize(width: 200, height: 200)) ?? image
+                        let scaledImage = self?.scaleImage(image, toSize: CGSize(width: 300, height: 300)) ?? image
                         
                         DispatchQueue.main.async {
-                            self?.selectedImages.append(scaledImage)
+                            self?.resizedImaged.append(scaledImage)
+                            self?.selectedImages.append(image) // 원본 이미지 데이터
                             self?.collectionView.reloadData()
                         }
                     }
@@ -151,7 +154,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     private func initAll() {
         textView.text = "여기를 탭하여 입력을 시작하세요."
         textView.textColor = UIColor.lightGray
-        selectedImages.removeAll()
+        resizedImaged.removeAll()
         collectionView.reloadData()
     }
 }
@@ -159,13 +162,13 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
 extension CreateViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     // 콜렉션뷰의 셀 개수 반환
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedImages.count
+        return resizedImaged.count
     }
     
     // 콜렉션뷰의 셀 내용 설정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateCollectionViewCell", for: indexPath) as! CreateCollectionViewCell
-        cell.selectedImg.image = selectedImages[indexPath.item]
+        cell.selectedImg.image = resizedImaged[indexPath.item]
         return cell
     }
 }
