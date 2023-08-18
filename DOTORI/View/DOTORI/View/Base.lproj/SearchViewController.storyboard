@@ -258,12 +258,23 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="CRy-fn-jT0" id="Uen-zq-JWX"/>
-                        <outlet property="serachTableView" destination="e3L-Im-ry6" id="EGF-uE-1fs"/>
+                        <outlet property="searchTableView" destination="e3L-Im-ry6" id="EGF-uE-1fs"/>
+                        <segue destination="89V-pU-05Z" kind="show" identifier="SearchToDetail" id="1RP-if-Aji"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0D-z3-pVX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="504.58015267175568" y="212.67605633802819"/>
+        </scene>
+        <!--DetailViewController-->
+        <scene sceneID="86i-bF-B4G">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailViewController" referencedIdentifier="DetailViewController" id="89V-pU-05Z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wX0-75-VZA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ed-zh-l1K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1174" y="252"/>
         </scene>
     </scenes>
     <resources>

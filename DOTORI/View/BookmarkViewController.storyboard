@@ -216,8 +216,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HGq-Sh-cqP" firstAttribute="top" secondItem="l7F-sr-xfy" secondAttribute="top" constant="20" id="57v-bh-Omp"/>
+                                                <constraint firstAttribute="trailing" secondItem="h3a-7P-7tF" secondAttribute="trailing" constant="20" id="66q-U3-I9L"/>
                                                 <constraint firstAttribute="trailing" secondItem="cbr-3V-sHu" secondAttribute="trailing" constant="20" id="6Jy-xd-zDM"/>
                                                 <constraint firstAttribute="bottom" secondItem="HGq-Sh-cqP" secondAttribute="bottom" constant="20" id="Mi4-vp-Tsd"/>
+                                                <constraint firstAttribute="trailing" secondItem="T1R-PB-78w" secondAttribute="trailing" constant="20" id="lUF-wl-bcq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
