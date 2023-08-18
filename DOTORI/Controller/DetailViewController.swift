@@ -29,7 +29,6 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
         return filter[selectedIndex].reply.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("daadasdas")
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
             if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
                 let cell = filter[selectedIndex].reply[indexPath.row]
@@ -116,7 +115,7 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
         
         if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
             presentationController.detents = [
-                .large(),
+                .medium(),
             ]
             presentationController.prefersGrabberVisible = true
             presentationController.delegate = self
@@ -234,7 +233,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
                 let modifyReplyController = storyboard.instantiateViewController(withIdentifier: "modifyReplyController") as! ModifyReplyController
                 if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
                     presentationController.detents = [
-                        .large(),
+                        .medium(),
                     ]
                     presentationController.prefersGrabberVisible = true
                     presentationController.delegate = self
@@ -360,9 +359,6 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
         }
         if let title = largetitle{
             titleLabel.text = title
-            if title.contains("댓글 추가"){
-                contentTextView.becomeFirstResponder()
-            }
         }
         if let presentationController = self.presentationController as? UISheetPresentationController {
             presentationController.delegate = self
