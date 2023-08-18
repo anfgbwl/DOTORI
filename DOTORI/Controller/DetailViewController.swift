@@ -15,7 +15,7 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             let posting = filter[selectedIndex]
-            dequeuedCell.collectionImageView.image = posting.contentImage?.resized(toWidth: 240, toHeight: 140)
+            dequeuedCell.collectionImageView.image = posting.contentImage
             return dequeuedCell
         }
         else{
@@ -115,7 +115,7 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
         
         if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
             presentationController.detents = [
-                .large(),
+                .medium(),
             ]
             presentationController.prefersGrabberVisible = true
             presentationController.delegate = self
@@ -189,9 +189,9 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         isBookFilled = filter[selectedIndex].bookmark
         if !isBookFilled
         {
-            bookmarkImageView.image = UIImage(systemName: "book")
+            bookmarkImageView.image = UIImage(systemName: "bookmark")
         }else{
-            bookmarkImageView.image = UIImage(systemName: "book.fill")
+            bookmarkImageView.image = UIImage(systemName: "bookmark.fill")
         }
     }
     
@@ -225,16 +225,16 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
                 filter[selectedIndex].bookmark = isBookFilled
                 if !isBookFilled
                 {
-                    bookmarkImageView.image = UIImage(systemName: "book")
+                    bookmarkImageView.image = UIImage(systemName: "bookmark")
                 }else{
-                    bookmarkImageView.image = UIImage(systemName: "book.fill")
+                    bookmarkImageView.image = UIImage(systemName: "bookmark.fill")
                 }
             }else{
                 let storyboard = UIStoryboard(name: "DetailViewController", bundle: nil)
                 let modifyReplyController = storyboard.instantiateViewController(withIdentifier: "modifyReplyController") as! ModifyReplyController
                 if let presentationController = modifyReplyController.presentationController as? UISheetPresentationController {
                     presentationController.detents = [
-                        .large(),
+                        .medium(),
                     ]
                     presentationController.prefersGrabberVisible = true
                     presentationController.delegate = self
@@ -360,9 +360,6 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
         }
         if let title = largetitle{
             titleLabel.text = title
-            if title.contains("댓글 추가"){
-                contentTextView.becomeFirstResponder()
-            }
         }
         if let presentationController = self.presentationController as? UISheetPresentationController {
             presentationController.delegate = self
