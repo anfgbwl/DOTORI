@@ -269,11 +269,22 @@
                         <outlet property="bookmarkView" destination="Pw7-Mp-cao" id="a3X-b4-MVq"/>
                         <outlet property="emptyView" destination="uwS-9o-lvy" id="eGJ-nI-jVZ"/>
                         <outlet property="menuButton" destination="Y6x-dE-M7o" id="kQk-fb-KeY"/>
+                        <segue destination="E9F-q0-l5l" kind="show" identifier="BookmarkToDetail" id="LG0-J3-32S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="116.79389312977099" y="3.5211267605633805"/>
+        </scene>
+        <!--DetailViewController-->
+        <scene sceneID="yRF-J2-DF6">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DetailViewController" storyboardName="DetailViewController" referencedIdentifier="DetailViewController" id="E9F-q0-l5l" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qrw-qb-LCx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5S6-47-0Ug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="-85"/>
         </scene>
     </scenes>
     <resources>
