@@ -36,7 +36,7 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     }
     
     func configureUI() {
-        let uiElements: [UIView] = [updateImageView, updateUrlTextField, updateNameTextField, updateTextView, updateImageButton, updateGitHubUrlTextField, updateNicknameTextField]
+        let uiElements: [UIView] = [updateImageView, updateUrlTextField, updateNameTextField, updateTextView, updateImageButton, updateGitHubUrlTextField, updateNicknameTextField, updateCancelButton, updateCompleteButton]
         
         for element in uiElements {
             element.layer.borderWidth = 2.0

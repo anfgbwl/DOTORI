@@ -12,6 +12,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     var selectedImages: [UIImage] = []   // data에 insert할 원본 이미지
     var resizedImaged: [UIImage] = []    // 해당 VC 내에서 보여줄 리사이즈된 이미지
     var selectedCategory: String = "TIL" // default selection
+    var placeholder: String = "여기를 탭하여 입력을 시작하세요."
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,10 +41,22 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     }
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
+        var textViewContent = textView.text
+        
+        if textViewContent == placeholder {
+            // 입력이 없을 경우 글 생성하지 않고 alert
+            let alertController = UIAlertController(title: "", message: "내용을 입력해주세요.", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            
+            return // 게시글을 생성하지 않고 종료
+        }
+        
         let newPosting = PostingInfo(
-            user: user5,
+            user: user1,
             category: selectedCategory,
-            content: textView.text,
+            content: textViewContent ?? "",
             createTime: Date(),
             updateTime: Date(),
             contentImage: selectedImages.first,
@@ -57,7 +70,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
         data.insert(newPosting, at: 0)
         
         // 포스트 완료 alert
-        let alertController = UIAlertController(title: "", message: "게시글을 작성했습니다.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: "게시글이 작성되었습니다.", preferredStyle: .alert)
                 
         present(alertController, animated: true, completion: nil)
 
@@ -92,7 +105,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     private func configTextView() {
         textView.delegate = self
-        textView.text = "여기를 탭하여 입력을 시작하세요."
+        textView.text = placeholder
         textView.textColor = UIColor.lightGray
     }
     
@@ -152,7 +165,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     }
     
     private func initAll() {
-        textView.text = "여기를 탭하여 입력을 시작하세요."
+        textView.text = placeholder
         textView.textColor = UIColor.lightGray
         resizedImaged.removeAll()
         collectionView.reloadData()
@@ -176,7 +189,7 @@ extension CreateViewController: UICollectionViewDataSource, UICollectionViewDele
 extension CreateViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "여기를 탭하여 입력을 시작하세요."
+            textView.text = placeholder
             textView.textColor = UIColor.lightGray
         }
     }
@@ -184,7 +197,11 @@ extension CreateViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            if self.traitCollection.userInterfaceStyle == .dark {
+                textView.textColor = UIColor.white
+            } else {
+                textView.textColor = UIColor.black
+            }
         }
     }
 }

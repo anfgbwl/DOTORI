@@ -46,13 +46,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-GN-odt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-GN-odt">
                                 <rect key="frame" x="0.0" y="218" width="393" height="551"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostingCell" focusStyle="custom" rowHeight="307" id="HoD-Tb-Evb" customClass="MyPostingTableViewCell" customModule="DOTORI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="307"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostingCell" rowHeight="307" id="HoD-Tb-Evb" customClass="MyPostingTableViewCell" customModule="DOTORI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="307"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HoD-Tb-Evb" id="xew-dN-gXF">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="307"/>
@@ -177,7 +176,7 @@
                                                                             <rect key="frame" x="236" y="0.0" width="47" height="34.333333333333336"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9b-pu-ulF">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="86d-8T-YGk"/>
                                                                                     </constraints>
@@ -187,7 +186,7 @@
                                                                                     </buttonConfiguration>
                                                                                 </button>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-ko-6eF">
-                                                                                    <rect key="frame" x="22" y="0.0" width="25" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="25" y="0.0" width="22" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="1f6-XO-NRq"/>
                                                                                     </constraints>
@@ -225,7 +224,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="bookmarkButton" destination="x9b-pu-ulF" id="NVU-cx-J9X"/>
                                             <outlet property="content" destination="6Uv-ku-odw" id="qJf-tI-WVG"/>
@@ -379,11 +378,25 @@
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="VUK-L2-w4K"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xNi-Pq-Gly">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="Xke-2n-ssH">
-                            <color key="tintColor" systemColor="labelColor"/>
-                            <connections>
-                                <action selector="mySetting:" destination="nxR-ER-5tf" id="6x7-an-FrD"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Y5P-0W-2Ii">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nt8-I8-s6F">
+                                <rect key="frame" x="350" y="8.6666666666666661" width="27" height="26.666666666666671"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <menu key="menu" id="6aU-iu-ojx">
+                                    <children>
+                                        <command title="Item 1" id="uJv-Ph-SkN"/>
+                                        <command title="Item 2" id="aei-y1-KkB"/>
+                                    </children>
+                                </menu>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="mySetting:" destination="nxR-ER-5tf" eventType="touchUpInside" id="Ef0-0Z-s6T"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -392,7 +405,7 @@
                         <outlet property="blogUrl" destination="ppC-Xq-8Zn" id="Kjm-Qx-dwg"/>
                         <outlet property="github" destination="8Iv-wz-0Pc" id="asS-6q-X3e"/>
                         <outlet property="githubUrl" destination="HYx-Id-mQK" id="Ygl-Eb-9VY"/>
-                        <outlet property="mySetting" destination="Xke-2n-ssH" id="nrE-Jr-Pt3"/>
+                        <outlet property="mySetting" destination="nt8-I8-s6F" id="zcJ-gm-HaX"/>
                         <outlet property="name" destination="mLe-pu-Z0H" id="YUo-K8-qGN"/>
                         <outlet property="posting" destination="bfc-e2-Ice" id="Uvy-Lj-FLK"/>
                         <outlet property="postingCount" destination="l3h-2x-eoV" id="laq-YI-ssf"/>

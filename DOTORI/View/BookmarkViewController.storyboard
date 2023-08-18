@@ -55,7 +55,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pw7-Mp-cao">
-                                <rect key="frame" x="0.0" y="103" width="393" height="655"/>
+                                <rect key="frame" x="0.0" y="98" width="393" height="675"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -152,10 +152,10 @@
                                                                             <rect key="frame" x="0.0" y="121" width="283" height="25"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="gfi-VM-isn">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="41" height="25"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="25"/>
                                                                                     <subviews>
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jg-ru-2qW">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="18" height="25"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="25" id="3ZF-sE-h2m"/>
                                                                                                 <constraint firstAttribute="height" constant="25" id="4ls-z2-y7O"/>
@@ -166,7 +166,7 @@
                                                                                             </buttonConfiguration>
                                                                                         </button>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgT-Td-uqp">
-                                                                                            <rect key="frame" x="26" y="0.0" width="15" height="25"/>
+                                                                                            <rect key="frame" x="19" y="0.0" width="15" height="25"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="15" id="yWx-At-bie"/>
                                                                                             </constraints>
@@ -177,10 +177,10 @@
                                                                                     </subviews>
                                                                                 </stackView>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="00e-Xd-Njj">
-                                                                                    <rect key="frame" x="243" y="0.0" width="40" height="25"/>
+                                                                                    <rect key="frame" x="236" y="0.0" width="47" height="25"/>
                                                                                     <subviews>
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-6T-AUI">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="18" height="25"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="25" id="uAe-QL-Cwi"/>
                                                                                             </constraints>
@@ -190,7 +190,7 @@
                                                                                             </buttonConfiguration>
                                                                                         </button>
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-7P-7tF">
-                                                                                            <rect key="frame" x="20" y="0.0" width="20" height="25"/>
+                                                                                            <rect key="frame" x="27" y="0.0" width="20" height="25"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="20" id="Aqr-YI-LSh"/>
                                                                                                 <constraint firstAttribute="height" constant="20" id="Lcg-mp-WeQ"/>
@@ -246,21 +246,17 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" id="KYY-kg-O7P"/>
-                    <navigationItem key="navigationItem" id="lXU-wv-eQO">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="lXU-wv-eQO">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Fdi-nH-DbM">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="Y6x-dE-M7o">
-                                <rect key="frame" x="16" y="0.0" width="201" height="44"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="Y6x-dE-M7o">
+                                <rect key="frame" x="16" y="1" width="121" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="Ifl-Dj-DZZ">
-                                    <children>
-                                        <command title="Item 1" id="S5p-gW-sCB"/>
-                                        <command title="Item 2" id="iKC-Oc-frO"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="button" image="logo"/>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -291,7 +287,6 @@
         <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="cute" width="200" height="200"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
-        <image name="logo" width="138" height="38"/>
         <image name="message" catalog="system" width="128" height="116"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">
@@ -299,9 +294,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
