@@ -20,12 +20,14 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var postingSetting: UIButton!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var replyCount: UILabel!
     
     @IBAction func shareButton(_ sender: Any) {
         shareButtonTapped?()
     }
     
     func setupUI(posting: PostingInfo) {
+        replyCount.text = String(posting.reply.count)
         profileImage.image = posting.user.profileImage ?? UIImage(named: "defaultProfileImage")
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
