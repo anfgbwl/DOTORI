@@ -9,6 +9,7 @@ import UIKit
 
 class BookmarkViewController: UIViewController {
     var selectedIndex : Int?
+    var key : String = "전체"
     var bookmarkFilter :[ PostingInfo ] = []
     var bookmarkFilterindex : [Int] = []
     @IBOutlet weak var emptyView: UIView!
@@ -35,16 +36,18 @@ class BookmarkViewController: UIViewController {
                 bookmarkFilterindex.append(i)
             }
         }
+        key = category
+        self.menuButton.setTitle("도토리묵", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         UpdateBookmark()
-        if self.menuButton.currentTitle! == "전체" {
+        if self.key == "전체" {
             bookmarkFilter = bookmark
             bookmarkFilterindex = bookmarkindex
         }
         else{
-            UpdatebookmarkFilter(self.menuButton.currentTitle!)
+            UpdatebookmarkFilter(self.key)
         }
         if bookmark.count == 0 {
             bookmarkView.isHidden = true
@@ -63,6 +66,7 @@ class BookmarkViewController: UIViewController {
         let all = UIAction(title: "전체", handler: { [self] _ in
             bookmarkFilter = bookmark
             bookmarkFilterindex = bookmarkindex
+            menuButton.setTitle("도토리묵", for: .normal)
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { [self] _ in
@@ -83,6 +87,8 @@ class BookmarkViewController: UIViewController {
         })
         let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
         menuButton.menu = menu
+        menuButton.setTitle("도토리묵", for: .normal)
+        menuButton.titleLabel?.font = UIFont(name: "JejuHallasanOTF", size: 30)
     }
 }
 extension BookmarkViewController : UITableViewDelegate, UITableViewDataSource {
