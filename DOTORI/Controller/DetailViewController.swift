@@ -43,7 +43,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.translatesAutoresizingMaskIntoConstraints = true
-        isBookFilled = filter[selectedIndex].bookmark
+        isBookFilled = data[selectedIndex].bookmark
         loadUserProfileInfo()
         setUIEvents()
         setBookmarkFillInfo()
@@ -70,8 +70,8 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
     
     func loadUserProfileInfo(){
-        let user = filter[selectedIndex].user
-        let posting = filter[selectedIndex]
+        let user = data[selectedIndex].user
+        let posting = data[selectedIndex]
         profileImageView.image = user.profileImage
         nameLabel.text = user.name
         nicknameLabel.text = user.nickname
@@ -107,13 +107,13 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
     
     func didTextUpdated(updateTime: Date, content: String, index: Int) {
-        filter[self.selectedIndex].reply[index].content = content
-        filter[self.selectedIndex].reply[index].updateTime = updateTime
+        data[self.selectedIndex].reply[index].content = content
+        data[self.selectedIndex].reply[index].updateTime = updateTime
         replyTableView.reloadData()
     }
     func didTextCreated(createTime: Date, content: String) {
         let additionalReplyInfo = ReplyInfo(user: user5, content:content, createTime: createTime, updateTime: Date())
-        filter[selectedIndex].reply.append(additionalReplyInfo)
+        data[selectedIndex].reply.append(additionalReplyInfo)
         replyInputTextField.resignFirstResponder()
         replyTableView.reloadData()
     }
@@ -134,7 +134,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
             } else if imageView == bookmarkImageView {
                 isBookFilled = !isBookFilled
                 setBookmarkFillInfo()
-                filter[selectedIndex].bookmark = isBookFilled
+                data[selectedIndex].bookmark = isBookFilled
                 
             }else{
                 createNextPresentationController(nextVCType: .create, content : "")
@@ -150,7 +150,7 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
-            let posting = filter[selectedIndex]
+            let posting = data[selectedIndex]
             dequeuedCell.collectionImageView.image = posting.contentImage
             return dequeuedCell
         }
@@ -162,12 +162,12 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
 
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filter[selectedIndex].reply.count
+        return data[selectedIndex].reply.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
-            if selectedIndex < filter.count && indexPath.row < filter[selectedIndex].reply.count {
-                let cell = filter[selectedIndex].reply[indexPath.row]
+            if selectedIndex < data.count && indexPath.row < data[selectedIndex].reply.count {
+                let cell = data[selectedIndex].reply[indexPath.row]
                 dequeuedCell.createdLabel.text = cell.updateTime.GetCurrentTime(format :  "yyyy-MM-dd HH:mm:ss") // 차후 업데이트시 "몇분전, 1일전 이런식으로 할지 수정"
                 dequeuedCell.nameLabel.text = cell.user.name
                 dequeuedCell.nicknameLabel.text = cell.user.nickname
@@ -188,7 +188,7 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                 
                 let confirmAction = UIAlertAction(title: "확인", style: .destructive) {  _ in
                     let index = indexPath.row
-                    filter[self.selectedIndex].reply.remove(at: index)
+                    data[self.selectedIndex].reply.remove(at: index)
                     self.replyTableView.reloadData()
                 }
                 alertController.addAction(confirmAction)

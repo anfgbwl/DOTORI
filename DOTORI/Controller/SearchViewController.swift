@@ -13,6 +13,10 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchTableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.searchTextField.addTarget(self, action: #selector(TextChange), for: .editingChanged)
@@ -20,11 +24,11 @@ class SearchViewController: UIViewController {
     }
     @objc func TextChange(_ sender : UISearchTextField) {
         search = []
-        indexlist = []
+        searchindex = []
         for i in 0..<data.count {
             if data[i].content.contains(sender.text!) || data[i].user.name.contains(sender.text!) {
                 search.append(data[i])
-                indexlist.append(i)
+                searchindex.append(i)
             }
         }
         searchTableView.reloadData()
@@ -56,7 +60,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexlist[indexPath.row]
+        selectedIndex = searchindex[indexPath.row]
         performSegue(withIdentifier: "SearchToDetail", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
