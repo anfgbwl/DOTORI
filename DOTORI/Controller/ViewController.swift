@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    var key : String = "전체"
     func resetfilterindex () { // filterindex를 전체 dataindex로 초기화하는 함수
         for i in 0..<data.count {
             filterindex.append(i)
@@ -24,14 +25,16 @@ class ViewController: UIViewController {
                 filter.append(data[i])
             }
         }
+        self.key = category
+        self.menuButton.setTitle("도토리묵", for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
-        if self.menuButton.currentTitle! == "전체" {
+        if self.key == "전체" {
             filter = data
             self.resetfilterindex()
         }
         else {
-            UpdateFilter(self.menuButton.currentTitle!)
+            UpdateFilter(self.key)
         }
         mainTableView.reloadData()
     }
@@ -41,7 +44,9 @@ class ViewController: UIViewController {
         resetfilterindex()
         // Do any additional setup after loading the view.
         let all = UIAction(title: "전체", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = data
+            self.key = "전체"
             self.resetfilterindex()
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
@@ -63,6 +68,8 @@ class ViewController: UIViewController {
         })
         let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
         menuButton.menu = menu
+        menuButton.setTitle("도토리묵", for: .normal)
+        menuButton.titleLabel?.font = UIFont(name: "JejuHallasanOTF", size: 30)
     }
     var selectedIndex : Int?
 }
