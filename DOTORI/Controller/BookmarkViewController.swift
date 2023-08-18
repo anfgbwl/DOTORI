@@ -8,6 +8,7 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
+    var selectedIndex : Int?
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var bookmarkView: UITableView!
@@ -101,6 +102,15 @@ extension BookmarkViewController : UITableViewDelegate, UITableViewDataSource {
         self.bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         self.viewWillAppear(true)
     }
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "BookmarkToDetail", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "BookmarkToDetail" {
+            if let destinationVC = segue.destination as? DetailViewController {
+                destinationVC.selectedIndex = selectedIndex!
+            }
+        }
+    }
 }
