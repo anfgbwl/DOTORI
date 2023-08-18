@@ -33,6 +33,8 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
         nickname.text = posting.user.nickname
         createTime.text = posting.createTime.GetCurrentTime(format: "YYYY-MM-dd")
         content.text = posting.content
+        content.textContainerInset = UIEdgeInsets.zero
+        content.textContainer.lineFragmentPadding = 0
         contentImage.image = posting.contentImage ?? nil
         contentImage.layer.cornerRadius = 10
         contentImage.clipsToBounds = true
