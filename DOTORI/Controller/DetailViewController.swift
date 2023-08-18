@@ -36,27 +36,39 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     @IBOutlet weak var replyTableView: UITableView! // 맨밑 테이블뷰
     @IBOutlet weak var replyInputTextField: UITextField! //댓글 입력 키보드 텍스트필드
     
+    @IBOutlet weak var contentImageView: UIImageView!
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.translatesAutoresizingMaskIntoConstraints = true
-        isBookFilled = data[selectedIndex].bookmark
+        isBookFilled = filter[selectedIndex].bookmark
         loadUserProfileInfo()
         setUIEvents()
         setBookmarkFillInfo()
         setUIConfig()
+        
+        let posting = filter[selectedIndex]
+        if let image = posting.contentImage{
+            contentImageView.image =  posting.contentImage
+          
+        }else{
+            contentImageView.isHidden = true
+            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        
     }
     func setUIEvents(){
-        imageCollectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
-        
         replyTableView.register(PostingTableViewCell.self, forCellReuseIdentifier: "PosingTableViewCell")
         replyTableView.dataSource = self
         replyTableView.delegate = self
+        
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
+        textView.sizeToFit() // 초기 크기 조정
+        
         
         addTapGestureToImageView(shareImageView)
         addTapGestureToImageView(bookmarkImageView)
@@ -67,6 +79,9 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
     func setUIConfig(){
         profileImageView.setImageRoundRadius()
+        
+        contentImageView.layer.cornerRadius = 10
+        contentImageView.clipsToBounds = true
     }
     
     func loadUserProfileInfo(){
@@ -164,6 +179,7 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[selectedIndex].reply.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
             if selectedIndex < data.count && indexPath.row < data[selectedIndex].reply.count {
@@ -266,6 +282,8 @@ class PostingTableViewCell : UITableViewCell
         profileImageView.isUserInteractionEnabled = true
         
         profileImageView.setImageRoundRadius()
+        contentTextView.sizeToFit()
+        contentTextView.isScrollEnabled = false
     }
     
     @objc func profileImageTapped() {
