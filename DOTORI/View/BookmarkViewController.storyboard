@@ -108,7 +108,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-PB-78w">
                                                                     <rect key="frame" x="0.0" y="27" width="283" height="270"/>
                                                                     <subviews>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-iL-ExE">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a1H-iL-ExE">
                                                                             <rect key="frame" x="0.0" y="0.0" width="283" height="134"/>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>

@@ -41,7 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="407" id="wYW-uS-dBE" customClass="CustomTableViewCell" customModule="DOTORI" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="407" id="wYW-uS-dBE" customClass="CustomTableViewCell" customModule="DOTORI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="366" height="407"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wYW-uS-dBE" id="zYW-sK-5vd">
@@ -109,7 +109,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Wqn-TY-qBI">
                                                                     <rect key="frame" x="0.0" y="27" width="283" height="270"/>
                                                                     <subviews>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-jI-RNw">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-jI-RNw">
                                                                             <rect key="frame" x="0.0" y="0.0" width="283" height="134"/>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
