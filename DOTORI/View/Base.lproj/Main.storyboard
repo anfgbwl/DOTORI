@@ -206,7 +206,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="v1I-hh-6Hy" secondAttribute="trailing" constant="20" id="0f5-99-5FS"/>
                                                 <constraint firstItem="DgW-en-CcO" firstAttribute="top" secondItem="zYW-sK-5vd" secondAttribute="top" constant="20" id="2F5-ai-Omo"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wqn-TY-qBI" secondAttribute="trailing" constant="20" id="3BB-gb-eiZ"/>
                                                 <constraint firstItem="DgW-en-CcO" firstAttribute="leading" secondItem="zYW-sK-5vd" secondAttribute="leading" constant="3" id="Fg8-Cs-nqT"/>
                                                 <constraint firstAttribute="bottom" secondItem="DgW-en-CcO" secondAttribute="bottom" constant="20" id="dwM-Rt-hxa"/>
                                                 <constraint firstAttribute="trailing" secondItem="lRO-5l-SJC" secondAttribute="trailing" constant="20" id="qvp-uS-iH9"/>
@@ -243,7 +245,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="eJl-QM-b02">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nva-S4-UfE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
                                 <rect key="frame" x="16" y="3" width="201" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <menu key="menu" id="Vqp-GT-Iv3">

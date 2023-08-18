@@ -39,3 +39,4 @@ var reply10 = ReplyInfo(user: user5, content: "우주 최강 고양이😻", cre
 var data = [posting1, posting2, posting3, posting4, posting5, posting6, posting7, posting8, posting9, posting10]
 var filter : [PostingInfo] = []
 var indexlist : [Int] = []
+var search : [PostingInfo] = []
