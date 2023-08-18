@@ -237,7 +237,7 @@
                                         <command title="Item 2" id="tEQ-f0-OZa"/>
                                     </children>
                                 </menu>
-                                <state key="normal" title="button" image="dotoriResize"/>
+                                <state key="normal" title="button" image="logo"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -330,9 +330,9 @@
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
-        <image name="dotoriResize" width="153" height="26"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="logo" width="138" height="38"/>
         <image name="message" catalog="system" width="128" height="116"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
