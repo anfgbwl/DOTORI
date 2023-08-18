@@ -233,7 +233,7 @@
                     <navigationItem key="navigationItem" id="lXU-wv-eQO">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Fdi-nH-DbM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="Y6x-dE-M7o">
-                                <rect key="frame" x="16" y="0.0" width="220" height="44"/>
+                                <rect key="frame" x="16" y="0.0" width="201" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <menu key="menu" id="Ifl-Dj-DZZ">
                                     <children>

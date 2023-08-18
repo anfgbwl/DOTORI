@@ -94,12 +94,12 @@ extension BookmarkViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     @objc func bookmarkChange (_ sender : UIButton){
-
         if filter[sender.tag].bookmark == true {
             filter[sender.tag].bookmark = false
         }
         filter.remove(at: sender.tag)
         self.bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
+        self.viewWillAppear(true)
     }
     
     
