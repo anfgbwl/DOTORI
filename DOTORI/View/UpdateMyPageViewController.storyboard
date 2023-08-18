@@ -64,21 +64,21 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-2b-jaX">
-                                        <rect key="frame" x="151.66666666666666" y="210" width="90" height="35"/>
+                                        <rect key="frame" x="156.66666666666666" y="210" width="80" height="30"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="qU8-Jk-kQn"/>
-                                            <constraint firstAttribute="width" constant="90" id="x2E-MY-7ym"/>
+                                            <constraint firstAttribute="height" constant="30" id="qU8-Jk-kQn"/>
+                                            <constraint firstAttribute="width" constant="80" id="x2E-MY-7ym"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="사진 등록"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="사진 등록"/>
                                         <connections>
                                             <action selector="imageButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sc9-37-oId"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyZ-lx-zpY">
-                                        <rect key="frame" x="10" y="255" width="373" height="3"/>
+                                        <rect key="frame" x="10" y="250" width="373" height="3"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="3" id="TMX-MB-dx5"/>
@@ -88,13 +88,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bN-tA-oa9">
-                                        <rect key="frame" x="179.66666666666666" y="268" width="33.666666666666657" height="20.333333333333314"/>
+                                        <rect key="frame" x="179.66666666666666" y="263" width="33.666666666666657" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름을 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-ME-WUh">
-                                        <rect key="frame" x="126.66666666666669" y="298.33333333333331" width="140" height="40"/>
+                                        <rect key="frame" x="126.66666666666669" y="293.33333333333331" width="140" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="78a-By-yKW"/>
@@ -104,13 +104,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉 네 임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-kD-LX2">
-                                        <rect key="frame" x="170.33333333333334" y="348.33333333333331" width="52.333333333333343" height="20.333333333333314"/>
+                                        <rect key="frame" x="170.33333333333334" y="343.33333333333331" width="52.333333333333343" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqi-f6-hkR">
-                                        <rect key="frame" x="126.66666666666669" y="378.66666666666669" width="140" height="40"/>
+                                        <rect key="frame" x="126.66666666666669" y="373.66666666666669" width="140" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="S68-sY-E5q"/>
@@ -120,13 +120,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="블로그 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEf-Jj-MqG">
-                                        <rect key="frame" x="157.66666666666666" y="428.66666666666669" width="77.666666666666657" height="20.333333333333314"/>
+                                        <rect key="frame" x="157.66666666666666" y="423.66666666666669" width="77.666666666666657" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="블로그 주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-p1-rJQ">
-                                        <rect key="frame" x="71.666666666666686" y="459" width="250" height="40"/>
+                                        <rect key="frame" x="71.666666666666686" y="454" width="250" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="HVz-v7-10e"/>
@@ -137,13 +137,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="깃허브 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-is-Em3">
-                                        <rect key="frame" x="157.66666666666666" y="508.99999999999994" width="77.666666666666657" height="20.333333333333314"/>
+                                        <rect key="frame" x="157.66666666666666" y="503.99999999999994" width="77.666666666666657" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="깃허브 주소를 적어주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kka-en-eNZ">
-                                        <rect key="frame" x="71.666666666666686" y="539.33333333333337" width="250" height="40"/>
+                                        <rect key="frame" x="71.666666666666686" y="534.33333333333337" width="250" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mcX-g7-2DS"/>
@@ -154,13 +154,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자 기 소 개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHU-x4-EqA">
-                                        <rect key="frame" x="161" y="589.33333333333337" width="71" height="20.333333333333371"/>
+                                        <rect key="frame" x="161" y="584.33333333333337" width="71" height="20.333333333333371"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LQ-MW-vqN">
-                                        <rect key="frame" x="10" y="619.66666666666663" width="373" height="129.33333333333337"/>
+                                        <rect key="frame" x="10" y="614.66666666666663" width="373" height="134.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
