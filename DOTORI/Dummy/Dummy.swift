@@ -45,3 +45,4 @@ var bookmark : [PostingInfo] = []
 var bookmarkindex : [Int] = []
 
 var indexlist : [Int] = []
+var loginUser = user1
