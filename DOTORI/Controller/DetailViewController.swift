@@ -34,21 +34,21 @@ class DetailViewController: UIViewController, ModifyTextDelegate, UIScrollViewDe
     @IBOutlet weak var replyTableView: UITableView! // 맨밑 테이블뷰
     @IBOutlet weak var replyInputTextField: UITextField! //댓글 입력 키보드 텍스트필드
     
-//    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var contentImageView: UIImageView!
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
 //    let screenHeight = UIScreen.main.bounds.height
-//    let scrollViewContentHeight = 1200 as CGFloat
+    let scrollViewContentHeight = 1000 as CGFloat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 2000)
-//        scrollView.contentSize = CGSizeMake(scrollView.frame.width, scrollViewContentHeight)
-//        scrollView.delegate = self
-//        scrollView.bounces = false
+//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 100)
+        scrollView.contentSize = CGSizeMake(scrollView.frame.width, scrollViewContentHeight)
+        scrollView.delegate = self
+        scrollView.bounces = false
 //        replyTableView.estimatedRowHeight = 100 // 예상 셀 높이
 //        replyTableView.rowHeight = UITableView.automaticDimension // 동적 셀 높이
 
