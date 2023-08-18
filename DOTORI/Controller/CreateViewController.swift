@@ -26,10 +26,10 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
     
     @IBAction func backHomeButtonTapped(_ sender: UIButton) {
         // 글 작성 취소 alert
-        let alertController = UIAlertController(title: "글 작성 취소", message: "게시글 작성을 취소하시겠습니까?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: "작성을 취소하시겠습니까?", preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-            
+        alertController.addAction(UIAlertAction(title: "유지", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "작성 취소", style: .destructive, handler: { _ in
             // 메인화면으로 이동
             if let tabBarController = self.tabBarController {
                 tabBarController.selectedIndex = 0
@@ -57,15 +57,16 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
         data.insert(newPosting, at: 0)
         
         // 포스트 완료 alert
-        let alertController = UIAlertController(title: "글 작성 완료", message: "새 게시글이 작성되었습니다.", preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-            if let tabBarController = self.tabBarController {
-                tabBarController.selectedIndex = 0
-            }
-        }))
-        
+        let alertController = UIAlertController(title: "", message: "게시글을 작성했습니다.", preferredStyle: .alert)
+                
         present(alertController, animated: true, completion: nil)
+
+        // 1초 후에 홈화면으로 이동
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.tabBarController?.selectedIndex = 0
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
         initAll()
         // print("새 글 테스트: \(newPosting.category), \(newPosting.content), \(newPosting.contentImage)")
     }
