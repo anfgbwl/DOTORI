@@ -10,69 +10,55 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
-    func resetindex () {
+    func resetfilterindex () { // filterindex를 전체 dataindex로 초기화하는 함수
         for i in 0..<data.count {
-            indexlist.append(i)
+            filterindex.append(i)
+        }
+    }
+    func UpdateFilter (_ category : String) { // filter를 전체 data로 초기화하는 함수
+        filter = []
+        filterindex = []
+        for i in 0..<data.count{
+            if data[i].category == category{
+                filterindex.append(i)
+                filter.append(data[i])
+            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        filter = data
-        resetindex()
+        if self.menuButton.currentTitle! == "전체" {
+            filter = data
+            self.resetfilterindex()
+        }
+        else {
+            UpdateFilter(self.menuButton.currentTitle!)
+        }
         mainTableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         filter = data
-        resetindex()
+        resetfilterindex()
         // Do any additional setup after loading the view.
-        //더미데이터들
         let all = UIAction(title: "전체", handler: { _ in
             filter = data
-            self.resetindex()
+            self.resetfilterindex()
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { _ in
-            filter = []
-            indexlist.removeAll()
-            for i in 0..<data.count{
-                if data[i].category == "잡담"{
-                    indexlist.append(i)
-                    filter.append(data[i])
-                }
-            }
+            self.UpdateFilter("잡담")
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let til = UIAction(title: "TIL", handler: { _ in
-            filter = []
-            indexlist.removeAll()
-            for i in 0..<data.count{
-                if data[i].category == "TIL"{
-                    indexlist.append(i)
-                    filter.append(data[i])
-                }
-            }
+            self.UpdateFilter("TIL")
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let cat = UIAction(title: "고양이방", handler: { _ in
-            filter = []
-            indexlist.removeAll()
-            for i in 0..<data.count{
-                if data[i].category == "고양이방"{
-                    indexlist.append(i)
-                    filter.append(data[i])
-                }
-            }
+            self.UpdateFilter("고양이방")
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let qna = UIAction(title: "질문", handler: { _ in
-            filter = []
-            indexlist.removeAll()
-            for i in 0..<data.count{
-                if data[i].category == "질문"{
-                    indexlist.append(i)
-                    filter.append(data[i])
-                }
-            }
+            self.UpdateFilter("질문")
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
@@ -93,9 +79,9 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
         let delete = UIAction(title: "게시물 삭제", handler: { _ in
-            data.remove(at: indexlist[indexPath.row])
+            data.remove(at: filterindex[indexPath.row])
             filter.remove(at: indexPath.row)
-            indexlist.remove(at: indexPath.row)
+            filterindex.remove(at: indexPath.row)
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let menu = UIMenu(title: "", children: [delete])
@@ -113,7 +99,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀 선택시 함수
-        selectedIndex = indexPath.row
+        selectedIndex = filterindex[indexPath.row]
         performSegue(withIdentifier: "HomeToDetail", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
