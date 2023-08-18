@@ -8,6 +8,7 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var bookmarkView: UITableView!
     func MakeFilterBookmark () {
@@ -19,8 +20,13 @@ class BookmarkViewController: UIViewController {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        
         MakeFilterBookmark()
+        if filter.count == 0 {
+            bookmarkView.isHidden = true
+        }
+        else {
+            bookmarkView.isHidden = false
+        }
         bookmarkView.reloadData()
     }
     override func viewDidLoad() {
