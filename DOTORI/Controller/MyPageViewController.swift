@@ -16,7 +16,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
     
-    @IBOutlet weak var mySetting: UIBarButtonItem!
+    @IBOutlet weak var mySetting: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var userIntro: UILabel!
@@ -28,9 +28,9 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var githubUrl: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    
-    @IBAction func mySetting(_ sender: UIBarButtonItem) {
+    @IBAction func mySetting(_ sender: UIButton) {
         print("버튼 클릭: mySetting")
+        
     }
     
     @IBAction func blogUrl(_ sender: UIButton) {
@@ -54,6 +54,14 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let lightMode = UIAction(title: "라이트모드", image: UIImage(systemName: "lightbulb"), handler: { _ in
+            self.view.window?.overrideUserInterfaceStyle = .light
+        })
+        let darkMode = UIAction(title: "다크모드", image: UIImage(systemName: "lightbulb.fill"), handler: { _ in
+            self.view.window?.overrideUserInterfaceStyle = .dark
+        })
+        let settingMenu = UIMenu(title: "", children: [lightMode, darkMode])
+        mySetting.menu = settingMenu
         if let text = selectedUserName { name.text = text }
         for i in 0..<data.count {
             if data[i].user.name == user1.name {
@@ -132,7 +140,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         cell.shareButtonTapped = { [weak self] in
             self?.handleShareButtonTap()
         }
-        let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: { _ in
+        let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
             data.remove(at: self.indexlist[indexPath.row])
             self.myPostings.remove(at: indexPath.row)
             self.indexlist.remove(at: indexPath.row)
