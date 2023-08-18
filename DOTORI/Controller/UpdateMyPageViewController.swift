@@ -36,32 +36,16 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     }
     
     func configureUI() {
+        let uiElements: [UIView] = [updateImageView, updateUrlTextField, updateNameTextField, updateTextView, updateImageButton, updateGitHubUrlTextField, updateNicknameTextField]
+        
+        for element in uiElements {
+            element.layer.borderWidth = 2.0
+            element.layer.borderColor = UIColor.gray.cgColor
+            element.layer.cornerRadius = 8.0
+        }
+        
         updateImageView.layer.cornerRadius = updateImageView.frame.size.width / 2
         updateImageView.clipsToBounds = true
-        
-        updateUrlTextField.layer.borderWidth = 2.0
-        updateUrlTextField.layer.borderColor = UIColor.gray.cgColor
-        updateUrlTextField.layer.cornerRadius = 8.0
-        
-        updateGitHubUrlTextField.layer.borderWidth = 2.0
-        updateGitHubUrlTextField.layer.borderColor = UIColor.gray.cgColor
-        updateGitHubUrlTextField.layer.cornerRadius = 8.0
-        
-        updateNameTextField.layer.borderWidth = 2.0
-        updateNameTextField.layer.borderColor = UIColor.gray.cgColor
-        updateNameTextField.layer.cornerRadius = 8.0
-        
-        updateNicknameTextField.layer.borderWidth = 2.0
-        updateNicknameTextField.layer.borderColor = UIColor.gray.cgColor
-        updateNicknameTextField.layer.cornerRadius = 8.0
-        
-        updateImageButton.layer.borderWidth = 2.0
-        updateImageButton.layer.borderColor = UIColor.gray.cgColor
-        updateImageButton.layer.cornerRadius = 8.0
-        
-        updateTextView.layer.borderWidth = 2.0
-        updateTextView.layer.borderColor = UIColor.gray.cgColor
-        updateTextView.layer.cornerRadius = 8.0
     }
     
     func defaultUserInfo() {
