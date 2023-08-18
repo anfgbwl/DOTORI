@@ -126,7 +126,7 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
             }
         }
     }
-
+    
     func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
