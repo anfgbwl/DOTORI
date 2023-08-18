@@ -24,6 +24,8 @@ class CustomTableViewCell: UITableViewCell, UITextViewDelegate {
         profile_nickname.text = posting.user.nickname
         posting_time.text = posting.createTime.GetCurrentTime(format: "YYYY-MM-dd")
         posting_content.text = posting.content
+        posting_content.textContainerInset = UIEdgeInsets.zero
+        posting_content.textContainer.lineFragmentPadding = 0
         posting_contentimage.image = posting.contentImage
         posting_contentimage.layer.cornerRadius = 10
         posting_contentimage.clipsToBounds = true
