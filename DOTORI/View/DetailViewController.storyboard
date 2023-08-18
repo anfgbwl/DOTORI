@@ -34,7 +34,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-xJ-hB8">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-xJ-hB8">
                                                 <rect key="frame" x="0.0" y="30" width="373" height="218"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
@@ -46,8 +46,11 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RzS-sw-VI0">
-                                                                    <rect key="frame" x="8" y="66.333333333333329" width="377" height="55.666666666666671"/>
+                                                                    <rect key="frame" x="8" y="66.333333333333314" width="377" height="72.666666666666686"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="fzZ-Di-A2J"/>
+                                                                    </constraints>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <color key="textColor" systemColor="labelColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -114,7 +117,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="SAP-i1-FsN" secondAttribute="trailing" constant="10" id="YMb-cB-I9c"/>
                                                                 <constraint firstItem="SAP-i1-FsN" firstAttribute="leading" secondItem="Qlw-0b-hQX" secondAttribute="leading" constant="10" id="goE-Pa-cd6"/>
                                                                 <constraint firstItem="RzS-sw-VI0" firstAttribute="leading" secondItem="Qlw-0b-hQX" secondAttribute="leadingMargin" constant="-12" id="ieV-Ce-Vo8"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="RzS-sw-VI0" secondAttribute="bottom" constant="27" id="lL5-Sf-TO2"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="RzS-sw-VI0" secondAttribute="bottom" constant="10" id="lL5-Sf-TO2"/>
                                                                 <constraint firstItem="RzS-sw-VI0" firstAttribute="top" secondItem="SAP-i1-FsN" secondAttribute="bottom" constant="10" id="nm9-p4-Fo5"/>
                                                                 <constraint firstItem="SAP-i1-FsN" firstAttribute="top" secondItem="Qlw-0b-hQX" secondAttribute="top" constant="10" id="t2N-p3-Lep"/>
                                                             </constraints>

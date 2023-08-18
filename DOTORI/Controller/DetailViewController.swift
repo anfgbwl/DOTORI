@@ -42,7 +42,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.translatesAutoresizingMaskIntoConstraints = true
         isBookFilled = filter[selectedIndex].bookmark
         loadUserProfileInfo()
         setUIEvents()
@@ -214,9 +214,6 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
         } else {
             return UITableViewCell()
         }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
     }
 }
 extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
