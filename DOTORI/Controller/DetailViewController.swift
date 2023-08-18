@@ -172,6 +172,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         replyInputTextField.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = true
         
+        imageCollectionView.backgroundColor = .white
         
         //처음 프로필 설정하는부분..
         let user = filter[selectedIndex].user
@@ -303,7 +304,7 @@ class PostingTableViewCell : UITableViewCell
     }
 }
 extension UIImage {
-    func resized(toWidth width: CGFloat, toHeight height : CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(toWidth width: CGFloat, toHeight height : CGFloat, isOpaque: Bool = false) -> UIImage? {
         let canvas = CGSize(width: width, height: height)
         let format = imageRendererFormat
         format.opaque = isOpaque

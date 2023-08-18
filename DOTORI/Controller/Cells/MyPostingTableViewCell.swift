@@ -33,7 +33,7 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
         nickname.text = posting.user.nickname
         createTime.text = posting.createTime.GetCurrentTime(format: "YYYY-MM-dd")
         content.text = posting.content
-        contentImage.image = posting.contentImage ?? UIImage(named: "defaultProfileImage")
+        contentImage.image = posting.contentImage ?? nil
         contentImage.layer.cornerRadius = 10
         contentImage.clipsToBounds = true
         if posting.bookmark == true {
@@ -45,14 +45,6 @@ class MyPostingTableViewCell: UITableViewCell, UITextViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-            
-        print("버튼 클릭: postingSetting")
-        let seletedpostingSetting = {(action: UIAction) in
-            }
-        postingSetting.menu = UIMenu(children: [
-            UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"),attributes: .destructive, handler: seletedpostingSetting)])
-        postingSetting.showsMenuAsPrimaryAction = true
-        postingSetting.changesSelectionAsPrimaryAction = false
         content.delegate = self
         content.isScrollEnabled = false
         content.sizeToFit()

@@ -45,9 +45,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-GN-odt">
-                                <rect key="frame" x="0.0" y="216" width="393" height="553"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-GN-odt">
+                                <rect key="frame" x="0.0" y="218" width="393" height="551"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostingCell" focusStyle="custom" rowHeight="307" id="HoD-Tb-Evb" customClass="MyPostingTableViewCell" customModule="DOTORI" customModuleProvider="target">
@@ -58,7 +57,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ris-Wz-dez">
-                                                    <rect key="frame" x="20" y="11" width="353" height="279.66666666666669"/>
+                                                    <rect key="frame" x="20" y="20" width="353" height="267"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f8g-eI-KzF">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -108,6 +107,9 @@
                                                                             <state key="normal" image="ellipsis.circle" catalog="system">
                                                                                 <attributedString key="attributedTitle"/>
                                                                             </state>
+                                                                            <connections>
+                                                                                <action selector="postingSetting:" destination="HoD-Tb-Evb" eventType="touchUpInside" id="Omu-0x-fAD"/>
+                                                                            </connections>
                                                                         </button>
                                                                     </subviews>
                                                                     <constraints>
@@ -118,7 +120,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-Wc-NMu">
                                                                     <rect key="frame" x="0.0" y="27" width="283" height="194.33333333333334"/>
                                                                     <subviews>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-ku-odw">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-ku-odw">
                                                                             <rect key="frame" x="0.0" y="0.0" width="283" height="67"/>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
@@ -196,9 +198,8 @@
                                             <constraints>
                                                 <constraint firstItem="Ris-Wz-dez" firstAttribute="leading" secondItem="xew-dN-gXF" secondAttribute="leading" constant="20" symbolic="YES" id="1eB-wo-tGf"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ris-Wz-dez" secondAttribute="trailing" constant="20" id="J3T-jY-F0G"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ris-Wz-dez" secondAttribute="bottom" constant="16.333333333333314" id="OPF-8L-64w"/>
-                                                <constraint firstItem="pg3-kX-seq" firstAttribute="top" secondItem="xew-dN-gXF" secondAttribute="top" constant="11" id="QMk-PE-biA"/>
-                                                <constraint firstItem="Ris-Wz-dez" firstAttribute="top" secondItem="xew-dN-gXF" secondAttribute="top" constant="11" id="Qu5-KM-AGS"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ris-Wz-dez" secondAttribute="bottom" constant="20" id="OPF-8L-64w"/>
+                                                <constraint firstItem="Ris-Wz-dez" firstAttribute="top" secondItem="xew-dN-gXF" secondAttribute="top" constant="20" id="Qu5-KM-AGS"/>
                                                 <constraint firstAttribute="trailing" secondItem="6Uv-ku-odw" secondAttribute="trailing" constant="20" id="Zmc-JO-2hf"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -346,9 +347,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="b7H-R8-Fc0" firstAttribute="trailing" secondItem="GRC-zc-6yJ" secondAttribute="trailing" constant="278" id="2n8-5I-DF4"/>
+                            <constraint firstItem="b7H-R8-Fc0" firstAttribute="trailing" secondItem="5ky-GN-odt" secondAttribute="trailing" id="5Ub-DQ-xcU"/>
                             <constraint firstItem="GRC-zc-6yJ" firstAttribute="top" secondItem="b7H-R8-Fc0" secondAttribute="top" constant="80" id="71v-X3-23j"/>
+                            <constraint firstItem="5ky-GN-odt" firstAttribute="leading" secondItem="b7H-R8-Fc0" secondAttribute="leading" id="7lB-qC-auH"/>
                             <constraint firstItem="b7H-R8-Fc0" firstAttribute="trailing" secondItem="S0M-du-gUG" secondAttribute="trailing" constant="20.333333333333314" id="A45-RI-vVz"/>
                             <constraint firstItem="S0M-du-gUG" firstAttribute="leading" secondItem="b7H-R8-Fc0" secondAttribute="leading" constant="20" id="CQx-qF-2sM"/>
+                            <constraint firstItem="b7H-R8-Fc0" firstAttribute="bottom" secondItem="5ky-GN-odt" secondAttribute="bottom" id="Syw-bX-xhn"/>
+                            <constraint firstItem="5ky-GN-odt" firstAttribute="top" secondItem="1IV-X1-oBA" secondAttribute="bottom" constant="10" id="Xc7-n1-cxu"/>
                             <constraint firstItem="GRC-zc-6yJ" firstAttribute="leading" secondItem="b7H-R8-Fc0" secondAttribute="leading" constant="90" id="Yrt-LQ-jgZ"/>
                             <constraint firstItem="S0M-du-gUG" firstAttribute="top" secondItem="b7H-R8-Fc0" secondAttribute="top" constant="10" id="xFh-rN-bhA"/>
                         </constraints>
