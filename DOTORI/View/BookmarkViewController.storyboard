@@ -216,8 +216,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HGq-Sh-cqP" firstAttribute="top" secondItem="l7F-sr-xfy" secondAttribute="top" constant="20" id="57v-bh-Omp"/>
+                                                <constraint firstAttribute="trailing" secondItem="h3a-7P-7tF" secondAttribute="trailing" constant="20" id="66q-U3-I9L"/>
                                                 <constraint firstAttribute="trailing" secondItem="cbr-3V-sHu" secondAttribute="trailing" constant="20" id="6Jy-xd-zDM"/>
                                                 <constraint firstAttribute="bottom" secondItem="HGq-Sh-cqP" secondAttribute="bottom" constant="20" id="Mi4-vp-Tsd"/>
+                                                <constraint firstAttribute="trailing" secondItem="T1R-PB-78w" secondAttribute="trailing" constant="20" id="lUF-wl-bcq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -250,7 +252,7 @@
                     <navigationItem key="navigationItem" id="lXU-wv-eQO">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Fdi-nH-DbM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="Y6x-dE-M7o">
-                                <rect key="frame" x="16" y="0.0" width="220" height="44"/>
+                                <rect key="frame" x="16" y="0.0" width="201" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <menu key="menu" id="Ifl-Dj-DZZ">
                                     <children>
