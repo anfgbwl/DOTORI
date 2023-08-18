@@ -189,9 +189,9 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         isBookFilled = filter[selectedIndex].bookmark
         if !isBookFilled
         {
-            bookmarkImageView.image = UIImage(systemName: "book")
+            bookmarkImageView.image = UIImage(systemName: "bookmark")
         }else{
-            bookmarkImageView.image = UIImage(systemName: "book.fill")
+            bookmarkImageView.image = UIImage(systemName: "bookmark.fill")
         }
     }
     
@@ -225,9 +225,9 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
                 filter[selectedIndex].bookmark = isBookFilled
                 if !isBookFilled
                 {
-                    bookmarkImageView.image = UIImage(systemName: "book")
+                    bookmarkImageView.image = UIImage(systemName: "bookmark")
                 }else{
-                    bookmarkImageView.image = UIImage(systemName: "book.fill")
+                    bookmarkImageView.image = UIImage(systemName: "bookmark.fill")
                 }
             }else{
                 let storyboard = UIStoryboard(name: "DetailViewController", bundle: nil)
