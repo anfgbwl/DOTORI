@@ -34,9 +34,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
     //하단
     @IBOutlet weak var replyTableView: UITableView! // 맨밑 테이블뷰
     @IBOutlet weak var replyInputTextField: UITextField! //댓글 입력 키보드 텍스트필드
-    
-    @IBOutlet weak var upperstackView: UIStackView!
-    @IBOutlet weak var bottomstackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     //프로퍼티
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
@@ -44,6 +42,8 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
+        scrollView.bounces = false
         loadUserProfileInfo()
         setUIEvents()
         setBookmarkFillInfo()
