@@ -27,6 +27,11 @@
 		3FA68A132A8A116D00E1EEC0 /* UpdateMyPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA68A122A8A116D00E1EEC0 /* UpdateMyPageViewController.storyboard */; };
 		3FA68A152A8A118400E1EEC0 /* UpdateMyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA68A142A8A118400E1EEC0 /* UpdateMyPageViewController.swift */; };
 		3FBA5C7D2A8DAC49005CF26A /* MyPostingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBA5C7C2A8DAC49005CF26A /* MyPostingTableViewCell.swift */; };
+		3FC41D472A8F175C0043FB97 /* Holyfat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC41D462A8F175C0043FB97 /* Holyfat.ttf */; };
+		3FC41D4B2A8F18350043FB97 /* Bobaland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC41D4A2A8F18350043FB97 /* Bobaland.ttf */; };
+		3FC41D4D2A8F194E0043FB97 /* hidayatullah DEMO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC41D4C2A8F194E0043FB97 /* hidayatullah DEMO.ttf */; };
+		3FC41D4F2A8F19710043FB97 /* aAwalRamadhan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC41D4E2A8F19710043FB97 /* aAwalRamadhan.ttf */; };
+		3FC41D512A8F2B5B0043FB97 /* JejuHallasanOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC41D502A8F2B5B0043FB97 /* JejuHallasanOTF.otf */; };
 		5F2E84112A89FC5B001702F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84102A89FC5B001702F9 /* UserInfo.swift */; };
 		5F2E84132A89FC68001702F9 /* PostingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84122A89FC68001702F9 /* PostingInfo.swift */; };
 		5F2E84152A89FC72001702F9 /* ReplyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E84142A89FC72001702F9 /* ReplyInfo.swift */; };
@@ -62,6 +67,11 @@
 		3FA68A122A8A116D00E1EEC0 /* UpdateMyPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateMyPageViewController.storyboard; sourceTree = "<group>"; };
 		3FA68A142A8A118400E1EEC0 /* UpdateMyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPageViewController.swift; sourceTree = "<group>"; };
 		3FBA5C7C2A8DAC49005CF26A /* MyPostingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostingTableViewCell.swift; sourceTree = "<group>"; };
+		3FC41D462A8F175C0043FB97 /* Holyfat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Holyfat.ttf; sourceTree = "<group>"; };
+		3FC41D4A2A8F18350043FB97 /* Bobaland.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bobaland.ttf; sourceTree = "<group>"; };
+		3FC41D4C2A8F194E0043FB97 /* hidayatullah DEMO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hidayatullah DEMO.ttf"; sourceTree = "<group>"; };
+		3FC41D4E2A8F19710043FB97 /* aAwalRamadhan.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = aAwalRamadhan.ttf; sourceTree = "<group>"; };
+		3FC41D502A8F2B5B0043FB97 /* JejuHallasanOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JejuHallasanOTF.otf; sourceTree = "<group>"; };
 		5F2E84102A89FC5B001702F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5F2E84122A89FC68001702F9 /* PostingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingInfo.swift; sourceTree = "<group>"; };
 		5F2E84142A89FC72001702F9 /* ReplyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyInfo.swift; sourceTree = "<group>"; };
@@ -122,6 +132,7 @@
 		3FA689ED2A89EC5600E1EEC0 /* DOTORI */ = {
 			isa = PBXGroup;
 			children = (
+				3FC41D452A8F17430043FB97 /* Font */,
 				DE1C831A2A8A0AA4003D99E9 /* Controller */,
 				DED80C042A8A097100D5D125 /* View */,
 				5F2E84162A8A043E001702F9 /* Extension */,
@@ -144,6 +155,18 @@
 				3FBA5C7C2A8DAC49005CF26A /* MyPostingTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3FC41D452A8F17430043FB97 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3FC41D502A8F2B5B0043FB97 /* JejuHallasanOTF.otf */,
+				3FC41D4A2A8F18350043FB97 /* Bobaland.ttf */,
+				3FC41D4C2A8F194E0043FB97 /* hidayatullah DEMO.ttf */,
+				3FC41D4E2A8F19710043FB97 /* aAwalRamadhan.ttf */,
+				3FC41D462A8F175C0043FB97 /* Holyfat.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		5F2E840F2A89FC3F001702F9 /* Model */ = {
@@ -254,14 +277,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC41D4D2A8F194E0043FB97 /* hidayatullah DEMO.ttf in Resources */,
 				3FA68A0F2A8A10D600E1EEC0 /* DetailViewController.storyboard in Resources */,
 				3FA689FB2A89EC5700E1EEC0 /* LaunchScreen.storyboard in Resources */,
 				3FA689F82A89EC5700E1EEC0 /* Assets.xcassets in Resources */,
 				3FA68A132A8A116D00E1EEC0 /* UpdateMyPageViewController.storyboard in Resources */,
+				3FC41D512A8F2B5B0043FB97 /* JejuHallasanOTF.otf in Resources */,
 				3FA68A032A8A0FC400E1EEC0 /* CreateViewController.storyboard in Resources */,
 				DED80C072A8A098600D5D125 /* SearchViewController.storyboard in Resources */,
+				3FC41D4B2A8F18350043FB97 /* Bobaland.ttf in Resources */,
+				3FC41D472A8F175C0043FB97 /* Holyfat.ttf in Resources */,
 				3FA689F62A89EC5600E1EEC0 /* Main.storyboard in Resources */,
 				3FA68A072A8A0FEE00E1EEC0 /* BookmarkViewController.storyboard in Resources */,
+				3FC41D4F2A8F19710043FB97 /* aAwalRamadhan.ttf in Resources */,
 				3FA68A0B2A8A101500E1EEC0 /* MyPageViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
