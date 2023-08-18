@@ -19,14 +19,12 @@ enum UISheepPaperType {
     }
 }
 
-class DetailViewController: UIViewController,ModifyTextDelegate {
+class DetailViewController: UIViewController, ModifyTextDelegate, UIScrollViewDelegate {
     
     //상단
     @IBOutlet weak var nameLabel: UILabel! //이름
     @IBOutlet weak var nicknameLabel: UILabel! // 닉네임
     @IBOutlet weak var profileImageView: UIImageView! // 계정 사진
-    //중단
-    @IBOutlet weak var imageCollectionView: UICollectionView! // 이미지 첨부 화면
     @IBOutlet weak var textView: UITextView! // 컨텐츠
     @IBOutlet weak var createdLabel: UILabel! // 생성시간
     @IBOutlet weak var replyImageView: UIImageView! // 댓글버튼
@@ -36,27 +34,68 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     @IBOutlet weak var replyTableView: UITableView! // 맨밑 테이블뷰
     @IBOutlet weak var replyInputTextField: UITextField! //댓글 입력 키보드 텍스트필드
     
+//    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var contentImageView: UIImageView!
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
+//    let screenHeight = UIScreen.main.bounds.height
+//    let scrollViewContentHeight = 1200 as CGFloat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.translatesAutoresizingMaskIntoConstraints = true
-        isBookFilled = data[selectedIndex].bookmark
+//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 2000)
+//        scrollView.contentSize = CGSizeMake(scrollView.frame.width, scrollViewContentHeight)
+//        scrollView.delegate = self
+//        scrollView.bounces = false
+//        replyTableView.estimatedRowHeight = 100 // 예상 셀 높이
+//        replyTableView.rowHeight = UITableView.automaticDimension // 동적 셀 높이
+
+        isBookFilled = filter[selectedIndex].bookmark
         loadUserProfileInfo()
         setUIEvents()
         setBookmarkFillInfo()
         setUIConfig()
-    }
-    func setUIEvents(){
-        imageCollectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
         
+        let posting = filter[selectedIndex]
+        if let image = posting.contentImage{
+            contentImageView.image =  posting.contentImage
+          
+        }else{
+            contentImageView.isHidden = true
+            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let yOffset = scrollView.contentOffset.y
+//        if scrollView == self.scrollView {
+//            if yOffset >= scrollViewContentHeight - screenHeight {
+//                scrollView.isScrollEnabled = false
+//                replyTableView.isScrollEnabled = true
+//            }
+//        }
+//
+//        if scrollView == self.replyTableView {
+//            if yOffset <= 0 {
+//                self.scrollView.isScrollEnabled = true
+//                self.replyTableView.isScrollEnabled = false
+//            }
+//        }
+//    }
+    
+    func setUIEvents(){
         replyTableView.register(PostingTableViewCell.self, forCellReuseIdentifier: "PosingTableViewCell")
         replyTableView.dataSource = self
         replyTableView.delegate = self
+        
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
+        textView.sizeToFit() // 초기 크기 조정
+        
         
         addTapGestureToImageView(shareImageView)
         addTapGestureToImageView(bookmarkImageView)
@@ -67,6 +106,9 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
     func setUIConfig(){
         profileImageView.setImageRoundRadius()
+        
+        contentImageView.layer.cornerRadius = 10
+        contentImageView.clipsToBounds = true
     }
     
     func loadUserProfileInfo(){
@@ -112,7 +154,7 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
         replyTableView.reloadData()
     }
     func didTextCreated(createTime: Date, content: String) {
-        let additionalReplyInfo = ReplyInfo(user: user5, content:content, createTime: createTime, updateTime: Date())
+        let additionalReplyInfo = ReplyInfo(user: user1, content:content, createTime: createTime, updateTime: Date())
         data[selectedIndex].reply.append(additionalReplyInfo)
         replyInputTextField.resignFirstResponder()
         replyTableView.reloadData()
@@ -143,27 +185,11 @@ class DetailViewController: UIViewController,ModifyTextDelegate {
     }
 }
 
-extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataSource
-{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let dequeuedCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
-            let posting = data[selectedIndex]
-            dequeuedCell.collectionImageView.image = posting.contentImage
-            return dequeuedCell
-        }
-        else{
-            return UICollectionViewCell()
-        }
-    }
-}
-
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[selectedIndex].reply.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dequeuedCell = replyTableView.dequeueReusableCell(withIdentifier: "posingTableViewCell") as? PostingTableViewCell {
             if selectedIndex < data.count && indexPath.row < data[selectedIndex].reply.count {
@@ -226,15 +252,6 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
     }
 }
 
-class DetailCollectionViewCell : UICollectionViewCell
-{
-    @IBOutlet weak var collectionImageView: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-}
-
-
 class PostingTableViewCell : UITableViewCell
 {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -266,6 +283,8 @@ class PostingTableViewCell : UITableViewCell
         profileImageView.isUserInteractionEnabled = true
         
         profileImageView.setImageRoundRadius()
+        contentTextView.sizeToFit()
+        contentTextView.isScrollEnabled = false
     }
     
     @objc func profileImageTapped() {

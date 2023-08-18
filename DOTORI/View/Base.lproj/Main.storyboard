@@ -251,8 +251,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="eJl-QM-b02">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="nva-S4-UfE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
-                                <rect key="frame" x="16" y="0.0" width="121" height="44"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="bif-F3-oW1">
+                                <rect key="frame" x="16" y="1" width="121" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="JejuHallasanOTF" family="JejuHallasanOTF" pointSize="30"/>
                                 <color key="tintColor" systemColor="labelColor"/>
