@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    
     func resetindex () {
         for i in 0..<data.count {
             indexlist.append(i)
@@ -27,11 +28,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //더미데이터들
         let all = UIAction(title: "전체", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = data
             self.resetindex()
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             indexlist.removeAll()
             for i in 0..<data.count{
@@ -43,6 +46,7 @@ class ViewController: UIViewController {
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let til = UIAction(title: "TIL", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             indexlist.removeAll()
             for i in 0..<data.count{
@@ -54,6 +58,7 @@ class ViewController: UIViewController {
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let cat = UIAction(title: "고양이방", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             indexlist.removeAll()
             for i in 0..<data.count{
@@ -65,6 +70,7 @@ class ViewController: UIViewController {
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let qna = UIAction(title: "질문", handler: { _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             indexlist.removeAll()
             for i in 0..<data.count{
@@ -77,6 +83,8 @@ class ViewController: UIViewController {
         })
         let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
         menuButton.menu = menu
+        menuButton.setTitle("도토리묵", for: .normal)
+        menuButton.titleLabel?.font = UIFont(name: "JejuHallasanOTF", size: 30)
     }
     var selectedIndex : Int?
 }

@@ -15,6 +15,11 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
     var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        return label
+    }()
     
     @IBOutlet weak var mySetting: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -56,9 +61,11 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         
         let lightMode = UIAction(title: "라이트모드", image: UIImage(systemName: "lightbulb"), handler: { _ in
             self.view.window?.overrideUserInterfaceStyle = .light
+            self.titleLabel.textColor = UIColor.black
         })
         let darkMode = UIAction(title: "다크모드", image: UIImage(systemName: "lightbulb.fill"), handler: { _ in
             self.view.window?.overrideUserInterfaceStyle = .dark
+            self.titleLabel.textColor = UIColor.white
         })
         let settingMenu = UIMenu(title: "", children: [lightMode, darkMode])
         mySetting.menu = settingMenu
@@ -79,10 +86,8 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     
     // Navigation Item 설정
     func loadTitleAccount() {
-        let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = self.traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
         titleLabel.text = user1.nickname
-        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
     }
     

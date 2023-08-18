@@ -176,7 +176,7 @@
                                                                             <rect key="frame" x="236" y="0.0" width="47" height="34.333333333333336"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9b-pu-ulF">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="86d-8T-YGk"/>
                                                                                     </constraints>
@@ -186,7 +186,7 @@
                                                                                     </buttonConfiguration>
                                                                                 </button>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-ko-6eF">
-                                                                                    <rect key="frame" x="22" y="0.0" width="25" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="25" y="0.0" width="22" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="1f6-XO-NRq"/>
                                                                                     </constraints>
@@ -378,11 +378,11 @@
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="VUK-L2-w4K"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xNi-Pq-Gly">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Y5P-0W-2Ii">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Y5P-0W-2Ii">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nt8-I8-s6F">
-                                <rect key="frame" x="290" y="7" width="21" height="22"/>
+                                <rect key="frame" x="350" y="8.6666666666666661" width="27" height="26.666666666666671"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <menu key="menu" id="6aU-iu-ojx">
                                     <children>
                                         <command title="Item 1" id="uJv-Ph-SkN"/>
@@ -390,6 +390,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal">
+                                    <color key="titleColor" systemColor="labelColor"/>
                                     <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
                                 </state>
                                 <connections>
