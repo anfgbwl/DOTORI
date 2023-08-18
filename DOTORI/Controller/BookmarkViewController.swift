@@ -33,10 +33,12 @@ class BookmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let all = UIAction(title: "전체", handler: { [self] _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             MakeFilterBookmark()
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { [self] _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             for i in 0..<data.count {
                 if data[i].bookmark == true && data[i].category == "잡담" {
@@ -46,6 +48,7 @@ class BookmarkViewController: UIViewController {
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let til = UIAction(title: "TIL", handler: { [self] _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             for i in 0..<data.count {
                 if data[i].bookmark == true && data[i].category == "TIL" {
@@ -55,6 +58,7 @@ class BookmarkViewController: UIViewController {
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let cat = UIAction(title: "고양이방", handler: { [self] _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             for i in 0..<data.count {
                 if data[i].bookmark == true && data[i].category == "고양이방" {
@@ -64,6 +68,7 @@ class BookmarkViewController: UIViewController {
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let qna = UIAction(title: "질문", handler: { [self] _ in
+            self.menuButton.setTitle("도토리묵", for: .normal)
             filter = []
             for i in 0..<data.count {
                 if data[i].bookmark == true && data[i].category == "질문" {
@@ -74,6 +79,8 @@ class BookmarkViewController: UIViewController {
         })
         let menu = UIMenu(title: "", children: [all, smalltalk, til, cat, qna])
         menuButton.menu = menu
+        menuButton.setTitle("도토리묵", for: .normal)
+        menuButton.titleLabel?.font = UIFont(name: "JejuHallasanOTF", size: 30)
     }
     override func viewWillDisappear(_ animated: Bool) {
         filter = data
