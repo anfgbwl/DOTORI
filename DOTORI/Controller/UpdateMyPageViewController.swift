@@ -49,12 +49,12 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
     }
     
     func defaultUserInfo() {
-        updateNicknameTextField.text = user1.nickname
-        updateNameTextField.text = user1.name
-        updateGitHubUrlTextField.text = user1.githubUrl
-        updateUrlTextField.text = user1.blogUrl
-        updateTextView.text = user1.userIntro
-        updateImageView.image = user1.profileImage
+        updateNicknameTextField.text = loginUser.nickname
+        updateNameTextField.text = loginUser.name
+        updateGitHubUrlTextField.text = loginUser.githubUrl
+        updateUrlTextField.text = loginUser.blogUrl
+        updateTextView.text = loginUser.userIntro
+        updateImageView.image = loginUser.profileImage
     }
     
     
