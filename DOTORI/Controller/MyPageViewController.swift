@@ -44,6 +44,9 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPosting()
+        loadAccount()
         tableView.reloadData()
     }
     
@@ -108,6 +111,15 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         postingCount.text = String(myPostings.count)
         blogUrl.titleLabel?.text = loginUser.blogUrl
         githubUrl.titleLabel?.text = loginUser.githubUrl
+        let userActions = [user1, user2, user3, user4, user5].map { user in
+            UIAction(title: "\(user.nickname)", state: (user.name == loginUser.name) ? .on : .off, handler: { _ in
+                loginUser = user
+                self.loadPosting()
+                self.loadAccount()
+                self.tableView.reloadData()
+                self.userButton.setTitle(user.nickname, for: .normal)})}
+        let settingUser = UIMenu(title: "", children: userActions)
+        userButton.menu = settingUser
         print("계정 정보 불러오기")
     }
     
@@ -231,7 +243,7 @@ class WebViewController: UIViewController {
     }
     
     func loadURL(_ url: String) {
-        let urlString = "http://" + url
+        let urlString = "https://" + url
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)

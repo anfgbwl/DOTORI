@@ -148,7 +148,7 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="4sJ-4b-Zae">
                                                                             <rect key="frame" x="0.0" y="0.0" width="51" height="34.333333333333336"/>
                                                                             <subviews>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="si7-0Z-WdY">
+                                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="si7-0Z-WdY">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="fEA-wk-pdO"/>
@@ -157,9 +157,6 @@
                                                                                     <buttonConfiguration key="configuration" style="plain">
                                                                                         <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
                                                                                     </buttonConfiguration>
-                                                                                    <connections>
-                                                                                        <segue destination="Hog-m6-ew4" kind="show" id="sRb-Y0-tRJ"/>
-                                                                                    </connections>
                                                                                 </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-g7-fga">
                                                                                     <rect key="frame" x="26" y="0.0" width="25" height="34.333333333333336"/>
@@ -489,7 +486,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="PBb-FP-Prk"/>
-        <segue reference="kTJ-qf-q0M"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
