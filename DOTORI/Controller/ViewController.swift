@@ -85,22 +85,41 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.setupUI(posting: posting)
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
-        let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
-            data.remove(at: filterindex[indexPath.row])
-//            filter.remove(at: indexPath.row)
-//            filterindex.remove(at: indexPath.row)
-                if self.key == "전체" {
-                    filter = data
-                    self.resetfilterindex()
-                }
-                else {
-                    self.UpdateFilter(self.key)
-                }
-            
-            self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
-        })
-        let menu = UIMenu(title: "", children: [delete])
-        cell.cellSettingButton.menu = menu
+        
+        if filter[indexPath.row].bookmark == true {
+            let bookmarkadd = UIAction(title: "북마크 해제하기", image: UIImage(systemName: "bookmark.fill"), handler: { _ in
+                filter[indexPath.row].bookmark = false
+                self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
+            })
+            let menu = UIMenu(title: "", children: [bookmarkadd])
+            cell.cellSettingButton.menu = menu
+        }
+        else {
+            let bookmarkadd = UIAction(title: "북마크 추가하기", image: UIImage(systemName: "bookmark"), handler: { _ in
+                filter[indexPath.row].bookmark = true
+                self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
+            })
+            let menu = UIMenu(title: "", children: [bookmarkadd])
+            cell.cellSettingButton.menu = menu
+        }
+        
+        if loginUser.name == posting.user.name {
+            let delete = UIAction(title: "나의 게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+                data.remove(at: filterindex[indexPath.row])
+                    if self.key == "전체" {
+                        filter = data
+                        self.resetfilterindex()
+                    }
+                    else {
+                        self.UpdateFilter(self.key)
+                    }
+                
+                self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
+            })
+            let menu = UIMenu(title: "", children: [delete])
+            cell.cellSettingButton.menu = menu
+        }
+        
         return cell
     }
     @objc func bookmarkChange (_ sender : UIButton){
