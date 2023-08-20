@@ -87,8 +87,16 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
         let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
             data.remove(at: filterindex[indexPath.row])
-            filter.remove(at: indexPath.row)
-            filterindex.remove(at: indexPath.row)
+//            filter.remove(at: indexPath.row)
+//            filterindex.remove(at: indexPath.row)
+                if self.key == "전체" {
+                    filter = data
+                    self.resetfilterindex()
+                }
+                else {
+                    self.UpdateFilter(self.key)
+                }
+            
             self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let menu = UIMenu(title: "", children: [delete])
@@ -103,6 +111,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         else {
             filter[sender.tag].bookmark = true
         }
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀 선택시 함수

@@ -80,7 +80,7 @@
                                                             <rect key="frame" x="70" y="0.0" width="283" height="173"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wqu-7q-Kqd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="22"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0IY-kc-QIW">
                                                                             <rect key="frame" x="0.0" y="0.0" width="180" height="22"/>
@@ -111,8 +111,8 @@
                                                                                 </label>
                                                                             </subviews>
                                                                         </stackView>
-                                                                        <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbr-3V-sHu">
-                                                                            <rect key="frame" x="190" y="0.0" width="93" height="22"/>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbr-3V-sHu">
+                                                                            <rect key="frame" x="283" y="0.0" width="0.0" height="22"/>
                                                                             <color key="tintColor" systemColor="systemGrayColor"/>
                                                                             <menu key="menu" id="TBS-iu-LR6">
                                                                                 <children>

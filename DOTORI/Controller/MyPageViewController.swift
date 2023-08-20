@@ -177,8 +177,7 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let delete = UIAction(title: "게시물 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
             data.remove(at: self.indexlist[indexPath.row])
-            self.myPostings.remove(at: indexPath.row)
-            self.indexlist.remove(at: indexPath.row)
+            self.loadPosting()
             self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             self.postingCount.text = String(self.myPostings.count)
         })
