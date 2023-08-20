@@ -17,7 +17,6 @@ enum UISheepPaperType {
         }
     }
 }
-//MARK: 본문 디테일 상세 뷰
 class DetailViewController: UIViewController, ModifyTextDelegate {
     //상단
     @IBOutlet weak var nameLabel: UILabel! //이름
@@ -155,6 +154,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
 }
 
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[selectedIndex].reply.count
     }
@@ -198,10 +198,37 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                 }
                 let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
                 let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-                
+
                 if let text = dequeuedCell.nameLabel.text {
                     myPageVC.selectedUserName = text
                 }
+                for i in 0..<data.count{
+                    if data[i].user.name == dequeuedCell.nameLabel.text
+                    {
+                        loginUser = data[i].user
+                    }
+                }
+
+                self.present(myPageVC, animated: true)
+                
+            }
+            dequeuedCell.profileSeeButtonAction = { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
+                let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+
+                if let text = dequeuedCell.nameLabel.text {
+                    myPageVC.selectedUserName = text
+                }
+                for i in 0..<data.count{
+                    if data[i].user.name == dequeuedCell.nameLabel.text
+                    {
+                        loginUser = data[i].user
+                    }
+                }
+
                 self.present(myPageVC, animated: true)
             }
             return dequeuedCell
@@ -220,8 +247,6 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
         return true
     }
 }
-
-//MARK: 댓글정보(클래스 이름 잘못설정했네..)
 class PostingTableViewCell : UITableViewCell
 {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -234,20 +259,31 @@ class PostingTableViewCell : UITableViewCell
     var modifyButtonAction: (() -> Void)?
     var deleteButtonAction: (() -> Void)?
     var profileButtonAction : (() ->Void)?
+    var profileSeeButtonAction : (() ->Void)?
     
+    @IBAction func modifyOrDele(_ sender: Any) {
+                if  loginUser.name  == nameLabel.text{
+                    let menu = UIMenu(title: "", children: [
+                        UIAction(title: "수정",image: UIImage(systemName: "pencil"), handler: { _ in
+                            self.modifyButtonAction?()
+                        }),
+                        UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+                            self.deleteButtonAction?()
+                        }),
+                    ])
+                    modifyOrDelteButton.showsMenuAsPrimaryAction = true
+                    modifyOrDelteButton.menu = menu
+                }else{
+                    let menu = UIMenu(title: "", children: [
+                        UIAction(title: "프로필 보기",image: UIImage(systemName: "person.crop.circle"), handler: { _ in
+                            self.profileSeeButtonAction?()
+                        }),
+                    ])
+                    modifyOrDelteButton.showsMenuAsPrimaryAction = true
+                    modifyOrDelteButton.menu = menu
+                }
+    }
     override func awakeFromNib() {
-        super.awakeFromNib()
-        let menu = UIMenu(title: "", children: [
-            UIAction(title: "수정", handler: { _ in
-                self.modifyButtonAction?()
-            }),
-            UIAction(title: "삭제", handler: { _ in
-                self.deleteButtonAction?()
-            }),
-        ])
-        modifyOrDelteButton.showsMenuAsPrimaryAction = true
-        modifyOrDelteButton.menu = menu
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
         profileImageView.isUserInteractionEnabled = true
