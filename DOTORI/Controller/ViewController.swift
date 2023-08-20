@@ -85,9 +85,9 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         cell.setupUI(posting: posting)
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkChange), for: .touchUpInside)
-        
+        var bookmarkadd = UIAction(title: "북마크 해제하기", image: UIImage(systemName: "bookmark.fill"), handler: { _ in})
         if filter[indexPath.row].bookmark == true {
-            let bookmarkadd = UIAction(title: "북마크 해제하기", image: UIImage(systemName: "bookmark.fill"), handler: { _ in
+             bookmarkadd = UIAction(title: "북마크 해제하기", image: UIImage(systemName: "bookmark.fill"), handler: { _ in
                 filter[indexPath.row].bookmark = false
                 self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
             })
@@ -95,7 +95,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             cell.cellSettingButton.menu = menu
         }
         else {
-            let bookmarkadd = UIAction(title: "북마크 추가하기", image: UIImage(systemName: "bookmark"), handler: { _ in
+            bookmarkadd = UIAction(title: "북마크 추가하기", image: UIImage(systemName: "bookmark"), handler: { _ in
                 filter[indexPath.row].bookmark = true
                 self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
             })
@@ -116,7 +116,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
                 
                 self.mainTableView.reloadSections(IndexSet(0...0), with: .automatic)
             })
-            let menu = UIMenu(title: "", children: [delete])
+            let menu = UIMenu(title: "", children: [delete, bookmarkadd])
             cell.cellSettingButton.menu = menu
         }
         
