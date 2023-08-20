@@ -48,9 +48,6 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
         setUIEvents()
         setBookmarkFillInfo()
         setUIConfig()
-        let scrollView = UIScrollView()
-
-        view.addSubview(scrollView)
     }
     func setUIEvents(){
         replyTableView.register(PostingTableViewCell.self, forCellReuseIdentifier: "PosingTableViewCell")
