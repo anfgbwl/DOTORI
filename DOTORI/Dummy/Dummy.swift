@@ -30,7 +30,7 @@ var reply2_1 = ReplyInfo(user: user2, content: "저는 천재입니다.", create
 var reply2_2 = ReplyInfo(user: user5, content: "찬호님은 천재십니다.", createTime: Date(), updateTime: Date())
 var reply3 = ReplyInfo(user: user4, content: "도토리묵 가시죠 ~🍔", createTime: Date(), updateTime: Date())
 var reply4_1 = ReplyInfo(user: user2, content: "프사 고양이 아니세요?", createTime: Date(), updateTime: Date())
-var reply4_2 = ReplyInfo(user: user4, content: "저희 두부 보러 오세요", createTime: Date(), updateTime: Date())
+var reply4_2 = ReplyInfo(user: user1, content: "저희 두부 보러 오세요", createTime: Date(), updateTime: Date())
 var reply4_3 = ReplyInfo(user: user4, content: "상어인데요", createTime: Date(), updateTime: Date())
 var reply6 = ReplyInfo(user: user1, content: "꺄아아아아아ㅏㅇ 오늘 너무 힘듭니다... 화이팅...", createTime: Date(), updateTime: Date())
 var reply7_1 = ReplyInfo(user: user3, content: "남양주의 이강인 출격", createTime: Date(), updateTime: Date())
@@ -42,7 +42,7 @@ var reply11 = ReplyInfo(user: user3, content: "사실 저도 고양이 있어요
 var reply12 = ReplyInfo(user: user2, content: "저도 집사인데 ㅋㅋ", createTime: Date(), updateTime: Date())
 var reply13 = ReplyInfo(user: user4, content: "나만 고양이 없어", createTime: Date(), updateTime: Date())
 
-var data = [posting1, posting2, posting3, posting4, posting5, posting6, posting7, posting8]
+var data = [posting1, posting2, posting3, posting7, posting4, posting5, posting6, posting8]
 
 var filter : [PostingInfo] = []
 var filterindex : [Int] = []
