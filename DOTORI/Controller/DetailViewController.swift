@@ -75,7 +75,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
     }
     
     func loadUserProfileInfo(){
-        isBookFilled = filter[selectedIndex].bookmark
+        isBookFilled = data[selectedIndex].bookmark
         let user = data[selectedIndex].user
         profileImageView.image = user.profileImage
         nameLabel.text = user.name
