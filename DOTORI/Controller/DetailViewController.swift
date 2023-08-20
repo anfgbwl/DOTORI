@@ -10,7 +10,6 @@ import UIKit
 enum UISheepPaperType {
     case create
     case update
-    
     var typeValue: String {
         switch self {
         case .create: return "댓글 추가"
@@ -18,74 +17,41 @@ enum UISheepPaperType {
         }
     }
 }
-
-class DetailViewController: UIViewController, ModifyTextDelegate, UIScrollViewDelegate {
-    
+//MARK: 본문 디테일 상세 뷰
+class DetailViewController: UIViewController, ModifyTextDelegate {
     //상단
     @IBOutlet weak var nameLabel: UILabel! //이름
     @IBOutlet weak var nicknameLabel: UILabel! // 닉네임
     @IBOutlet weak var profileImageView: UIImageView! // 계정 사진
+    //중단
+    @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var textView: UITextView! // 컨텐츠
     @IBOutlet weak var createdLabel: UILabel! // 생성시간
     @IBOutlet weak var replyImageView: UIImageView! // 댓글버튼
+    @IBOutlet weak var replyCountLabel: UILabel! // 댓글 갯수 라벨
     @IBOutlet weak var bookmarkImageView: UIImageView! // 북마크버튼
     @IBOutlet weak var shareImageView: UIImageView! //공유버튼
     //하단
     @IBOutlet weak var replyTableView: UITableView! // 맨밑 테이블뷰
     @IBOutlet weak var replyInputTextField: UITextField! //댓글 입력 키보드 텍스트필드
     
-//    @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet weak var contentImageView: UIImageView!
+    @IBOutlet weak var upperstackView: UIStackView!
+    @IBOutlet weak var bottomstackView: UIStackView!
+    //프로퍼티
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
-//    let screenHeight = UIScreen.main.bounds.height
-//    let scrollViewContentHeight = 1200 as CGFloat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 2000)
-//        scrollView.contentSize = CGSizeMake(scrollView.frame.width, scrollViewContentHeight)
-//        scrollView.delegate = self
-//        scrollView.bounces = false
-//        replyTableView.estimatedRowHeight = 100 // 예상 셀 높이
-//        replyTableView.rowHeight = UITableView.automaticDimension // 동적 셀 높이
-
-        isBookFilled = filter[selectedIndex].bookmark
         loadUserProfileInfo()
         setUIEvents()
         setBookmarkFillInfo()
         setUIConfig()
-        
-        let posting = filter[selectedIndex]
-        if let image = posting.contentImage{
-            contentImageView.image =  posting.contentImage
-          
-        }else{
-            contentImageView.isHidden = true
-            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        }
-        
+        let scrollView = UIScrollView()
+
+        view.addSubview(scrollView)
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let yOffset = scrollView.contentOffset.y
-//        if scrollView == self.scrollView {
-//            if yOffset >= scrollViewContentHeight - screenHeight {
-//                scrollView.isScrollEnabled = false
-//                replyTableView.isScrollEnabled = true
-//            }
-//        }
-//
-//        if scrollView == self.replyTableView {
-//            if yOffset <= 0 {
-//                self.scrollView.isScrollEnabled = true
-//                self.replyTableView.isScrollEnabled = false
-//            }
-//        }
-//    }
-    
     func setUIEvents(){
         replyTableView.register(PostingTableViewCell.self, forCellReuseIdentifier: "PosingTableViewCell")
         replyTableView.dataSource = self
@@ -94,31 +60,37 @@ class DetailViewController: UIViewController, ModifyTextDelegate, UIScrollViewDe
         textView.isScrollEnabled = false
         textView.textContainerInset = .zero
         textView.textContainer.lineFragmentPadding = 0
-        textView.sizeToFit() // 초기 크기 조정
-        
+        textView.sizeToFit() 
         
         addTapGestureToImageView(shareImageView)
         addTapGestureToImageView(bookmarkImageView)
         addTapGestureToImageView(replyImageView)
         
         replyInputTextField.delegate = self
-        
     }
     func setUIConfig(){
         profileImageView.setImageRoundRadius()
-        
         contentImageView.layer.cornerRadius = 10
         contentImageView.clipsToBounds = true
     }
     
     func loadUserProfileInfo(){
+        isBookFilled = filter[selectedIndex].bookmark
         let user = data[selectedIndex].user
-        let posting = data[selectedIndex]
         profileImageView.image = user.profileImage
         nameLabel.text = user.name
         nicknameLabel.text = user.nickname
+        let posting = data[selectedIndex]
         createdLabel.text = posting.createTime.GetCurrentTime(format: "yyyy-MM-dd HH:mm:ss")
         textView.text = posting.content
+        replyCountLabel.text = String(posting.reply.count)
+        
+        if let image = posting.contentImage{
+            contentImageView.image =  image
+            
+        }else{
+            contentImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
     }
     func setBookmarkFillInfo(){
         if !isBookFilled
@@ -154,7 +126,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate, UIScrollViewDe
         replyTableView.reloadData()
     }
     func didTextCreated(createTime: Date, content: String) {
-        let additionalReplyInfo = ReplyInfo(user: user1, content:content, createTime: createTime, updateTime: Date())
+        let additionalReplyInfo = ReplyInfo(user: loginUser, content:content, createTime: createTime, updateTime: Date())
         data[selectedIndex].reply.append(additionalReplyInfo)
         replyInputTextField.resignFirstResponder()
         replyTableView.reloadData()
@@ -252,6 +224,7 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
     }
 }
 
+//MARK: 댓글정보(클래스 이름 잘못설정했네..)
 class PostingTableViewCell : UITableViewCell
 {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -291,18 +264,10 @@ class PostingTableViewCell : UITableViewCell
         self.profileButtonAction?()
     }
 }
-extension UIImageView{
-    func setImageRoundRadius(){
-        self.layer.cornerRadius = self.frame.size.width/2
-        self.clipsToBounds = true
-    }
-}
-
 protocol ModifyTextDelegate : AnyObject{
     func didTextUpdated( updateTime : Date,  content : String,  index : Int)
     func didTextCreated( createTime : Date,  content : String)
 }
-
 class ModifyReplyController : UIViewController, UITextViewDelegate{
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -344,6 +309,7 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
             titleLabel.text = title
         }
         contentTextView.delegate = self
+        contentTextView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10) // 왼쪽 오른쪽 안쪽으로 여백주기
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -351,5 +317,13 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
             return false
         }
         return true
+    }
+    
+}
+
+extension UIImageView{
+    func setImageRoundRadius(){
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
     }
 }
