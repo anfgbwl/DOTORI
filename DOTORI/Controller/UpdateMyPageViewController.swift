@@ -33,6 +33,15 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
         configureUI()
         defaultUserInfo()
         updateTextView.delegate = self
+        
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "자기소개를 적어주세요"
+        placeholderLabel.font = UIFont.systemFont(ofSize: 14)
+        placeholderLabel.sizeToFit()
+        updateTextView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: updateTextView.font!.pointSize / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !updateTextView.text.isEmpty
     }
     
     func configureUI() {
@@ -122,5 +131,6 @@ class UpdateMyPageViewController: UIViewController, PHPickerViewControllerDelega
 
 extension UpdateMyPageViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 }
