@@ -15,12 +15,8 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
     var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        return label
-    }()
     
+    @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var mySetting: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -34,44 +30,69 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func blogUrl(_ sender: UIButton) {
-        let urlText = user1.blogUrl
+        let urlText = loginUser.blogUrl
         let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
             WebVC.urlText = urlText
             present(WebVC, animated: true, completion: nil)
     }
     
     @IBAction func githubUrl(_ sender: UIButton) {
-        let urlText = user1.githubUrl
+        let urlText = loginUser.githubUrl
         let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
             WebVC.urlText = urlText
             present(WebVC, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPosting()
+        loadAccount()
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 유저 설정
+        let userAccount1 = UIAction(title: "\(user1.nickname)", handler: { _ in
+            loginUser = user1
+            self.loadPosting()
+            self.loadAccount()
+            self.tableView.reloadData()})
+        let userAccount2 = UIAction(title: "\(user2.nickname)", handler: { _ in
+            loginUser = user2
+            self.loadPosting()
+            self.loadAccount()
+            self.tableView.reloadData()})
+        let userAccount3 = UIAction(title: "\(user3.nickname)", handler: { _ in
+            loginUser = user3
+            self.loadPosting()
+            self.loadAccount()
+            self.tableView.reloadData()})
+        let userAccount4 = UIAction(title: "\(user4.nickname)", handler: { _ in
+            loginUser = user4
+            self.loadPosting()
+            self.loadAccount()
+            self.tableView.reloadData()})
+        let userAccount5 = UIAction(title: "\(user5.nickname)", handler: { _ in
+            loginUser = user5
+            self.loadPosting()
+            self.loadAccount()
+            self.tableView.reloadData()})
+        let settingUser = UIMenu(title: "", children: [userAccount1, userAccount2, userAccount3, userAccount4, userAccount5])
+        userButton.menu = settingUser
+        
+        // 라이트-다크모드 설정
         let lightMode = UIAction(title: "라이트모드", image: UIImage(systemName: "lightbulb"), handler: { _ in
             self.view.window?.overrideUserInterfaceStyle = .light
-            self.titleLabel.textColor = UIColor.black
         })
         let darkMode = UIAction(title: "다크모드", image: UIImage(systemName: "lightbulb.fill"), handler: { _ in
             self.view.window?.overrideUserInterfaceStyle = .dark
-            self.titleLabel.textColor = UIColor.white
         })
         let settingMenu = UIMenu(title: "", children: [lightMode, darkMode])
         mySetting.menu = settingMenu
         if let text = selectedUserName { name.text = text }
-        for i in 0..<data.count {
-            if data[i].user.name == user1.name {
-                indexlist.append(i)
-                myPostings.append(data[i])
-            }
-        }
-        loadTitleAccount()
+        loadPosting()
         loadAccount()
         tableView.dataSource = self
         tableView.delegate = self
@@ -79,25 +100,39 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         
     }
     
-    // Navigation Item 설정
-    func loadTitleAccount() {
-        titleLabel.textColor = self.traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
-        titleLabel.text = user1.nickname
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
-    }
-    
     // 계정 정보 불러오기
     func loadAccount() {
         // 이미지 설정
-        profileImage.image = user1.profileImage
+        profileImage.image = loginUser.profileImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
-        name.text = user1.name
-        userIntro.text = user1.userIntro
+        name.text = loginUser.name
+        userIntro.text = loginUser.userIntro
         postingCount.text = String(myPostings.count)
-        blogUrl.titleLabel?.text = user1.blogUrl
-        githubUrl.titleLabel?.text = user1.githubUrl
+        blogUrl.titleLabel?.text = loginUser.blogUrl
+        githubUrl.titleLabel?.text = loginUser.githubUrl
+        let userActions = [user1, user2, user3, user4, user5].map { user in
+            UIAction(title: "\(user.nickname)", state: (user.name == loginUser.name) ? .on : .off, handler: { _ in
+                loginUser = user
+                self.loadPosting()
+                self.loadAccount()
+                self.tableView.reloadData()
+                self.userButton.setTitle(user.nickname, for: .normal)})}
+        let settingUser = UIMenu(title: "", children: userActions)
+        userButton.menu = settingUser
         print("계정 정보 불러오기")
+    }
+    
+    // 계정 게시물 불러오기
+    func loadPosting() {
+        myPostings.removeAll()
+        indexlist.removeAll()
+        for i in 0..<data.count {
+            if data[i].user.name == loginUser.name {
+                indexlist.append(i)
+                myPostings.append(data[i])
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -184,14 +219,13 @@ extension MyPageViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MyPageViewController: UpdateMyPageDelegate {
     func updateUserInformation(profileImage: UIImage?, name: String, nickname: String, githubUrl: String, blogUrl: String, userIntro: String) {
-        user1.profileImage = profileImage
-        user1.name = name
-        user1.nickname = nickname
-        user1.githubUrl = githubUrl
-        user1.blogUrl = blogUrl
-        user1.userIntro = userIntro
+        loginUser.profileImage = profileImage
+        loginUser.name = name
+        loginUser.nickname = nickname
+        loginUser.githubUrl = githubUrl
+        loginUser.blogUrl = blogUrl
+        loginUser.userIntro = userIntro
         tableView.reloadData()
-        loadTitleAccount()
         loadAccount()
         print("📣 계정 정보 업데이트")
     }
@@ -209,7 +243,7 @@ class WebViewController: UIViewController {
     }
     
     func loadURL(_ url: String) {
-        let urlString = "http://" + url
+        let urlString = "https://" + url
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)

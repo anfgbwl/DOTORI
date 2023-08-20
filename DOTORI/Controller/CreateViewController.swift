@@ -54,7 +54,7 @@ class CreateViewController: UIViewController, UICollectionViewDelegateFlowLayout
         }
         
         let newPosting = PostingInfo(
-            user: user1,
+            user: loginUser,
             category: selectedCategory,
             content: textViewContent ?? "",
             createTime: Date(),
