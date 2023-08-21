@@ -141,6 +141,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate
         let additionalReplyInfo = ReplyInfo(user: loginUser, content:content, createTime: createTime, updateTime: Date())
         data[selectedIndex].reply.append(additionalReplyInfo)
         replyInputTextField.resignFirstResponder()
+        replyCountLabel.text = String(data[selectedIndex].reply.count)
         replyTableView.reloadData()
     }
     
@@ -212,12 +213,14 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                     let index = indexPath.row
                     data[self.selectedIndex].reply.remove(at: index)
                     self.replyTableView.reloadData()
+                    self.replyCountLabel.text = String(data[self.selectedIndex].reply.count)
                 }
                 alertController.addAction(confirmAction)
                 
                 let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
                 alertController.addAction(cancelAction)
                 present(alertController, animated: true, completion: nil)
+                
             }
             dequeuedCell.profileButtonAction = { [weak self] in
                 guard let self = self else {
