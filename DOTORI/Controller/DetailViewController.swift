@@ -17,7 +17,17 @@ enum UISheepPaperType {
         }
     }
 }
-class DetailViewController: UIViewController, ModifyTextDelegate {
+protocol MYPageDelegate: AnyObject {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String)
+}
+
+class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String) {
+        profileImageView.image = profileImage
+        nameLabel.text = name
+        nicknameLabel.text = nickname
+        replyTableView.reloadData()
+    }
     //상단
     @IBOutlet weak var nameLabel: UILabel! //이름
     @IBOutlet weak var nicknameLabel: UILabel! // 닉네임
@@ -154,6 +164,23 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
 }
 
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
+    func setupCellMenuContext(cell : PostingTableViewCell){
+        let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
+        let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+        
+        if let text = cell.nameLabel.text {
+            myPageVC.selectedUserName = text
+        }
+        for i in 0..<data.count{
+            if data[i].user.name == cell.nameLabel.text
+            {
+                loginUser = data[i].user
+            }
+        }
+        myPageVC.delegate = self
+        self.present(myPageVC, animated: true)
+        cell.setupMenu()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[selectedIndex].reply.count
@@ -196,40 +223,13 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                 guard let self = self else {
                     return
                 }
-                let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
-                let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-
-                if let text = dequeuedCell.nameLabel.text {
-                    myPageVC.selectedUserName = text
-                }
-                for i in 0..<data.count{
-                    if data[i].user.name == dequeuedCell.nameLabel.text
-                    {
-                        loginUser = data[i].user
-                    }
-                }
-
-                self.present(myPageVC, animated: true)
-                
+                setupCellMenuContext(cell: dequeuedCell)
             }
             dequeuedCell.profileSeeButtonAction = { [weak self] in
                 guard let self = self else {
                     return
                 }
-                let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
-                let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-
-                if let text = dequeuedCell.nameLabel.text {
-                    myPageVC.selectedUserName = text
-                }
-                for i in 0..<data.count{
-                    if data[i].user.name == dequeuedCell.nameLabel.text
-                    {
-                        loginUser = data[i].user
-                    }
-                }
-
-                self.present(myPageVC, animated: true)
+                setupCellMenuContext(cell: dequeuedCell)
             }
             return dequeuedCell
             
@@ -255,33 +255,35 @@ class PostingTableViewCell : UITableViewCell
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var modifyOrDelteButton: UIButton!
-    
+    var menu: UIMenu?
     var modifyButtonAction: (() -> Void)?
     var deleteButtonAction: (() -> Void)?
     var profileButtonAction : (() ->Void)?
     var profileSeeButtonAction : (() ->Void)?
-    
-    @IBAction func modifyOrDele(_ sender: Any) {
-                if  loginUser.name  == nameLabel.text{
-                    let menu = UIMenu(title: "", children: [
-                        UIAction(title: "수정",image: UIImage(systemName: "pencil"), handler: { _ in
-                            self.modifyButtonAction?()
-                        }),
-                        UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
-                            self.deleteButtonAction?()
-                        }),
-                    ])
-                    modifyOrDelteButton.showsMenuAsPrimaryAction = true
-                    modifyOrDelteButton.menu = menu
-                }else{
-                    let menu = UIMenu(title: "", children: [
-                        UIAction(title: "프로필 보기",image: UIImage(systemName: "person.crop.circle"), handler: { _ in
-                            self.profileSeeButtonAction?()
-                        }),
-                    ])
-                    modifyOrDelteButton.showsMenuAsPrimaryAction = true
-                    modifyOrDelteButton.menu = menu
-                }
+    func setupMenu(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            var menuItems: [UIMenuElement] = []
+            if loginUser.name == self.nameLabel.text {
+                menuItems.append(UIAction(title: "수정", image: UIImage(systemName: "pencil")) { _ in
+                    self.modifyButtonAction?()
+                })
+                menuItems.append(UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                    self.deleteButtonAction?()
+                })
+            } else {
+                menuItems.append(UIAction(title: "프로필 보기", image: UIImage(systemName: "person.crop.circle")) { _ in
+                    self.profileSeeButtonAction?()
+                })
+            }
+            let menu = UIMenu(title: "", children: menuItems)
+            self.menu = menu
+            self.modifyOrDelteButton.showsMenuAsPrimaryAction = true
+            self.modifyOrDelteButton.menu = menu
+        }
+    }
+    override func prepareForReuse() {
+        setupMenu()
     }
     override func awakeFromNib() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
@@ -291,8 +293,9 @@ class PostingTableViewCell : UITableViewCell
         profileImageView.setImageRoundRadius()
         contentTextView.sizeToFit()
         contentTextView.isScrollEnabled = false
+        
+        setupMenu()
     }
-    
     @objc func profileImageTapped() {
         self.profileButtonAction?()
     }
@@ -353,7 +356,6 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
     }
     
 }
-
 extension UIImageView{
     func setImageRoundRadius(){
         self.layer.cornerRadius = self.frame.size.width/2

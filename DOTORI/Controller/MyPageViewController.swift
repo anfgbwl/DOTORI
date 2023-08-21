@@ -15,7 +15,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
     var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
-    
+    weak var delegate : MYPageDelegate?
     @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var mySetting: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -91,7 +91,8 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         })
         let settingMenu = UIMenu(title: "", children: [lightMode, darkMode])
         mySetting.menu = settingMenu
-        if let text = selectedUserName { name.text = text }
+        delegate?.updateUserInformation(profileImage: loginUser.profileImage, name: loginUser.name, nickname: loginUser.nickname)
+        
         loadPosting()
         loadAccount()
         tableView.dataSource = self
@@ -226,6 +227,7 @@ extension MyPageViewController: UpdateMyPageDelegate {
         loginUser.userIntro = userIntro
         tableView.reloadData()
         loadAccount()
+        delegate?.updateUserInformation(profileImage: profileImage, name: name, nickname: nickname)
         print("📣 계정 정보 업데이트")
     }
 }
