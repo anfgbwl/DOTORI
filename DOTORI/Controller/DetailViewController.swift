@@ -17,8 +17,17 @@ enum UISheepPaperType {
         }
     }
 }
-//MARK: 본문 디테일 상세 뷰
-class DetailViewController: UIViewController, ModifyTextDelegate {
+protocol MYPageDelegate: AnyObject {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String)
+}
+
+class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate {
+    func updateUserInformation(profileImage: UIImage?, name: String, nickname: String) {
+        profileImageView.image = profileImage
+        nameLabel.text = name
+        nicknameLabel.text = nickname
+        replyTableView.reloadData()
+    }
     //상단
     @IBOutlet weak var nameLabel: UILabel! //이름
     @IBOutlet weak var nicknameLabel: UILabel! // 닉네임
@@ -39,6 +48,10 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
     var isBookFilled = false
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,6 +168,18 @@ class DetailViewController: UIViewController, ModifyTextDelegate {
 }
 
 extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
+    func setupCellMenuContext(cell : PostingTableViewCell){
+        let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
+        let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
+        
+        if let text = cell.nameLabel.text {
+            myPageVC.selectedUserName = text
+        }
+        myPageVC.delegate = self
+        self.present(myPageVC, animated: true)
+        cell.setupMenu()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[selectedIndex].reply.count
     }
@@ -196,13 +221,13 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                 guard let self = self else {
                     return
                 }
-                let storyboard = UIStoryboard(name: "MyPageViewController", bundle: nil)
-                let myPageVC = storyboard.instantiateViewController(withIdentifier: "MyPageViewController") as! MyPageViewController
-                
-                if let text = dequeuedCell.nameLabel.text {
-                    myPageVC.selectedUserName = text
+                setupCellMenuContext(cell: dequeuedCell)
+            }
+            dequeuedCell.profileSeeButtonAction = { [weak self] in
+                guard let self = self else {
+                    return
                 }
-                self.present(myPageVC, animated: true)
+                setupCellMenuContext(cell: dequeuedCell)
             }
             return dequeuedCell
             
@@ -220,8 +245,6 @@ extension DetailViewController : UITextViewDelegate, UITextFieldDelegate
         return true
     }
 }
-
-//MARK: 댓글정보(클래스 이름 잘못설정했네..)
 class PostingTableViewCell : UITableViewCell
 {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -230,24 +253,37 @@ class PostingTableViewCell : UITableViewCell
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var modifyOrDelteButton: UIButton!
-    
+    var menu: UIMenu?
     var modifyButtonAction: (() -> Void)?
     var deleteButtonAction: (() -> Void)?
     var profileButtonAction : (() ->Void)?
-    
+    var profileSeeButtonAction : (() ->Void)?
+    func setupMenu(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            var menuItems: [UIMenuElement] = []
+            if loginUser.name == self.nameLabel.text {
+                menuItems.append(UIAction(title: "수정", image: UIImage(systemName: "pencil")) { _ in
+                    self.modifyButtonAction?()
+                })
+                menuItems.append(UIAction(title: "삭제", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                    self.deleteButtonAction?()
+                })
+            } else {
+                menuItems.append(UIAction(title: "프로필 보기", image: UIImage(systemName: "person.crop.circle")) { _ in
+                    self.profileSeeButtonAction?()
+                })
+            }
+            let menu = UIMenu(title: "", children: menuItems)
+            self.menu = menu
+            self.modifyOrDelteButton.showsMenuAsPrimaryAction = true
+            self.modifyOrDelteButton.menu = menu
+        }
+    }
+    override func prepareForReuse() {
+        setupMenu()
+    }
     override func awakeFromNib() {
-        super.awakeFromNib()
-        let menu = UIMenu(title: "", children: [
-            UIAction(title: "수정", handler: { _ in
-                self.modifyButtonAction?()
-            }),
-            UIAction(title: "삭제", handler: { _ in
-                self.deleteButtonAction?()
-            }),
-        ])
-        modifyOrDelteButton.showsMenuAsPrimaryAction = true
-        modifyOrDelteButton.menu = menu
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
         profileImageView.isUserInteractionEnabled = true
@@ -255,8 +291,9 @@ class PostingTableViewCell : UITableViewCell
         profileImageView.setImageRoundRadius()
         contentTextView.sizeToFit()
         contentTextView.isScrollEnabled = false
+        
+        setupMenu()
     }
-    
     @objc func profileImageTapped() {
         self.profileButtonAction?()
     }
@@ -317,7 +354,6 @@ class ModifyReplyController : UIViewController, UITextViewDelegate{
     }
     
 }
-
 extension UIImageView{
     func setImageRoundRadius(){
         self.layer.cornerRadius = self.frame.size.width/2
