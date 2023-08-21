@@ -49,9 +49,11 @@ class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
     
-    override func viewWillDisappear(_ animated: Bool) {
-    self.navigationController?.popViewController(animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        replyTableView.reloadData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
