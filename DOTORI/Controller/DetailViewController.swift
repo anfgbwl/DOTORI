@@ -141,6 +141,7 @@ class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate
         let additionalReplyInfo = ReplyInfo(user: loginUser, content:content, createTime: createTime, updateTime: Date())
         data[selectedIndex].reply.append(additionalReplyInfo)
         replyInputTextField.resignFirstResponder()
+        replyCountLabel.text = String(data[selectedIndex].reply.count)
         replyTableView.reloadData()
     }
     
