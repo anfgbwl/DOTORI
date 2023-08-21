@@ -13,6 +13,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     var indexlist:[Int] = []
     var urlText: String?
     var selectedUserName : String? //디테일페이지에서 클릭한 프로필의 유저 이름
+    var selectedUser : UserInfo?
     var selectedIndex : Int? // 마이페이지에서 클릭한 게시물 인덱스
     let webView = WKWebView()
     weak var delegate : MYPageDelegate?
@@ -28,7 +29,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var github: UILabel!
     @IBOutlet weak var githubUrl: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var profileChangeButton: UIButton!
     @IBAction func blogUrl(_ sender: UIButton) {
         let urlText = loginUser.blogUrl
         let WebVC = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
@@ -59,6 +60,7 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
             self.loadPosting()
             self.loadAccount()
             self.tableView.reloadData()})
+
         let userAccount2 = UIAction(title: "\(user2.nickname)", handler: { _ in
             loginUser = user2
             self.loadPosting()
@@ -81,7 +83,6 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
             self.tableView.reloadData()})
         let settingUser = UIMenu(title: "", children: [userAccount1, userAccount2, userAccount3, userAccount4, userAccount5])
         userButton.menu = settingUser
-        
         // 라이트-다크모드 설정
         let lightMode = UIAction(title: "라이트모드", image: UIImage(systemName: "lightbulb"), handler: { _ in
             self.view.window?.overrideUserInterfaceStyle = .light
@@ -91,7 +92,17 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         })
         let settingMenu = UIMenu(title: "", children: [lightMode, darkMode])
         mySetting.menu = settingMenu
-        delegate?.updateUserInformation(profileImage: loginUser.profileImage, name: loginUser.name, nickname: loginUser.nickname)
+        if let text = selectedUserName {
+            if text != loginUser.name{
+                for i in 0..<data.count{
+                    if data[i].user.name == text
+                    {
+                        selectedUser = data[i].user
+                        delegate?.updateUserInformation(profileImage: loginUser.profileImage, name: loginUser.name, nickname: loginUser.nickname)
+                    }
+                }
+            }
+        }
         
         loadPosting()
         loadAccount()
@@ -122,7 +133,33 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
         let settingUser = UIMenu(title: "", children: userActions)
         userButton.menu = settingUser
         print("계정 정보 불러오기")
+        
+        if let selectedUser = selectedUser{
+            if selectedUser.name !=  loginUser.name
+            {
+                profileImage.image = selectedUser.profileImage
+                profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+                profileImage.clipsToBounds = true
+                name.text = selectedUser.name
+                userIntro.text = selectedUser.userIntro
+                postingCount.text = String(myPostings.count)
+                blogUrl.titleLabel?.text = selectedUser.blogUrl
+                githubUrl.titleLabel?.text = selectedUser.githubUrl
+                let userActions = [user1, user2, user3, user4, user5].map { user in
+                    UIAction(title: "\(user.nickname)", state: (selectedUser.name == loginUser.name) ? .on : .off, handler: { _ in
+                        loginUser = user
+                        self.loadPosting()
+                        self.loadAccount()
+                        self.tableView.reloadData()
+                        self.userButton.setTitle(user.nickname, for: .normal)})}
+                let settingUser = UIMenu(title: "", children: userActions)
+                userButton.menu = settingUser
+                profileChangeButton.isHidden = true
+                print("계정 정보 불러오기")
+            }
+        }
     }
+
     
     // 계정 게시물 불러오기
     func loadPosting() {
@@ -132,6 +169,17 @@ class MyPageViewController: UIViewController, WKNavigationDelegate {
             if data[i].user.name == loginUser.name {
                 indexlist.append(i)
                 myPostings.append(data[i])
+            }
+            if let selectedUser = selectedUser{
+                if selectedUser.name ==  data[i].user.name
+                {
+                    myPostings.removeAll()
+                    indexlist.removeAll()
+                    indexlist.append(i)
+                    myPostings.append(data[i])
+                    break
+                    
+                }
             }
         }
     }

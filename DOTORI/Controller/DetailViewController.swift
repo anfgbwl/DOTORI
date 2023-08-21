@@ -49,6 +49,10 @@ class DetailViewController: UIViewController, ModifyTextDelegate, MYPageDelegate
     var selectedIndex = 0 //메인화면에서 넘겨주는 셀 인덱스
     var selectedModifyCellIndex = 0 //댓글에서 프로필 클릭시 프로필 정보의 셀 인덱스
     
+    override func viewWillDisappear(_ animated: Bool) {
+    self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
@@ -170,12 +174,6 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
         
         if let text = cell.nameLabel.text {
             myPageVC.selectedUserName = text
-        }
-        for i in 0..<data.count{
-            if data[i].user.name == cell.nameLabel.text
-            {
-                loginUser = data[i].user
-            }
         }
         myPageVC.delegate = self
         self.present(myPageVC, animated: true)
