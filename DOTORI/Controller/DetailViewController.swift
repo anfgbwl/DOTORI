@@ -213,12 +213,14 @@ extension DetailViewController :  UITableViewDelegate, UITableViewDataSource{
                     let index = indexPath.row
                     data[self.selectedIndex].reply.remove(at: index)
                     self.replyTableView.reloadData()
+                    self.replyCountLabel.text = String(data[self.selectedIndex].reply.count)
                 }
                 alertController.addAction(confirmAction)
                 
                 let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
                 alertController.addAction(cancelAction)
                 present(alertController, animated: true, completion: nil)
+                
             }
             dequeuedCell.profileButtonAction = { [weak self] in
                 guard let self = self else {
