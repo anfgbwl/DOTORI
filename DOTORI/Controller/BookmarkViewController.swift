@@ -30,32 +30,39 @@ class BookmarkViewController: UIViewController {
     func UpdatebookmarkFilter (_ category : String ) {
         bookmarkFilter = []
         bookmarkFilterindex = []
-        for i in 0..<data.count {
-            if data[i].category == category && data[i].bookmark == true {
-                bookmarkFilter.append(data[i])
-                bookmarkFilterindex.append(i)
+        if category == "전체" {
+            for i in 0..<data.count {
+                if data[i].bookmark == true {
+                    bookmarkFilter.append(data[i])
+                    bookmarkFilterindex.append(i)
+                }
+            }
+        }
+        else{
+            for i in 0..<data.count {
+                if data[i].category == category && data[i].bookmark == true {
+                    bookmarkFilter.append(data[i])
+                    bookmarkFilterindex.append(i)
+                }
             }
         }
         key = category
         self.menuButton.setTitle("도토리묵", for: .normal)
+        BookmarkTableHidden()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        UpdateBookmark()
-        if self.key == "전체" {
-            bookmarkFilter = bookmark
-            bookmarkFilterindex = bookmarkindex
-        }
-        else{
-            UpdatebookmarkFilter(self.key)
-        }
-        if bookmark.count == 0 {
+    func BookmarkTableHidden () {
+        if bookmarkFilter.count == 0 {
             bookmarkView.isHidden = true
         }
         else {
             bookmarkView.isHidden = false
         }
-        bookmarkView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        UpdatebookmarkFilter(self.key)
+        BookmarkTableHidden()
+        bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
     }
     
     override func viewDidLoad() {
@@ -64,9 +71,7 @@ class BookmarkViewController: UIViewController {
         bookmarkFilter = bookmark
         bookmarkFilterindex = bookmarkindex
         let all = UIAction(title: "전체", handler: { [self] _ in
-            bookmarkFilter = bookmark
-            bookmarkFilterindex = bookmarkindex
-            menuButton.setTitle("도토리묵", for: .normal)
+            UpdatebookmarkFilter("전체")
             bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         })
         let smalltalk = UIAction(title: "잡담", handler: { [self] _ in
@@ -109,8 +114,6 @@ extension BookmarkViewController : UITableViewDelegate, UITableViewDataSource {
         if bookmarkFilter[sender.tag].bookmark == true {
             bookmarkFilter[sender.tag].bookmark = false
         }
-        bookmarkFilter.remove(at: sender.tag)
-        bookmarkindex.remove(at: sender.tag)
         self.bookmarkView.reloadSections(IndexSet(0...0), with: .automatic)
         self.viewWillAppear(true)
     }
