@@ -173,7 +173,7 @@
                                                                             <rect key="frame" x="236" y="0.0" width="47" height="34.333333333333336"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9b-pu-ulF">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="86d-8T-YGk"/>
                                                                                     </constraints>
@@ -183,7 +183,7 @@
                                                                                     </buttonConfiguration>
                                                                                 </button>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-ko-6eF">
-                                                                                    <rect key="frame" x="25" y="0.0" width="22" height="34.333333333333336"/>
+                                                                                    <rect key="frame" x="22" y="0.0" width="25" height="34.333333333333336"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="25" id="1f6-XO-NRq"/>
                                                                                     </constraints>
@@ -383,7 +383,7 @@
                     <navigationItem key="navigationItem" id="xNi-Pq-Gly">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Nfc-Am-3QE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="3Un-5A-qTP">
-                                <rect key="frame" x="16" y="0.0" width="200" height="44"/>
+                                <rect key="frame" x="16" y="0.0" width="230" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <menu key="menu" id="52D-xd-NaL">
