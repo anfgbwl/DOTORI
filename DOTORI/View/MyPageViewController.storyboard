@@ -428,6 +428,7 @@
                         <outlet property="name" destination="mLe-pu-Z0H" id="YUo-K8-qGN"/>
                         <outlet property="posting" destination="bfc-e2-Ice" id="Uvy-Lj-FLK"/>
                         <outlet property="postingCount" destination="l3h-2x-eoV" id="laq-YI-ssf"/>
+                        <outlet property="profileChangeButton" destination="GRC-zc-6yJ" id="cwp-aZ-ntC"/>
                         <outlet property="profileImage" destination="6Nl-Fm-9vR" id="N0u-iB-ck0"/>
                         <outlet property="tableView" destination="5ky-GN-odt" id="CWL-Hz-2cq"/>
                         <outlet property="userButton" destination="3Un-5A-qTP" id="S3e-7A-2DO"/>
