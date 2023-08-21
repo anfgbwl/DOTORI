@@ -1,4 +1,4 @@
-# nbcamp-Project-DOTORI
+[SNS 앱 만들기 - 3조 도토리묵.pdf](https://github.com/anfgbwl/DOTORI/files/12391316/SNS.-.3.pdf)# nbcamp-Project-DOTORI
 [내일배움캠프 iOS트랙] 6주차 팀과제/iOS 앱개발 입문 프로젝트 - SNS 앱 만들기
 <br><br><br><br>
 
@@ -59,6 +59,7 @@
 <br><br>
 
 ## 🧐 앱 실행 및 사용 방법
+![sns_v1@3x](https://github.com/anfgbwl/DOTORI/assets/53863005/3ddf32d4-8cfa-4fae-9b3c-5c4dbbdd1eaf)
 앱 가이드 영상 : [DotoriMook](https://drive.google.com/file/d/1gSEzXrHzWkupecu_dx-1c6vE_HVLqcb3/view?usp=sharing, "App Guide link")
 
 
