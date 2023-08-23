@@ -29,6 +29,15 @@
 
 <br><br>
 
+## 💁🏻 개발자
+- 김서온 - [anfgbwl](https://github.com/anfgbwl)
+- 박유경 - [ohAkse](https://github.com/ohAkse)
+- 박지근 - [Kyle](https://github.com/Kyletube)
+- 이대현 - [Daehyun Lee](https://github.com/hidaehyunlee)
+- 이찬호 - [lcho3878](https://github.com/lcho3878/)
+
+<br><br>
+
 ## 📌 주요 기능
 #### 메인 페이지
 - 사용자들의 게시물을 모아보는 피드
